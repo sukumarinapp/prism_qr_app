@@ -1,0 +1,76 @@
+http://192.168.1.199:85/PosIntegration.svc/PostOrderData
+http://122.166.197.63:85/PosIntegration.svc/PostOrderData
+http://localhost:1107/PosIntegration.svc/PostOrderData
+
+
+{
+  "ORDER_ID": "9999",
+  "BilDat": 20200810,
+  "PaxPer": 1,
+  "Rescod": "AKO",
+  "Stwcod": "KUMBA",
+  "TblNub": "12",
+  "kot": [
+    {
+      "ITMCOD": 1,
+      "ITMNAM": "test item1",
+      "ITMVAL": 100,
+      "MENCOD": 1,
+      "MENGRP": 1,
+      "Modifier": [
+        {
+          "CHARGE": 5,
+          "DESCRP": "Modifier1",
+          "MODCOD": 1,
+          "QUANTY": 1,
+          "SRLNUB": 1
+        }
+      ],
+      "QUANTY": 1,
+      "RATAMT": 100,
+      "TAXSTR": 1,
+      "TAXAMT": 1,
+      "MODAMT": 1
+    }
+  ]
+}
+
+{
+   "ORDER_ID":"9999",
+   "RESCOD":"AKO",
+   "TBLNUB":"12",
+   "BILDAT":20200810,
+   "BILNUB":"133334344",
+   "TOTAMT":100,
+   "DISCNT":10,
+   "TAXAMT":9,
+   "NETAMT":99,
+   "RONDOF":0,
+   "TAX":[
+      {
+         "TAXSTR":"CGS",
+         "RATAMT":2.5,
+         "TAXABL":90,
+         "VALAMT":2.25
+      },
+      {
+         "TAXSTR":"SGS",
+         "RATAMT":"2.5",
+         "TAXABL":90,
+         "VALAMT":2.25
+      }
+   ]
+}
+
+
+{
+   "ORDER_ID":"101",
+   "RESCOD":"AKO",
+   "TBLNUB":"12",
+   "BILDAT":20200317,
+   "BILNUB":"133334344",
+   "AMOUNT":100,
+   "TIPS":100
+}  
+
+

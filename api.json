@@ -1,0 +1,85 @@
+http://192.168.1.199:85/PosIntegration.svc/PostOrderData
+http://122.166.197.63:85/PosIntegration.svc/PostOrderData
+http://localhost:1107/PosIntegration.svc/PostOrderData
+
+http://192.168.1.2:81/prism/kot/?cstcod=111&rescod=BAN&tblnub=1
+
+truncate table posord;
+truncate table poskot;
+truncate table postax;
+truncate table payment;
+
+PRISMKIT
+PRMCMOD
+
+INSERT INTO `prmmod` (`MODCOD`, `SRLNUB`, `DESCRP`, `YESNOO`, `USERID`, `LSTDAT`, `LSTTIM`) VALUES
+('POS', '110', 'Allow settlement by customer in contactless dining        ', '1', 'PRISM', '20200803', '12.00');
+
+{
+  "ORDER_ID": "101",
+  "BilDat": 20200803,
+  "PaxPer": 1,
+  "Rescod": "BAN",
+  "Stwcod": "KUMBA",
+  "TblNub": "1",
+  "kot": [
+    {
+      "ITMCOD": 1,
+      "ITMNAM": "test item1",
+      "ITMVAL": 100,
+      "MENCOD": 1,
+      "MENGRP": 1,
+      "Modifier": [
+        {
+          "CHARGE": 5,
+          "DESCRP": "Modifier1",
+          "MODCOD": 1,
+          "QUANTY": 1,
+          "SRLNUB": 1
+        }
+      ],
+      "QUANTY": 1,
+      "RATAMT": 100,
+      "TAXSTR": 1,
+      "TAXAMT": 1,
+      "MODAMT": 0
+    }
+  ]
+}
+
+{
+   "ORDER_ID":"101",
+   "RESCOD":"BAN",
+   "TBLNUB":"1",
+   "BILDAT":20200803,
+   "BILNUB":"100",
+   "TOTAMT":100,
+   "DISCNT":10,
+   "TAXAMT":9,
+   "NETAMT":99,
+   "TAX":[
+      {
+         "TAXSTR":"CGT",
+         "RATAMT":2.5,
+         "TAXABL":90,
+         "VALAMT":2.25
+      },
+      {
+         "TAXSTR":"SGT",
+         "RATAMT":"2.5",
+         "TAXABL":90,
+         "VALAMT":2.25
+      }
+   ]
+}
+
+
+{
+   "ORDER_ID":"1",
+   "RESCOD":"BAN",
+   "TBLNUB":"1",
+   "BILDAT":20200803,
+   "BILNUB":"1",
+   "AMOUNT":100,
+   "TIPS":100
+}  
