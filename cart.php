@@ -103,8 +103,8 @@ while($row = mysqli_fetch_array($result)){
 
     <hr class="my-4">
 
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark info-color">
-      <a class="navbar-brand font-weight-bold" href="#"><?php echo "You're on ".$tblnub." ".$outnam; ?></a>
+    <nav style="background-color:#e75816" class="navbar fixed-top navbar-expand-lg navbar-dark">
+      <a class="navbar-brand font-weight-bold" href="#"><?php echo " ".$outnam."Table no # ".$tblnub; ?></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -128,7 +128,7 @@ while($row = mysqli_fetch_array($result)){
               <div class="table-responsive">
               <table class="text-black bg-white table table-bordered table-striped" id="dataTables-example">
                 <thead>
-                              <tr style="background-color: lightgreen;font-weight: bold !important">
+                              <tr style="background-color: sandybrown;font-weight: bold !important">
                                 <!-- <th>Kot#</th> -->
                                 <th>Item</th>
                                 <th style="text-align: right">Rate</th>
@@ -201,7 +201,7 @@ while($row = mysqli_fetch_array($result)){
                     <td align="right" colspan="3">Round Off</td>
                     <td align="right" colspan="2" >&#2352;<?php echo number_format($RONDOF,2); ?></td>
                   </tr>
-                  <tr style="background-color: lightgreen;font-weight: bold !important">
+                  <tr style="background-color: sandybrown;font-weight: bold !important">
                     <td align="right" class="font-weight-bold" colspan="3">Net Total</td>
                     <td align="right" class="font-weight-bold" colspan="2" >&#2352;<?php echo number_format($net_total2,2); ?></td>
                   </tr>

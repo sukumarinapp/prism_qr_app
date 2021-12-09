@@ -113,18 +113,19 @@ while($row = mysqli_fetch_array($result)){
         } 
       .table-striped>tbody>tr:nth-child(even)>td,
       .table-striped>tbody>tr:nth-child(even)>th {
-        background-color: #aaaa55 !important;
+        background-color: sandybrown; !important;
       }        
       .table-striped>tbody>tr:nth-child(odd)>td,
       .table-striped>tbody>tr:nth-child(odd)>th {
-        background-color: #aaaa55 !important;
+        background-color: sandybrown; !important;
       }   
 
       .btn:active:after {
        padding: 0;
        margin: 0;
        opacity: 1;
-       transition: 10s     
+       transition: 10s 
+       }    
 
     </style>
   </head>
@@ -135,9 +136,9 @@ while($row = mysqli_fetch_array($result)){
 
     <hr class="my-4">
 
-    <nav style="background-color: #e75816" class="navbar fixed-top navbar-expand-lg">
-      <a style="color: black;" class="navbar-brand font-weight-bold" href="#"><?php echo "You're on ".$tblnub." ".$outnam; ?></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <nav style="background-color: #e75816" class="navbar fixed-top navbar-expand-lg navbar-dark">
+      <a style="color: black;" class="navbar-brand font-weight-bold" href="#"><?php echo " ".$outnam." Table no # ".$tblnub; ?></a>
+      <button  class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
        <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -165,7 +166,7 @@ while($row = mysqli_fetch_array($result)){
 
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
-      <div class="modal-content" style="background-color: #aaaa55">
+      <div class="modal-content" style="background-color: whitesmoke;">
         <div class="modal-body" id="modalbody"></div>
         <div class="text-center" style="text-align: center !important">
           <button type="button" onclick="cancel_order()"  class="btn btn-info btn-sm text-center" >Cancel</button>
@@ -227,8 +228,8 @@ while($row = mysqli_fetch_array($result)){
     </main>
     <!--Main layout-->
 
-    <nav style="background-color:#e75816" class="navbar fixed-bottom navbar-expand-lg">
-      <button type="button" id="order_button"  style="background-color:#4842e2" class="btn btn-sm" onclick="place_order()" />Place Order</button>
+    <nav class="navbar fixed-bottom navbar-expand-lg bg-info">
+      <button type="button" id="order_button" class="btn btn-danger btn-sm" onclick="place_order()" />Place Order</button>
       <?php
       if($cart_quantity>0){
       ?>
