@@ -137,7 +137,7 @@ while($row = mysqli_fetch_array($result)){
     <hr class="my-4">
 
     <nav style="background-color: #e75816" class="navbar fixed-top navbar-expand-lg navbar-dark">
-      <a style="color: black;" class="navbar-brand font-weight-bold" href="#"><?php echo " ".$outnam." Table no # ".$tblnub; ?></a>
+      <a style="color: black;" class="navbar-brand font-weight-bold" href="#"><?php echo " ".$outnam." Table : #".$tblnub; ?></a>
       <button  class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
