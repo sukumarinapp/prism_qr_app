@@ -118,7 +118,13 @@ while($row = mysqli_fetch_array($result)){
       .table-striped>tbody>tr:nth-child(odd)>td,
       .table-striped>tbody>tr:nth-child(odd)>th {
         background-color: #aaaa55 !important;
-      }        
+      }   
+
+      .btn:active:after {
+       padding: 0;
+       margin: 0;
+       opacity: 1;
+       transition: 10s     
 
     </style>
   </head>
@@ -129,8 +135,8 @@ while($row = mysqli_fetch_array($result)){
 
     <hr class="my-4">
 
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark info-color">
-      <a class="navbar-brand font-weight-bold" href="#"><?php echo "You're on ".$tblnub." ".$outnam; ?></a>
+    <nav style="background-color: #e75816" class="navbar fixed-top navbar-expand-lg">
+      <a style="color: black;" class="navbar-brand font-weight-bold" href="#"><?php echo "You're on ".$tblnub." ".$outnam; ?></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -221,8 +227,8 @@ while($row = mysqli_fetch_array($result)){
     </main>
     <!--Main layout-->
 
-    <nav class="navbar fixed-bottom navbar-expand-lg bg-info">
-      <button type="button" id="order_button" class="btn btn-sm btn-danger font-weight-bold" onclick="place_order()" />Place Order</button>
+    <nav style="background-color:#e75816" class="navbar fixed-bottom navbar-expand-lg">
+      <button type="button" id="order_button"  style="background-color:#4842e2" class="btn btn-sm" onclick="place_order()" />Place Order</button>
       <?php
       if($cart_quantity>0){
       ?>

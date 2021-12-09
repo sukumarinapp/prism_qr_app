@@ -51,10 +51,27 @@ if(isset($_POST['submit'])){
     <link href="css/mdb.min.css" rel="stylesheet">
     <!-- Your custom styles (optional) -->
     <link href="css/style.css" rel="stylesheet">
+    <style> 
+.button {
+  background-color: #e75816;
+  padding: 15px;
+  border-radius: 15px;
+  color: white;
+  border: none;
+}
+.button:hover {background-color: #e75816}
+
+.button:active {
+  background-color: #e75816;
+  box-shadow: 0 5px #555555;
+  transform: translateY(4px);
+
+</style>
+
   </head>
   <body style="background-color: #6c757d">
     <div class="container-fluid">    
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark info-color">
+    <nav style="background-color: #e75816" class="navbar fixed-top navbar-expand-lg navbar-dark">
       <a class="navbar-brand font-weight-bold" href="#"><?php echo "You're on ".$tblnub." ".$outnam; ?></a>
     </nav>
     
@@ -75,10 +92,10 @@ if(isset($_POST['submit'])){
           <input value="<?php echo substr($otp,3,1); ?>" size="1" maxlength="1" name="otp4" class="inputs Number">
         </div>
        </div>
-       <div class="row">
+       <div style="padding-top: 10px;" class="row">
         <div class="col-md-12 text-center">
 
-          <input name="submit" value="Verify OTP"  type="submit" class="btn btn-success text-center">
+          <input name="submit" value="Verify OTP"  type="submit" class="button text-center">
         </div>
       </div>
         </form>
