@@ -9,7 +9,6 @@ use Razorpay\Api\Api;
 
 $cstcod = isset($_GET['cstcod']) ? $_GET['cstcod']: "";
 $sql = "select a.id,b.SRLNUB,b.STR001 from prmlic a,prmmne b where a.id=b.property_id and a.cstcod='$cstcod'";
-echo $sql;die;
 $result = mysqli_query($conn, $sql);
 $property_id = 0;
 $keyId = "";
