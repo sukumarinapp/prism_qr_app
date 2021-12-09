@@ -26,7 +26,7 @@ $oid = $_REQUEST['oid'];
 $sql = "insert into payment (order_id,payment_id,status) values ('$oid','$payment_id','pending')";
 mysqli_query($conn, $sql) or die(mysqli_error($conn));
 ?>
-<h1 class="text-center">You bill amount is <?php echo number_format($data['amount'],2); ?></h1> 
+<h1 class="text-center">You bill amount is &#2352;<?php echo number_format($data['amount'],2); ?></h1> 
 <form action="verify.php" method="POST" class="btn btn-success btn-block">
   <script
     src="https://checkout.razorpay.com/v1/checkout.js"
