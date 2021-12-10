@@ -57,16 +57,16 @@ if(isset($_POST['submit2'])){
     <link href="css/style.css" rel="stylesheet">
     <style> 
 .button {
-  background-color: #e75816;
+  background-color: #ff6900;
   padding: 15px;
   border-radius: 15px;
   color: white;
   border: none;
 }
-.button:hover {background-color: #e75816}
+.button:hover {background-color: #ff6900}
 
 .button:active {
-  background-color: #e75816;
+  background-color: #ff6900;
   box-shadow: 0 5px #555555;
   transform: translateY(4px);
 
@@ -74,7 +74,7 @@ if(isset($_POST['submit2'])){
   </head>
   <body style="background-color: #6c757d">
     <div class="container my-4">    
-    <nav style="background-color: #e75816" class="navbar fixed-top navbar-expand-lg navbar-dark">
+    <nav style="background-color: #ff6900" class="navbar fixed-top navbar-expand-lg navbar-dark">
       <a class="navbar-brand font-weight-bold" href="#"><?php echo " ".$outnam."&nbsp; Table# ".$tblnub; ?></a>
     </nav>
     <hr class="my-4">
