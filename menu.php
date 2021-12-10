@@ -176,12 +176,12 @@ while($row = mysqli_fetch_array($result)){
     </div>
   </div>
 
-        <br>
+        <!-- <br>
         <div class="row">
           <div class="col-md-12">
             <select class="form-control" id="menu_type">
               <?php
-                $sql="";
+                /*$sql="";
                 if($property_id == 2){
                   $sql = "select * from sys001 where RECCOD=5 and property_id='$property_id' order by RECTYP";
                 }else{
@@ -190,19 +190,19 @@ while($row = mysqli_fetch_array($result)){
                 $result = mysqli_query($conn, $sql);
                 while($row = mysqli_fetch_array($result)){
                   echo "<option value='".$row['RECTYP']."'>".$row['DESCRP']."</option>";
-                }
+                }*/
                 ?>
             </select>
           </div>
-        </div>
+        </div> -->
 
-
+<br>
 <div class="row">
   <div class="col-md-12" id="menu_group_div">
       <select class="form-control" id="menu_group">
         <option value="0">All</option>
         <?php
-        $sql = "select * from set100 where property_id='$property_id' and GRPCOD in (select distinct(MENGRP) from posmas a,posrat b where a.ITMCOD=b.ITMCOD and a.property_id=b.property_id and b.RESCOD='$rescod' and a.MENTYP='$MENTYP' and a.property_id='$property_id') order by GRPCOD";
+        $sql = "select * from set100 where property_id='$property_id' and GRPCOD in (select distinct(MENGRP) from posmas a,posrat b where a.ITMCOD=b.ITMCOD and a.property_id=b.property_id and b.RESCOD='$rescod' and a.property_id='$property_id') order by GRPCOD";
       $result = mysqli_query($conn, $sql);
       while($row = mysqli_fetch_array($result)){
         echo "<option value='".$row['GRPCOD']."'>".$row['LNGNAM']."</option>";
