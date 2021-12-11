@@ -83,9 +83,7 @@ while($row = mysqli_fetch_array($result)){
       background-clip: padding-box;
     }
     body {
-      background-image: url("bg.jpg");
-      background-repeat: none;
-      background-size: 100% auto;
+      
     }
     .pluspop {
       cursor: pointer;
@@ -147,7 +145,7 @@ while($row = mysqli_fetch_array($result)){
 </style>
 </head>
 
-<body style="background-color: black">
+<body style="background-color: lightgrey;">
 
   <div class="container my-4">    
 
