@@ -12,18 +12,9 @@ $rescod = isset($_REQUEST['rescod']) ? $_REQUEST['rescod']:0;
   while ($row2 = mysqli_fetch_assoc($result2)) {
     $i++;
 ?>
-<a class="changeable" href="#<?php echo $row2['GRPCOD']; ?>"><?php echo $row2['LNGNAM']; ?></a>
+<a class="changeable" onclick="load_menu2(<?php echo $row2['GRPCOD']; ?>)"  ><?php echo $row2['LNGNAM']; ?></a>
 <?php
   }
 ?>
 </div>
 
-<script type="text/javascript">
-	$("#menu_group").change(function() {
-        var menu_type = $("#menu_type").val();
-        var menu_group = $("#menu_group").val();
-		var property_id = "<?php echo $property_id; ?>";
-		var rescod = "<?php echo $rescod; ?>";
-        load_menu(menu_type,menu_group,property_id,rescod);
-	});
-</script>

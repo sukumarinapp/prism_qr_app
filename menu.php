@@ -229,7 +229,7 @@ while($row = mysqli_fetch_array($result)){
   while ($row2 = mysqli_fetch_assoc($result2)) {
     $i++;
 ?>
-<a class="changeable" href="#<?php echo $row2['GRPCOD']; ?>"><?php echo $row2['LNGNAM']; ?></a>
+<a class="changeable bg-success" onclick="load_menu2(<?php echo $row2['GRPCOD']; ?>)" ><?php echo $row2['LNGNAM']; ?></a>
 <?php
   }
 ?>
@@ -290,6 +290,15 @@ while($row = mysqli_fetch_array($result)){
   $(document).ready(function(){
    
 });
+
+  function load_menu2(menu_group){
+    console.log(menu_group);
+    var property_id = "<?php echo $property_id; ?>";
+    var rescod = "<?php echo $rescod; ?>";
+    load_menu(0,menu_group,property_id,rescod);
+
+  };
+
   function load_menu_group(menu_type,property_id,rescod){
     $.ajax({
           url: "load_menu_group.php",
