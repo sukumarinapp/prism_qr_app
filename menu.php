@@ -113,11 +113,11 @@ while($row = mysqli_fetch_array($result)){
         } 
       .table-striped>tbody>tr:nth-child(even)>td,
       .table-striped>tbody>tr:nth-child(even)>th {
-        background-color: sandybrown; !important;
+        background-color: #dee2e6 !important;
       }        
       .table-striped>tbody>tr:nth-child(odd)>td,
       .table-striped>tbody>tr:nth-child(odd)>th {
-        background-color: sandybrown; !important;
+        background-color: #dee2e6 !important;
       }   
 
       .btn:active:after {
@@ -125,7 +125,24 @@ while($row = mysqli_fetch_array($result)){
        margin: 0;
        opacity: 1;
        transition: 10s 
-       }    
+       }   
+       div.scrollmenu {
+        background-color: #333;
+        overflow: auto;
+        white-space: nowrap;
+      }
+
+        div.scrollmenu a {
+          display: inline-block;
+          color: white;
+          text-align: center;
+          padding: 14px;
+          text-decoration: none;
+        }
+
+        div.scrollmenu a:hover {
+          background-color: #777;
+        } 
 
     </style>
   </head>
@@ -136,8 +153,8 @@ while($row = mysqli_fetch_array($result)){
 
     <hr class="my-4">
 
-    <nav style="background-color: #ff6900" class="navbar fixed-top navbar-expand-lg navbar-dark">
-      <a style="color: black;" class="navbar-brand font-weight-bold" href="#"><?php echo " ".$outnam."&nbsp; Table# ".$tblnub; ?></a>
+    <nav style="background-color: #ff4a4b" class="navbar fixed-top navbar-expand-lg navbar-dark">
+      <a style="color: white;" class="navbar-brand font-weight-bold" href="#"><?php echo " ".$outnam."&nbsp;Table# ".$tblnub; ?></a>
       <button  class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -166,11 +183,11 @@ while($row = mysqli_fetch_array($result)){
 
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
-      <div class="modal-content" style="background-color: whitesmoke;">
+      <div class="modal-content" style="background-color: white;">
         <div class="modal-body" id="modalbody"></div>
         <div class="text-center" style="text-align: center !important">
-          <button type="button" onclick="cancel_order()"  class="btn btn-primary btn-sm text-center" >Cancel</button>
-          <button id="confirm_button" type="button" onclick="confirm_order()" class="btn btn-primary btn-sm text-center" >Confirm</button>
+          <button type="button" onclick="cancel_order()" style="background-color: #ffaf06" class="btn btn-sm text-center" >Cancel</button>
+          <button id="confirm_button" type="button" onclick="confirm_order()" style="background-color: #ffaf06" class="btn  btn-sm text-center" >Confirm</button>
         </div>
       </div>
     </div>
@@ -198,7 +215,7 @@ while($row = mysqli_fetch_array($result)){
 
 <br>
 <div class="row">
-  <div class="col-md-12" id="menu_group_div">
+   <div class="col-md-12" id="menu_group_div">
       <select class="form-control" id="menu_group">
         <option value="0">All</option>
         <?php
@@ -209,7 +226,7 @@ while($row = mysqli_fetch_array($result)){
       }
       ?>
       </select>
-  </div>
+  </div> 
 </div>
 <br>
 <script>
@@ -228,12 +245,12 @@ while($row = mysqli_fetch_array($result)){
     </main>
     <!--Main layout-->
 
-    <nav style="background-color:#ff6900" class="navbar fixed-bottom navbar-expand-lg">
-      <button type="button" id="order_button" class="btn btn-success btn-sm" onclick="place_order()" />Place Order</button>
+    <nav style="background-color:#ff4a4b" class="navbar fixed-bottom navbar-expand-lg navbar-dark">
+      <button type="button" id="order_button" style="background-color: #ffaf06" class="btn btn-sm font-weight-bold" onclick="place_order()" />Place Order</button>
       <?php
       if($cart_quantity>0){
       ?>
-      <a class="btn btn-sm btn-success font-weight-bold" href="cart.php?cstcod=<?php echo $cstcod; ?>&rescod=<?php echo $rescod; ?>&tblnub=<?php echo $tblnub; ?>&mobile=<?php echo $mobile; ?>">View Bill</a>
+      <a style="background-color: #ffaf06" class="btn btn-sm font-weight-bold" href="cart.php?cstcod=<?php echo $cstcod; ?>&rescod=<?php echo $rescod; ?>&tblnub=<?php echo $tblnub; ?>&mobile=<?php echo $mobile; ?>">View Bill</a>
       <?php
       }
       ?>
