@@ -216,16 +216,27 @@ while($row = mysqli_fetch_array($result)){
 <br>
 <div class="row">
    <div class="col-md-12" id="menu_group_div">
-      <select class="form-control" id="menu_group">
-        <option value="0">All</option>
-        <?php
-        $sql = "select * from set100 where property_id='$property_id' and GRPCOD in (select distinct(MENGRP) from posmas a,posrat b where a.ITMCOD=b.ITMCOD and a.property_id=b.property_id and b.RESCOD='$rescod' and a.property_id='$property_id') order by GRPCOD";
-      $result = mysqli_query($conn, $sql);
-      while($row = mysqli_fetch_array($result)){
-        echo "<option value='".$row['GRPCOD']."'>".$row['LNGNAM']."</option>";
-      }
-      ?>
-      </select>
+      <nav>
+<div class="w3-top" style="max-width: 400px">
+
+
+<div class="w3-bar w3-black w3-card" style="max-width: 400px">
+<div class="scrollmenu" style="max-width: 400px">
+<?php
+  $sql2 ="select * from set100 where property_id='$property_id' and GRPCOD in (select distinct(MENGRP) from posmas a,posrat b where a.ITMCOD=b.ITMCOD and a.property_id=b.property_id and b.RESCOD='$rescod' and a.MENTYP='$MENTYP' and a.property_id='$property_id') order by GRPCOD";
+  $result2 = mysqli_query($conn, $sql2);
+  $i=0;
+  while ($row2 = mysqli_fetch_assoc($result2)) {
+    $i++;
+?>
+<a class="changeable" href="#<?php echo $row2['GRPCOD']; ?>"><?php echo $row2['LNGNAM']; ?></a>
+<?php
+  }
+?>
+</div>
+</div>
+</div>
+</nav>
   </div> 
 </div>
 <br>
