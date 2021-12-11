@@ -217,11 +217,11 @@ while($row = mysqli_fetch_array($result)){
 <div class="row">
    <div class="col-md-12" id="menu_group_div">
       <nav>
-<div class="w3-top" style="max-width: 400px">
+<div class="w3-top">
 
 
-<div class="w3-bar w3-black w3-card" style="max-width: 400px">
-<div class="scrollmenu" style="max-width: 400px">
+<div class="w3-bar w3-black w3-card">
+<div class="scrollmenu">
   <a class="changeable bg-success" onclick="load_menu2(0)" ><b>All Items</b></a>
 
 <?php
