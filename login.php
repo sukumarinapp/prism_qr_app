@@ -57,16 +57,16 @@ if(isset($_POST['submit2'])){
     <link href="css/style.css" rel="stylesheet">
     <style> 
 .button {
-  background-color: #de4e05;
+  background-color: #ff4a4b;
   padding: 15px;
   border-radius: 15px;
   color: white;
   border: none;
 }
-.button:hover {background-color: #de4e05}
+.button:hover {background-color: #ff4a4b}
 
 .button:active {
-  background-color: #de4e05;
+  background-color: #ff4a4b;
   box-shadow: 0 5px #555555;
   transform: translateY(4px);
 
