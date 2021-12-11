@@ -229,7 +229,7 @@ while($row = mysqli_fetch_array($result)){
   while ($row2 = mysqli_fetch_assoc($result2)) {
     $i++;
 ?>
-<a class="changeable bg-success" onclick="load_menu2(<?php echo $row2['GRPCOD']; ?>)" ><?php echo $row2['LNGNAM']; ?></a>
+<a class="changeable bg-success" onclick="load_menu2(<?php echo $row2['GRPCOD']; ?>)" ><b><?php echo $row2['LNGNAM']; ?></b></a>
 <?php
   }
 ?>
