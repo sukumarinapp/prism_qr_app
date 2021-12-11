@@ -475,9 +475,9 @@ while($row = mysqli_fetch_array($result)){
         html+='<tr  id="addr'+i+'">';
         html += "<td style='text-align: left;font-weight:bold' colspan='2'>"+item_obj[key]['itmnam']+"<br>&#2352;"+rate+"<br>";
         html +='<div class="qty text-center" style="text-align:center !important">';
-        html +="<span onclick='minus_item("+i+","+key+",this)' class='minus bg-info'>-</span>";
+        html +="<span onclick='minus_item("+i+","+key+",this)' class='minus bg-danger'>-</span>";
         html +='<input style="color:black" readonly="readonly" type="text" maxlength="2" size="2" class="quantity" value="'+item_obj[key]['qty']+'">';
-        html +="<span onclick='plus_item("+i+","+key+",this)' class='plus bg-info'>+</span>";
+        html +="<span onclick='plus_item("+i+","+key+",this)' class='plus bg-success'>+</span>";
         html +="<span style='font-weight:bold;color:red;vertical-align:middle' onclick='remove_item("+i+","+key+")' class='fa fa-2x fa-trash-o pull-right'></span>";
         html +='</div>';
         html += "</td></tr>";
