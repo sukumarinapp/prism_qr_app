@@ -26,6 +26,7 @@ $MENGRP = isset($_REQUEST['menu_group']) ? $_REQUEST['menu_group'] : 0;
 $property_id = isset($_REQUEST['property_id']) ? $_REQUEST['property_id'] : 0;
 $rescod = isset($_REQUEST['rescod']) ? $_REQUEST['rescod'] : 0;
 $sql = "select a.MENGRP,a.ITMNAM,a.ITMCOD,b.PRICE,b.TAXSTR,c.LNGNAM,a.DESCRP from posmas a,posrat b,set100 c where  a.MENGRP=c.GRPCOD and a.property_id=b.property_id and a.property_id=c.property_id and a.property_id='$property_id' and a.ITMCOD=b.ITMCOD and b.RESCOD='$rescod'"; 
+if($MENTYP!=0) $sql .= " and MENTYP='$MENTYP'"; 
 if($MENGRP!=0) $sql .= " and MENGRP='$MENGRP'"; 
 $sql .= " order by GRPCOD,ITMNAM";
 $result = mysqli_query($conn, $sql);

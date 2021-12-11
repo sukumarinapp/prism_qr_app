@@ -194,12 +194,12 @@ while($row = mysqli_fetch_array($result)){
         </div>
       </div>
 
-        <!-- <br>
+        <br>
         <div class="row">
           <div class="col-md-12">
             <select class="form-control" id="menu_type">
               <?php
-                /*$sql="";
+                $sql="";
                 if($property_id == 2){
                   $sql = "select * from sys001 where RECCOD=5 and property_id='$property_id' order by RECTYP";
                 }else{
@@ -208,13 +208,12 @@ while($row = mysqli_fetch_array($result)){
                 $result = mysqli_query($conn, $sql);
                 while($row = mysqli_fetch_array($result)){
                   echo "<option value='".$row['RECTYP']."'>".$row['DESCRP']."</option>";
-                }*/
+                }
                 ?>
             </select>
           </div>
-        </div> -->
-
-        <br>
+        </div> 
+<br>
         <div class="row">
          <div class="col-md-12" id="menu_group_div">
           <nav>
@@ -309,6 +308,7 @@ while($row = mysqli_fetch_array($result)){
       data: {menu_type: menu_type, property_id: property_id, rescod: rescod},
       success: function (html) {
         $('#menu_group_div').html(html);
+        var menu_type = $("#menu_type").val();
         var menu_group = $("#menu_group").val();
         load_menu(menu_type,menu_group,property_id,rescod);
       },
