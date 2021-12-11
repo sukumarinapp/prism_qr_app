@@ -32,7 +32,7 @@ $result = mysqli_query($conn, $sql);
 $MENGRP2 = -1;
 while($row = mysqli_fetch_array($result)){
 	if($MENGRP2 != $row['MENGRP'] && $MENGRP==0){
-		echo "<div class='row clearfix'><div class='col-md-12 col-sm-12 col-xs-12'><div class='card bg-success text-black '><div class='card-body text-center'><h5 class='font-weight-bold'>".strtoupper($row['LNGNAM'])."</h5></div></div></div></div>";
+		echo "<div class='row clearfix'><div class='col-md-12 col-sm-12 col-xs-12'><div class='card text-white 'style='background-color: #355bc8 '><div class='card-body text-center'><h5 class='font-weight-bold'>".strtoupper($row['LNGNAM'])."</h5></div></div></div></div>";
 		echo "<div class='row'><div class='col-md-12 col-sm-12 col-xs-12'><br></div></div>";
 	}
 ?>
