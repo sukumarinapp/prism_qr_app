@@ -222,6 +222,8 @@ while($row = mysqli_fetch_array($result)){
 
 <div class="w3-bar w3-black w3-card" style="max-width: 400px">
 <div class="scrollmenu" style="max-width: 400px">
+  <a class="changeable bg-success" onclick="load_menu2(0)" ><b>All Items</b></a>
+
 <?php
   $sql2 ="select * from set100 where property_id='$property_id' and GRPCOD in (select distinct(MENGRP) from posmas a,posrat b where a.ITMCOD=b.ITMCOD and a.property_id=b.property_id and b.RESCOD='$rescod' and a.MENTYP='$MENTYP' and a.property_id='$property_id') order by GRPCOD";
   $result2 = mysqli_query($conn, $sql2);
