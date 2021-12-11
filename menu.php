@@ -127,7 +127,6 @@ while($row = mysqli_fetch_array($result)){
      transition: 10s 
    }   
    div.scrollmenu {
-    background-color: #355bc8;
     overflow: auto;
     white-space: nowrap;
     color: whitesmoke;
@@ -142,7 +141,7 @@ while($row = mysqli_fetch_array($result)){
   }
 
   div.scrollmenu a:hover {
-    background-color: #355bc8;
+    background-color: ;
   } 
 
 </style>
@@ -223,7 +222,7 @@ while($row = mysqli_fetch_array($result)){
 
               <div class="w3-bar w3-black w3-card">
                 <div class="scrollmenu">
-                  <a class="changeable" style="background-color:#355bc8;color:whitesmoke;" onclick="load_menu2(0)" ><b>All Items</b></a>
+                  <a class="changeable" style="background-color:#355bc8;color:whitesmoke;border:2px;" onclick="load_menu2(0)" ><b>All Items</b></a>
 
                   <?php
                   $sql2 ="select * from set100 where property_id='$property_id' and GRPCOD in (select distinct(MENGRP) from posmas a,posrat b where a.ITMCOD=b.ITMCOD and a.property_id=b.property_id and b.RESCOD='$rescod' and a.MENTYP='$MENTYP' and a.property_id='$property_id') order by GRPCOD";
@@ -232,7 +231,7 @@ while($row = mysqli_fetch_array($result)){
                   while ($row2 = mysqli_fetch_assoc($result2)) {
                     $i++;
                     ?>
-                    <a class="changeable" onclick="load_menu2(<?php echo $row2['GRPCOD']; ?>)" ><b><?php echo $row2['LNGNAM']; ?></b></a>
+                    <a style="background-color:#355bc8;color:whitesmoke;border:2px;" class="changeable" onclick="load_menu2(<?php echo $row2['GRPCOD']; ?>)" ><b><?php echo $row2['LNGNAM']; ?></b></a>
                     <?php
                   }
                   ?>
