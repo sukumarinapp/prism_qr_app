@@ -224,7 +224,7 @@ while($row = mysqli_fetch_array($result)){
                   while ($row2 = mysqli_fetch_assoc($result2)) {
                     $i++;
                     ?>
-                    <a style="background-color:#355bc8;color:whitesmoke;border:2px;" class="changeable" onclick="load_menu2(<?php echo $row2['GRPCOD']; ?>)" ><b><?php echo $row2['LNGNAM']; ?></b></a>
+                    <a style="background-color:#355bc8;color:whitesmoke;border:2px;" class="changeable" onclick="load_menu2(<?php echo $row2['GRPCOD']; ?>)" ><b><?php echo ucwords(strtolower($row2['LNGNAM'])); ?></b></a>
                     <?php
                   }
                   ?>
