@@ -48,7 +48,7 @@ while($row = mysqli_fetch_array($result)){
     			</div>
     			<div class="row">
 			  		<div class="col-md-12 col-sm-12 col-xs-12">
-			 			<?php echo ucwords(strtolower($row['DESCRP'])); ?>
+			 			<?php echo strtolower($row['DESCRP']); ?>
 		        	</div>
     			</div>
  				<div class="row">

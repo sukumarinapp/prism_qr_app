@@ -4,11 +4,6 @@
 	<title>Digital Menu</title>
 	<link rel="icon" href="favico.ico">
 	<style>
-		body {
-          background-image: url("bg.jpg");
-          background-repeat: none;
-          background-size: 100% auto;
-        }
         tr:nth-child(even) {background-color: green;}
         tr:nth-child(odd) {background-color: green;}
     </style>
