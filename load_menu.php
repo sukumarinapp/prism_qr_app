@@ -46,6 +46,11 @@ while($row = mysqli_fetch_array($result)){
 			 			<?php echo ucwords(strtolower($row['ITMNAM'])); ?>
 		        	</div>
     			</div>
+    			<div class="row">
+			  		<div class="col-md-12 col-sm-12 col-xs-12">
+			 			<?php echo ucwords(strtolower($row['DESCRP'])); ?>
+		        	</div>
+    			</div>
  				<div class="row">
 			  		<div class="col-md-12 col-sm-12 col-xs-12 font-weight-bold">
  						<span class="align-middle">&#2352; <?php echo number_format($row['PRICE'],2); ?></span>
