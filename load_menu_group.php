@@ -11,13 +11,14 @@ $rescod = isset($_REQUEST['rescod']) ? $_REQUEST['rescod']:0;
   $result2 = mysqli_query($conn, $sql2);
   $i=0;
   if(mysqli_num_rows($result2) > 1){
-    echo "<a class='changeable' style='background-color:#355bc8;color:whitesmoke;border:2px;'   onclick='load_menu2(0)' ><b>All Items</b></a>";
-
+    ?>
+    <a class="changeable" style="background-color:#355bc8;color:whitesmoke;border:2px;" onclick="load_menu2(0)" ><b>All Items</b></a>
+<?php
   }
   while ($row2 = mysqli_fetch_assoc($result2)) {
     $i++;
 ?>
-<a style="border:2px;ackground-color:#355bc8;color:whitesmoke" class="changeable" onclick="load_menu2(<?php echo $row2['GRPCOD']; ?>)" ><b><?php echo $row2['LNGNAM']; ?></b></a>
+<a style="border:2px;background-color:#355bc8;color:whitesmoke" class="changeable" onclick="load_menu2(<?php echo $row2['GRPCOD']; ?>)" ><b><?php echo $row2['LNGNAM']; ?></b></a>
 <?php
   }
 ?>

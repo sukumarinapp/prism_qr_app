@@ -197,11 +197,7 @@ while($row = mysqli_fetch_array($result)){
             <select class="form-control" id="menu_type">
               <?php
                 $sql="";
-                if($property_id == 2){
                   $sql = "select * from sys001 where RECCOD=5 and property_id='$property_id' order by RECTYP";
-                }else{
-                $sql = "select * from sys001 where RECTYP <> 2 and  RECCOD=5 and property_id='$property_id' order by RECTYP";
-                }
                 $result = mysqli_query($conn, $sql);
                 while($row = mysqli_fetch_array($result)){
                   echo "<option value='".$row['RECTYP']."'>".$row['DESCRP']."</option>";
