@@ -48,6 +48,9 @@ while($row = mysqli_fetch_array($result)){
   <!-- Your custom styles (optional) -->
   <link href="css/style.css" rel="stylesheet">
   <style type="text/css">
+    .colorToggle{
+      background-color : red;
+    }
     .qty .count {
       color: #000;
       display: inline-block;
@@ -215,7 +218,7 @@ while($row = mysqli_fetch_array($result)){
 
               <div class="w3-bar w3-black w3-card">
                 <div class="scrollmenu">
-                  <a class="changeable" style="background-color:#355bc8;color:whitesmoke;border:2px;" onclick="load_menu2(0)" ><b>All Items</b></a>
+                  <a class="changeable" style="background-color:#355bc8;color:whitesmoke;border:2px;" onclick="load_menu2(this,0)" ><b>All Items</b></a>
 
                   <?php
                   $sql2 ="select * from set100 where property_id='$property_id' and GRPCOD in (select distinct(MENGRP) from posmas a,posrat b where a.ITMCOD=b.ITMCOD and a.property_id=b.property_id and b.RESCOD='$rescod' and a.MENTYP='$MENTYP' and a.property_id='$property_id') order by GRPCOD";
@@ -224,7 +227,7 @@ while($row = mysqli_fetch_array($result)){
                   while ($row2 = mysqli_fetch_assoc($result2)) {
                     $i++;
                     ?>
-                    <a style="background-color:#355bc8;color:whitesmoke;border:2px;" class="changeable" onclick="load_menu2(<?php echo $row2['GRPCOD']; ?>)" ><b><?php echo ucwords(strtolower($row2['LNGNAM'])); ?></b></a>
+                    <a style="background-color:#355bc8;color:whitesmoke;border:2px;" class="changeable" onclick="load_menu2(this,<?php echo $row2['GRPCOD']; ?>)" ><b><?php echo ucwords(strtolower($row2['LNGNAM'])); ?></b></a>
                     <?php
                   }
                   ?>
@@ -282,16 +285,15 @@ while($row = mysqli_fetch_array($result)){
 
 
 <script type="text/javascript">
-  $(document).ready(function(){
 
-  });
-
-  function load_menu2(menu_group){
-    console.log(menu_group);
+  function load_menu2(ev,menu_group){
+    $(".changeable").each(function() {
+      $(this).css("background-color","#355bc8")
+    });
+    ev.style.backgroundColor = "#ff4a4b";
     var property_id = "<?php echo $property_id; ?>";
     var rescod = "<?php echo $rescod; ?>";
     load_menu(0,menu_group,property_id,rescod);
-
   };
 
   function load_menu_group(menu_type,property_id,rescod){
