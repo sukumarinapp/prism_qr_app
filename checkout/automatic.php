@@ -16,8 +16,35 @@
     <!-- Your custom styles (optional) -->
     <link href="css/style.css" rel="stylesheet">
   </head>
+  <style>
+    body {
+ /*background-image: url("pay.jpeg");*/
+ background-color: whitesmoke;
+}
+.razorpay-payment-button {
+  background-color: #ff4a4b;
+  padding: 15px;
+  border-radius: 15px;
+  color: white;
+  border: none;
+}
+.razorpay-payment-button:hover {background-color: #ff4a4b}
+
+.razorpay-payment-button:active {
+  background-color: #ff4a4b;
+  box-shadow: 0 5px #555555;
+  transform: translateY(4px);
+}
+.razorpay-payment-button{
+  background-color : #ff4a4b;
+}
+   
+  </style>
   <body>
-    <div class="container my-4">    
+    <div class="container my-4"> 
+    <a href="#" class="navbar-brand text-center">
+                <img src="/kot/pay.jpeg" alt="Razor Pay" width="350" height="100" style="vertical-align:middle;padding-left: 30px;">
+            </a>   
         <div class="row">
           <div class="col-md-12 text-center">
 <?php
@@ -26,8 +53,8 @@ $oid = $_REQUEST['oid'];
 $sql = "insert into payment (order_id,payment_id,status) values ('$oid','$payment_id','pending')";
 mysqli_query($conn, $sql) or die(mysqli_error($conn));
 ?>
-<h1 class="text-center">You bill amount is &#2352;<?php echo number_format($data['amount'],2); ?></h1> 
-<form action="verify.php" method="POST" class="btn btn-success btn-block">
+<h3 class="text-center">You bill amount is &#2352;<?php echo number_format($data['amount'],2); ?></h3> 
+<form action="verify.php" method="POST" class="button">
   <script
     src="https://checkout.razorpay.com/v1/checkout.js"
     data-key="<?php echo $data['key']?>"
