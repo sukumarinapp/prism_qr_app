@@ -44,7 +44,7 @@
     <div class="container my-4"> 
       <div class="col-md-12 text-center">
     <a href="#" style="text-align:center;" class="navbar-brand text-center">
-                <img src="/kot/pay.jpeg" alt="Razor Pay" width="350" height="100" style="text-align: center;">
+                <img src="/kot/pay.jpeg" alt="Razor Pay" style="width: 200px;">
             </a>  
             </div> 
         <div class="row">
