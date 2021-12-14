@@ -42,9 +42,11 @@
   </style>
   <body>
     <div class="container my-4"> 
-    <a href="#" class="navbar-brand text-center">
-                <img src="/kot/pay.jpeg" alt="Razor Pay" width="350" height="100" style="vertical-align:middle;padding-left: 30px;">
-            </a>   
+      <div class="col-md-12 text-center">
+    <a href="#" style="text-align:center;" class="navbar-brand text-center">
+                <img src="/kot/pay.jpeg" alt="Razor Pay" width="350" height="100" style="text-align: center;">
+            </a>  
+            </div> 
         <div class="row">
           <div class="col-md-12 text-center">
 <?php
