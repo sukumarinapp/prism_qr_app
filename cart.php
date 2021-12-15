@@ -222,12 +222,12 @@ while($row = mysqli_fetch_array($result)){
       <a style="background-color: #29a71a" class="btn btn-sm font-weight-bold" href="menu.php?cstcod=<?php echo $cstcod; ?>&rescod=<?php echo $rescod; ?>&tblnub=<?php echo $tblnub; ?>&mobile=<?php echo $mobile; ?>" >Menu</a>
       <button type="button" id="order_button" style="background-color: #29a71a" class="btn btn-sm font-weight-bold" onclick="print_order()" />Place Order</button>
       <?php
-      //if($cart_quantity>0 && $allow_checkout==0){
+      if($cart_quantity>0 && $allow_checkout==0){
         ?>
-        <!-- <a style="background-color: #ff4a4b" class="btn btn-sm font-weight-bold" href="pay.php?cstcod=<?php echo $cstcod; ?>&oid=<?php //echo $order_id; ?>" >Checkout</a> -->
+        <a style="background-color: #ff4a4b" class="btn btn-sm font-weight-bold" href="pay.php?cstcod=<?php echo $cstcod; ?>&oid=<?php //echo $order_id; ?>" >Checkout</a>
         <?php
-        //$_SESSION['net_total'] = $net_total2;
-      //}
+        $_SESSION['net_total'] = $net_total2;
+      }
       ?>
     </nav>
 
