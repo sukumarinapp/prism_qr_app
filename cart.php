@@ -219,13 +219,14 @@ while($row = mysqli_fetch_array($result)){
 
     <!--Main layout-->
     <nav style="background-color:#355bc8" class="navbar fixed-bottom navbar-expand-lg navbar-dark">
-      <a style="background-color: #38ab2c" class="btn btn-xs font-weight-bold" href="menu.php?cstcod=<?php echo $cstcod; ?>&rescod=<?php echo $rescod; ?>&tblnub=<?php echo $tblnub; ?>&mobile=<?php echo $mobile; ?>" >Menu</a>
-      <button type="button" id="order_button" style="background-color: #38ab2c" class="btn btn-xs font-weight-bold" onclick="print_order()" />Order</button>
+      <a style="background-color: #38ab2c" class="btn btn-xs" href="menu.php?cstcod=<?php echo $cstcod; ?>&rescod=<?php echo $rescod; ?>&tblnub=<?php echo $tblnub; ?>&mobile=<?php echo $mobile; ?>" >Menu</a>
+      <button type="button" id="order_button" style="background-color: #38ab2c" class="btn btn-xs" onclick="print_order()" />Order</button>
       <?php
       if($cart_quantity>0 && $allow_checkout==0){
         ?>
-        <a style="background-color: #38ab2c" class="btn btn-xs font-weight-bold" href="pay.php?cstcod=<?php echo $cstcod; ?>&oid=<?php //echo $order_id; ?>" ><i class="fa fa-credit-card"></i></a>
-
+        <!-- <div class="col col-md-3 col-sm-3">
+        <a style="background-color: #38ab2c" class="btn btn-xs" href="pay.php?cstcod=<?php echo $cstcod; ?>&oid=<?php //echo $order_id; ?>" ><i class="fa fa-credit-card"></i></a>
+</div> -->
         <?php
         $_SESSION['net_total'] = $net_total2;
       }
