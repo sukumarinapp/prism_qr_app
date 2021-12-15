@@ -150,7 +150,7 @@ while($row = mysqli_fetch_array($result)){
                 ?>
                 <tr>
                   <td>
-                    <input type="hidden" name="itemid[]" value="<?php echo $row['id']; ?>">
+                    <input type="hidden" class="printitemid" name="itemid[]" value="<?php echo $row['id']; ?>">
                     <?php echo ucwords(strtolower($row['itmnam'])); ?></td>
                   <td style="text-align: right">&#2352;<?php echo $row['itmrat']; ?></td>
                   <td style="text-align: right"><?php echo $row['itmqty']; ?></td>
@@ -248,7 +248,27 @@ while($row = mysqli_fetch_array($result)){
 <script type="text/javascript" src="js/mdb.min.js"></script>
 <script type="text/javascript">
   function print_order(){
-    alert("print");
+    var salesprint = new Array();
+    $(".printitemid").each(function() {
+      var record = {
+          'printitemid': $(this).val()
+      };
+      salesprint.push(record);
+    });
+    $.ajax({
+      type: 'POST',
+      url: 'print_order.php',
+      data: {
+        sales: salesprint
+      },
+      success: function (response) {
+        console.log(response);
+        alert("Your order is palced");
+      },
+      error : function(error){
+        console.log(error);
+      }
+    });
   }
 </script>
 <?php include "noback.php"; ?>    
