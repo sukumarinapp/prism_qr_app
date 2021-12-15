@@ -149,8 +149,9 @@ while($row = mysqli_fetch_array($result)){
                 $net_total = $net_total + $row['itmval'];
                 ?>
                 <tr>
-                  <!-- <td style="text-align: left"><?php echo $row['kotnub']; ?>/<?php echo $row['kotsrl']; ?></td> -->
-                  <td><?php echo ucwords(strtolower($row['itmnam'])); ?></td>
+                  <td>
+                    <input type="hidden" name="itemid[]" value="<?php echo $row['id']; ?>">
+                    <?php echo ucwords(strtolower($row['itmnam'])); ?></td>
                   <td style="text-align: right">&#2352;<?php echo $row['itmrat']; ?></td>
                   <td style="text-align: right"><?php echo $row['itmqty']; ?></td>
                   <td style="text-align: right">&#2352;<?php echo number_format($row['itmval'],2); ?></td>
