@@ -44,7 +44,7 @@
     <div class="container my-4"> 
       <div class="col-md-12 text-center">
     <a href="#" style="text-align:center;" class="navbar-brand text-center">
-                <img src="/kot/pay.jpeg" alt="Razor Pay" style="width: 200px;">
+                <img src="/kot/pay.jpeg" alt="Razor Pay" style="width: 200px;height: 100px;">
             </a>  
             </div> 
         <div class="row">
@@ -55,7 +55,7 @@ $oid = $_REQUEST['oid'];
 $sql = "insert into payment (order_id,payment_id,status) values ('$oid','$payment_id','pending')";
 mysqli_query($conn, $sql) or die(mysqli_error($conn));
 ?>
-<h3 class="text-center">You bill amount is &#2352;<?php echo number_format($data['amount'],2); ?></h3> 
+<h3 style="line-height: 300px" class="text-center">You bill amount is &#2352;<?php echo number_format($data['amount'],2); ?></h3> 
 <form action="verify.php" method="POST" class="button">
   <script
     src="https://checkout.razorpay.com/v1/checkout.js"
