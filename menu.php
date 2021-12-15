@@ -256,11 +256,11 @@ while($row = mysqli_fetch_array($result)){
     <!--Main layout-->
 
     <nav style="background-color:#355bc8" class="navbar fixed-bottom navbar-expand-lg navbar-dark">
-      <button type="button" id="order_button" style="background-color: #ff4a4b" class="btn btn-sm font-weight-bold" onclick="place_order()" />Add to Cart</button>
+      <button type="button" id="order_button" style="background-color: #29a71a" class="btn btn-sm font-weight-bold" onclick="place_order()" />Add to Cart</button>
       <?php
       if($cart_quantity>0){
         ?>
-        <a style="background-color: #ff4a4b" class="btn btn-sm font-weight-bold" href="cart.php?cstcod=<?php echo $cstcod; ?>&rescod=<?php echo $rescod; ?>&tblnub=<?php echo $tblnub; ?>&mobile=<?php echo $mobile; ?>">View Cart</a>
+        <a style="background-color: #29a71a" class="btn btn-sm font-weight-bold" href="cart.php?cstcod=<?php echo $cstcod; ?>&rescod=<?php echo $rescod; ?>&tblnub=<?php echo $tblnub; ?>&mobile=<?php echo $mobile; ?>">View Cart</a>
         <?php
       }
       ?>
