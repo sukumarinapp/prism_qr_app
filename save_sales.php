@@ -11,7 +11,7 @@ $sales = $_REQUEST['sales'];
 $sales = stripslashes($sales);
 $sales_array = array();
 $sales_array = json_decode($sales);
-$status = "ordered";
+$status = "pending";
 
 $conn->autocommit(FALSE);
 
@@ -56,7 +56,7 @@ if (strpos($response, 'Success') == false) {
     $response = json_decode($response);
     $kotnub = $response[0]->KotNub;
     $kotsrl = 1;
-    $status = "ordered";
+    $status = "pending";
     for ($i = 0; $i < count($sales_array); $i++) {
         $itmcod = $sales_array[$i]->itmcod;
         $itmnam = $sales_array[$i]->itmnam;

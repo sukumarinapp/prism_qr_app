@@ -23,7 +23,7 @@ while($row = mysqli_fetch_array($result)){
   $outnam = trim($row['lngnam']);
 }
 
-$sql = "select b.* from posord a,poskot b where a.order_id=b.order_id and a.rescod='$rescod' and  a.property_id='$property_id' and a.tblnub='$tblnub' and a.mobile='$mobile' and a.status='ordered'";
+$sql = "select b.* from posord a,poskot b where a.order_id=b.order_id and a.rescod='$rescod' and  a.property_id='$property_id' and a.tblnub='$tblnub' and a.mobile='$mobile' and a.status='pending'";
 $result = mysqli_query($conn, $sql);
 $cart_quantity = 0;                    
 while($row = mysqli_fetch_array($result)){
@@ -255,11 +255,11 @@ while($row = mysqli_fetch_array($result)){
     <!--Main layout-->
 
     <nav style="background-color:#355bc8" class="navbar fixed-bottom navbar-expand-lg navbar-dark">
-      <button type="button" id="order_button" style="background-color: #ff4a4b" class="btn btn-sm font-weight-bold" onclick="place_order()" />Place Order</button>
+      <button type="button" id="order_button" style="background-color: #ff4a4b" class="btn btn-sm font-weight-bold" onclick="place_order()" />Add to Cart</button>
       <?php
       if($cart_quantity>0){
         ?>
-        <a style="background-color: #ff4a4b" class="btn btn-sm font-weight-bold" href="cart.php?cstcod=<?php echo $cstcod; ?>&rescod=<?php echo $rescod; ?>&tblnub=<?php echo $tblnub; ?>&mobile=<?php echo $mobile; ?>">View Bill</a>
+        <a style="background-color: #ff4a4b" class="btn btn-sm font-weight-bold" href="cart.php?cstcod=<?php echo $cstcod; ?>&rescod=<?php echo $rescod; ?>&tblnub=<?php echo $tblnub; ?>&mobile=<?php echo $mobile; ?>">View Cart</a>
         <?php
       }
       ?>

@@ -36,7 +36,7 @@ while($row = mysqli_fetch_array($result)){
 
 $order_id = 0;
 $_SESSION['order_id'] = $order_id;
-$sql = "select b.* from posord a,poskot b where a.order_id=b.order_id and a.rescod='$rescod' and  a.property_id='$property_id' and a.tblnub='$tblnub' and a.mobile='$mobile' and a.status='ordered' order by kotnub,kotsrl";
+$sql = "select b.* from posord a,poskot b where a.order_id=b.order_id and a.rescod='$rescod' and  a.property_id='$property_id' and a.tblnub='$tblnub' and a.mobile='$mobile' and ( a.status='ordered' or a.status='pending') order by kotnub,kotsrl";
 $result = mysqli_query($conn, $sql);
 $cart_quantity = 0;                    
 while($row = mysqli_fetch_array($result)){
@@ -218,13 +218,14 @@ while($row = mysqli_fetch_array($result)){
     <!--Main layout-->
     <nav style="background-color:#355bc8" class="navbar fixed-bottom navbar-expand-lg navbar-dark">
       <a style="background-color: #ff4a4b" class="btn btn-sm font-weight-bold" href="menu.php?cstcod=<?php echo $cstcod; ?>&rescod=<?php echo $rescod; ?>&tblnub=<?php echo $tblnub; ?>&mobile=<?php echo $mobile; ?>" >Menu</a>
+      <button type="button" id="order_button" style="background-color: #ff4a4b" class="btn btn-sm font-weight-bold" onclick="print_order()" />Place Order</button>
       <?php
-      if($cart_quantity>0 && $allow_checkout==0){
+      //if($cart_quantity>0 && $allow_checkout==0){
         ?>
-        <a style="background-color: #ff4a4b" class="btn btn-sm font-weight-bold" href="pay.php?cstcod=<?php echo $cstcod; ?>&oid=<?php echo $order_id; ?>" >Checkout</a>
+        <!-- <a style="background-color: #ff4a4b" class="btn btn-sm font-weight-bold" href="pay.php?cstcod=<?php echo $cstcod; ?>&oid=<?php //echo $order_id; ?>" >Checkout</a> -->
         <?php
-        $_SESSION['net_total'] = $net_total2;
-      }
+        //$_SESSION['net_total'] = $net_total2;
+      //}
       ?>
     </nav>
 
@@ -244,6 +245,11 @@ while($row = mysqli_fetch_array($result)){
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="js/mdb.min.js"></script>
+<script type="text/javascript">
+  function print_order(){
+    alert("print");
+  }
+</script>
 <?php include "noback.php"; ?>    
 </body>
 </html>
