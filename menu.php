@@ -255,11 +255,11 @@ while($row = mysqli_fetch_array($result)){
     <!--Main layout-->
 
     <nav style="background-color:#355bc8" class="navbar fixed-bottom navbar-expand-lg navbar-dark">
-      <button type="button" id="order_button" style="background-color: #016135" class="btn btn-sm font-weight-bold" onclick="place_order()" />Add to Cart</button>
+      <button type="button" id="order_button" style="background-color: #38ab2c" class="btn btn-sm font-weight-bold" onclick="place_order()" />Add to Cart</button>
       <?php
       if($cart_quantity>0){
         ?>
-        <a style="background-color: #016135" class="btn btn-sm font-weight-bold" href="cart.php?cstcod=<?php echo $cstcod; ?>&rescod=<?php echo $rescod; ?>&tblnub=<?php echo $tblnub; ?>&mobile=<?php echo $mobile; ?>">View Cart</a>
+        <a style="background-color: #38ab2c" class="btn btn-sm font-weight-bold" href="cart.php?cstcod=<?php echo $cstcod; ?>&rescod=<?php echo $rescod; ?>&tblnub=<?php echo $tblnub; ?>&mobile=<?php echo $mobile; ?>">View Cart</a>
         <?php
       }
       ?>
@@ -290,7 +290,7 @@ while($row = mysqli_fetch_array($result)){
     $(".changeable").each(function() {
       $(this).css("background-color","#355bc8")
     });
-    ev.style.backgroundColor = "#016135";
+    ev.style.backgroundColor = "#38ab2c";
     var property_id = "<?php echo $property_id; ?>";
     var rescod = "<?php echo $rescod; ?>";
     load_menu(0,menu_group,property_id,rescod);
