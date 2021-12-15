@@ -225,6 +225,7 @@ while($row = mysqli_fetch_array($result)){
       if($cart_quantity>0 && $allow_checkout==0){
         ?>
         <a style="background-color: #016135" class="btn btn-xs font-weight-bold" href="pay.php?cstcod=<?php echo $cstcod; ?>&oid=<?php //echo $order_id; ?>" >Checkout</a>
+
         <?php
         $_SESSION['net_total'] = $net_total2;
       }

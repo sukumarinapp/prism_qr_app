@@ -188,7 +188,7 @@ while($row = mysqli_fetch_array($result)){
             <div class="modal-body" id="modalbody"></div>
             <div class="text-center" style="text-align: center !important">
               <button type="button" onclick="cancel_order()" style="background-color: #ff4a4b" class="btn btn-sm text-center" >Cancel</button>
-              <button id="confirm_button" type="button" onclick="confirm_order()" style="background-color: #016135" class="btn  btn-sm text-center" >Confirm</button>
+              <button id="confirm_button" type="button" onclick="confirm_order()" style="background-color: #38ab2c" class="btn  btn-sm text-center" >Confirm</button>
             </div>
           </div>
         </div>
@@ -224,7 +224,7 @@ while($row = mysqli_fetch_array($result)){
                   $i=0;
                   while ($row2 = mysqli_fetch_assoc($result2)) {
                     $backcolor = "#355bc8";
-                    if($i == 0) $backcolor = "#016135";
+                    if($i == 0) $backcolor = "#38ab2c";
                     $i++;
                     ?>
                     <a style="background-color:<?php echo $backcolor; ?>;color:whitesmoke;border:2px;" class="changeable" onclick="load_menu2(this,<?php echo $row2['GRPCOD']; ?>)" ><b><?php echo ucwords(strtolower($row2['LNGNAM'])); ?></b></a>
