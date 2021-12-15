@@ -12,13 +12,14 @@ $rescod = isset($_REQUEST['rescod']) ? $_REQUEST['rescod']:0;
   $i=0;
   if(mysqli_num_rows($result2) > 1){
     ?>
-    <a class="changeable" style="background-color:#355bc8;color:whitesmoke;border:2px;" onclick="load_menu2(this,0)" ><b>All Items</b></a>
 <?php
   }
   while ($row2 = mysqli_fetch_assoc($result2)) {
+    $backcolor = "#355bc8";
+    if($i == 0) $backcolor = "#ff4a4b";
     $i++;
 ?>
-<a style="border:2px;background-color:#355bc8;color:whitesmoke" class="changeable" onclick="load_menu2(this,<?php echo $row2['GRPCOD']; ?>)" ><b><?php echo ucwords(strtolower($row2['LNGNAM'])); ?></b></a>
+<a style="border:2px;background-color:<?php echo $backcolor; ?>;color:whitesmoke" class="changeable" onclick="load_menu2(this,<?php echo $row2['GRPCOD']; ?>)" ><b><?php echo ucwords(strtolower($row2['LNGNAM'])); ?></b></a>
 <?php
   }
 ?>
