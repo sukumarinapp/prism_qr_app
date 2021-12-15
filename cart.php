@@ -151,6 +151,7 @@ while($row = mysqli_fetch_array($result)){
                 <tr>
                   <td>
                     <input type="hidden" class="printitemid" name="itemid[]" value="<?php echo $row['id']; ?>">
+                    <input type="hidden" class="itemstatus" name="itemstatus[]" value="<?php echo $row['status']; ?>">
                     <?php echo ucwords(strtolower($row['itmnam'])); ?></td>
                   <td style="text-align: right">&#2352;<?php echo $row['itmrat']; ?></td>
                   <td style="text-align: right"><?php echo $row['itmqty']; ?></td>

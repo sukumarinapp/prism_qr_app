@@ -23,7 +23,8 @@ while($row = mysqli_fetch_array($result)){
   $outnam = trim($row['lngnam']);
 }
 
-$sql = "select b.* from posord a,poskot b where a.order_id=b.order_id and a.rescod='$rescod' and  a.property_id='$property_id' and a.tblnub='$tblnub' and a.mobile='$mobile' and a.status='pending'";
+$sql = "select b.* from posord a,poskot b where a.order_id=b.order_id and a.rescod='$rescod' and  a.property_id='$property_id' and a.tblnub='$tblnub' and a.mobile='$mobile' and  (a.status='pending' or a.status='ordered' )";
+echo $sql;
 $result = mysqli_query($conn, $sql);
 $cart_quantity = 0;                    
 while($row = mysqli_fetch_array($result)){
