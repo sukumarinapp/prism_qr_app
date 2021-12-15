@@ -263,8 +263,7 @@ while($row = mysqli_fetch_array($result)){
         sales: salesprint
       },
       success: function (response) {
-        console.log(response);
-        alert("Your order is palced");
+        alert("Your order is confirmed");
       },
       error : function(error){
         console.log(error);
