@@ -69,7 +69,7 @@ while($row = mysqli_fetch_array($result)){
  					</div>
  					<div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6 quantity_span pull-right">
  						<span class="add_button_span" style="position: absolute;right:0;bottom:0">
- 							<button class="pull-right btn btn-sm btn-danger font-weight-bold add_qty" >Add</button>
+ 							<button style="border-radius: 15px;" class="pull-right btn btn-sm btn-danger font-weight-bold add_qty" >Add</button>
  						</span>
  						<span class="plus_minus_span qty" style="display: none;position: absolute;right:0;bottom:0">
 	 						<input type="hidden" class="itmcod" value="<?php echo $row['ITMCOD']; ?>" />
@@ -79,7 +79,7 @@ while($row = mysqli_fetch_array($result)){
 	 						<input type="hidden" class="mentyp" value="<?php echo $MENTYP; ?>" />
 	 						<input type="hidden" class="mengrp" value="<?php echo $row['MENGRP']; ?>" />
                         	<span class="minus bg-danger">-</span>
-                        	<input style="color:black" readonly="readonly" type="text" maxlength="2" size="2" class="qty_text" name="qty_text" value="0">
+                        	<input style="color:black;width:25px" readonly="readonly" type="text" maxlength="2" size="2" class="qty_text" name="qty_text" value="0">
                         	<span class="plus bg-success">+</span>
                     	</span>
 					</div>
