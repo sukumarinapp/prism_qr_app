@@ -103,7 +103,7 @@ while($row = mysqli_fetch_array($result)){
 
     <hr class="my-4">
 
-    <nav style="background-color:#188484" class="navbar fixed-top navbar-expand-lg navbar-dark">
+    <nav style="background-color:#18b1b1c7" class="navbar fixed-top navbar-expand-lg navbar-dark">
       <a class="navbar-brand font-weight-bold" href="#"><?php echo " ".$outnam."&nbsp;Table# ".$tblnub; ?></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -219,7 +219,7 @@ while($row = mysqli_fetch_array($result)){
 
     <!--Main layout-->
 
-    <nav style="background-color:#188484" class="navbar fixed-bottom navbar-expand-lg navbar-dark">
+    <nav style="background-color:#18b1b1c7" class="navbar fixed-bottom navbar-expand-lg navbar-dark">
       <a style="background-color: #38ab2c" class="btn btn-sm" href="menu.php?cstcod=<?php echo $cstcod; ?>&rescod=<?php echo $rescod; ?>&tblnub=<?php echo $tblnub; ?>&mobile=<?php echo $mobile; ?>" >Menu</a>
       <button type="button" id="order_button" style="background-color: #38ab2c" class="btn btn-sm" onclick="print_order()" />Place Order</button>
       <?php
