@@ -188,8 +188,8 @@ while($row = mysqli_fetch_array($result)){
           <div class="modal-content" style="background-color: white;">
             <div class="modal-body" id="modalbody"></div>
             <div class="text-center" style="text-align: center !important">
-              <button type="button" onclick="cancel_order()" style="background-color: #ff4a4b" class="btn btn-sm text-center" >Cancel</button>
-              <button id="confirm_button" type="button" onclick="confirm_order()" style="background-color: #38ab2c" class="btn  btn-sm text-center" >Confirm</button>
+              <button type="button" onclick="cancel_order()" style="background-color: #c55c58" class="btn btn-sm text-center" >Cancel</button>
+              <button id="confirm_button" type="button" onclick="confirm_order()" style="background-color: #18b1b1" class="btn  btn-sm text-center" >Confirm</button>
             </div>
           </div>
         </div>
