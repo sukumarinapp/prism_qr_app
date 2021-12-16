@@ -36,11 +36,15 @@ while($row = mysqli_fetch_array($result)){
 
 $order_id = 0;
 $_SESSION['order_id'] = $order_id;
-$sql = "select b.* from posord a,poskot b where a.order_id=b.order_id and a.rescod='$rescod' and  a.property_id='$property_id' and a.tblnub='$tblnub' and a.mobile='$mobile' and ( a.status='ordered' or a.status='pending') order by kotnub,kotsrl";
+$sql100 = "select b.* from posord a,poskot b where a.order_id=b.order_id and a.rescod='$rescod' and  a.property_id='$property_id' and a.tblnub='$tblnub' and a.mobile='$mobile' and b.status='pending' order by kotnub,kotsrl";
+$result100 = mysqli_query($conn, $sql100);
+$cart_quantity = 0;             
+while($row100 = mysqli_fetch_array($result100)){
+  $cart_quantity = $cart_quantity + $row100['itmqty'];
+}
+$sql = "select b.* from posord a,poskot b where a.order_id=b.order_id and a.rescod='$rescod' and  a.property_id='$property_id' and a.tblnub='$tblnub' and a.mobile='$mobile' and ( a.status='pending' or a.status='ordered' ) order by kotnub,kotsrl";
 $result = mysqli_query($conn, $sql);
-$cart_quantity = 0;                    
 while($row = mysqli_fetch_array($result)){
-  $cart_quantity = $cart_quantity + $row['itmqty'];
   $order_id = $row['order_id'];
 }
 ?>
@@ -147,9 +151,14 @@ while($row = mysqli_fetch_array($result)){
               while($row = mysqli_fetch_array($result)){
                 $total = $total + $row['itmval'];
                 $net_total = $net_total + $row['itmval'];
+                $itemstatus = $row['status'];
+                $itemcolor = "whitesmoke";
+                if($itemstatus == "ordered"){
+                  $itemcolor = "red";
+                }
                 ?>
                 <tr>
-                  <td>
+                  <td style="color:<?php echo $itemcolor; ?>">
                     <input type="hidden" class="printitemid" name="itemid[]" value="<?php echo $row['id']; ?>">
                     <input type="hidden" class="itemstatus" name="itemstatus[]" value="<?php echo $row['status']; ?>">
                     <?php echo ucwords(strtolower($row['itmnam'])); ?></td>
@@ -221,7 +230,13 @@ while($row = mysqli_fetch_array($result)){
 
     <nav style="background-color:#18b1b1" class="navbar fixed-bottom navbar-expand-lg navbar-dark">
       <a style="background-color: #c55c58" class="btn btn-sm" href="menu.php?cstcod=<?php echo $cstcod; ?>&rescod=<?php echo $rescod; ?>&tblnub=<?php echo $tblnub; ?>&mobile=<?php echo $mobile; ?>" >Menu</a>
+      <?php
+      if($cart_quantity > 0){
+        ?>
       <button type="button" id="order_button" style="background-color: #c55c58" class="btn btn-sm" onclick="print_order()" />Place Order</button>
+      <?php
+      }
+      ?>
       <?php
       if($cart_quantity>0 && $allow_checkout==0){
         ?>
@@ -267,6 +282,7 @@ while($row = mysqli_fetch_array($result)){
       },
       success: function (response) {
         alert("Your order is confirmed");
+        location.reload();
       },
       error : function(error){
         console.log(error);

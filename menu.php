@@ -392,11 +392,11 @@ while($row = mysqli_fetch_array($result)){
             var object3 = $(this).parent().find(".qty_text");
             if(item_obj[itmcod2]["qty"] != 0){
               var object4 = $(this).parent();
-              object4.slideDown();
+              object4.slideDown("fast");
               var object5 = object1.find(".add_qty_div");
               var quantity = parseInt(item_obj[itmcod2]["qty"]);
               object3.val(quantity);
-              object5.slideUp();
+              object5.slideUp("fast");
             }
           }
         });
@@ -538,7 +538,7 @@ while($row = mysqli_fetch_array($result)){
         html +="<span onclick='minus_item("+i+","+key+",this)' class='minus bg-danger'>-</span>";
         html +='<input style="color:black;width:25px;" readonly="readonly" type="text" maxlength="2" size="2" class="quantity" value="'+item_obj[key]['qty']+'">';
         html +="<span onclick='plus_item("+i+","+key+",this)' class='plus bg-success'>+</span>";
-        html +="<span style='font-weight:bold;color:red;vertical-align:middle' onclick='remove_item("+i+","+key+")' class='fa fa-2x fa-trash-o pull-right'></span>";
+        html +="<span style='font-weight:bold;color:red;vertical-align:middle' onclick='remove_item("+i+","+key+")' class='fa fa-remove  pull-right'></span>";
         html +='</div>';
         html += "</td></tr>";
         i++;
