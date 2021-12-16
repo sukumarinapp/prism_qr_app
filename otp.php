@@ -69,7 +69,7 @@ if(isset($_POST['submit'])){
 </style>
 
   </head>
-  <body style="background-color: #6c757d">
+  <body>
     <div class="container-fluid">    
     <nav style="background-color: #18b1b1" class="navbar fixed-top navbar-expand-lg navbar-dark">
       <a class="navbar-brand font-weight-bold" href="#"><?php echo " ".$outnam."&nbsp;Table# ".$tblnub; ?></a>
