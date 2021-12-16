@@ -16,7 +16,7 @@ $rescod = isset($_REQUEST['rescod']) ? $_REQUEST['rescod']:0;
   }
   while ($row2 = mysqli_fetch_assoc($result2)) {
     $backcolor = "#18b1b1";
-    if($i == 0) $backcolor = "#38ab2c";
+    if($i == 0) $backcolor = "#c55c58";
     $i++;
 ?>
 <a style="border:2px;background-color:<?php echo $backcolor; ?>;color:whitesmoke" class="changeable" onclick="load_menu2(this,<?php echo $row2['GRPCOD']; ?>)" ><b><?php echo ucwords(strtolower($row2['LNGNAM'])); ?></b></a>

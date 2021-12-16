@@ -169,7 +169,7 @@ while($row = mysqli_fetch_array($result)){
           if($cart_quantity>0){
             ?>
             <li class="nav-item">
-              <a class="nav-link" href="cart.php?cstcod=<?php echo $cstcod; ?>&rescod=<?php echo $rescod; ?>&tblnub=<?php echo $tblnub; ?>&mobile=<?php echo $mobile; ?>">View Bill</a>
+              <a class="nav-link" href="cart.php?cstcod=<?php echo $cstcod; ?>&rescod=<?php echo $rescod; ?>&tblnub=<?php echo $tblnub; ?>&mobile=<?php echo $mobile; ?>">View Cart</a>
             </li>
             <?php
           }
@@ -224,7 +224,7 @@ while($row = mysqli_fetch_array($result)){
                   $result2 = mysqli_query($conn, $sql2);
                   $i=0;
                   while ($row2 = mysqli_fetch_assoc($result2)) {
-                    
+
                     $backcolor = "#18b1b1";
                     if($i == 0) {
                       $backcolor = "#c55c58";
