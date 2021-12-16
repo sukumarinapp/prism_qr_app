@@ -154,7 +154,7 @@ while($row = mysqli_fetch_array($result)){
 
     <hr class="my-4">
 
-    <nav style="background-color: #188484" class="navbar fixed-top navbar-expand-lg navbar-dark">
+    <nav style="background-color: #18b1b1" class="navbar fixed-top navbar-expand-lg navbar-dark">
       <a style="color: white;" class="navbar-brand font-weight-bold" href="#"><?php echo " ".$outnam."&nbsp;Table# ".$tblnub; ?></a>
       <button  class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -223,8 +223,8 @@ while($row = mysqli_fetch_array($result)){
                   $result2 = mysqli_query($conn, $sql2);
                   $i=0;
                   while ($row2 = mysqli_fetch_assoc($result2)) {
-                    $backcolor = "#355bc8";
-                    if($i == 0) $backcolor = "#38ab2c";
+                    $backcolor = "#18b1b1";
+                    if($i == 0) $backcolor = "#c55c58";
                     $i++;
                     ?>
                     <a style="background-color:<?php echo $backcolor; ?>;color:whitesmoke;border:2px;" class="changeable" onclick="load_menu2(this,<?php echo $row2['GRPCOD']; ?>)" ><b><?php echo ucwords(strtolower($row2['LNGNAM'])); ?></b></a>
@@ -254,12 +254,12 @@ while($row = mysqli_fetch_array($result)){
     </main>
     <!--Main layout-->
 
-    <nav style="background-color:#188484" class="navbar fixed-bottom navbar-expand-lg navbar-dark">
-      <button type="button" id="order_button" style="background-color: #38ab2c" class="btn btn-sm font-weight-bold" onclick="place_order()" />Add to Cart</button>
+    <nav style="background-color:#18b1b1" class="navbar fixed-bottom navbar-expand-lg navbar-dark">
+      <button type="button" id="order_button" style="background-color: #c55c58" class="btn btn-sm font-weight-bold" onclick="place_order()" />Add to Cart</button>
       <?php
       if($cart_quantity>0){
         ?>
-        <a style="background-color: #38ab2c" class="btn btn-sm font-weight-bold" href="cart.php?cstcod=<?php echo $cstcod; ?>&rescod=<?php echo $rescod; ?>&tblnub=<?php echo $tblnub; ?>&mobile=<?php echo $mobile; ?>">View Cart</a>
+        <a style="background-color: #c55c58" class="btn btn-sm font-weight-bold" href="cart.php?cstcod=<?php echo $cstcod; ?>&rescod=<?php echo $rescod; ?>&tblnub=<?php echo $tblnub; ?>&mobile=<?php echo $mobile; ?>">View Cart</a>
         <?php
       }
       ?>
@@ -288,9 +288,9 @@ while($row = mysqli_fetch_array($result)){
 
   function load_menu2(ev,menu_group){
     $(".changeable").each(function() {
-      $(this).css("background-color","#355bc8")
+      $(this).css("background-color","#18b1b1")
     });
-    ev.style.backgroundColor = "#38ab2c";
+    ev.style.backgroundColor = "#c55c58";
     var property_id = "<?php echo $property_id; ?>";
     var rescod = "<?php echo $rescod; ?>";
     load_menu(0,menu_group,property_id,rescod);

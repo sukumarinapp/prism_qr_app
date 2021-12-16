@@ -128,7 +128,7 @@ while($row = mysqli_fetch_array($result)){
         <div class="table-responsive">
           <table class="text-black bg-white table table-bordered table-striped" id="dataTables-example">
             <thead>
-              <tr style="background-color: #188484;color: whitesmoke; font-weight: bold !important">
+              <tr style="background-color: #18b1b1;color: whitesmoke; font-weight: bold !important">
                 <!-- <th>Kot#</th> -->
                 <th>Item</th>
                 <th style="text-align: right">Rate</th>
@@ -203,7 +203,7 @@ while($row = mysqli_fetch_array($result)){
                 <td align="right" colspan="3">Round Off</td>
                 <td align="right" colspan="2" >&#2352;<?php echo number_format($RONDOF,2); ?></td>
               </tr>
-              <tr style="background-color: #188484;color: whitesmoke; font-weight: bold !important">
+              <tr style="background-color: #18b1b1;color: whitesmoke; font-weight: bold !important">
                 <td align="right" class="font-weight-bold" colspan="3">Net Total</td>
                 <td align="right" class="font-weight-bold" colspan="2" >&#2352;<?php echo number_format($net_total2,2); ?></td>
               </tr>
@@ -220,8 +220,8 @@ while($row = mysqli_fetch_array($result)){
     <!--Main layout-->
 
     <nav style="background-color:#18b1b1" class="navbar fixed-bottom navbar-expand-lg navbar-dark">
-      <a style="background-color: #38ab2c" class="btn btn-sm" href="menu.php?cstcod=<?php echo $cstcod; ?>&rescod=<?php echo $rescod; ?>&tblnub=<?php echo $tblnub; ?>&mobile=<?php echo $mobile; ?>" >Menu</a>
-      <button type="button" id="order_button" style="background-color: #38ab2c" class="btn btn-sm" onclick="print_order()" />Place Order</button>
+      <a style="background-color: #c55c58" class="btn btn-sm" href="menu.php?cstcod=<?php echo $cstcod; ?>&rescod=<?php echo $rescod; ?>&tblnub=<?php echo $tblnub; ?>&mobile=<?php echo $mobile; ?>" >Menu</a>
+      <button type="button" id="order_button" style="background-color: #c55c58" class="btn btn-sm" onclick="print_order()" />Place Order</button>
       <?php
       if($cart_quantity>0 && $allow_checkout==0){
         ?>

@@ -15,7 +15,7 @@ $rescod = isset($_REQUEST['rescod']) ? $_REQUEST['rescod']:0;
 <?php
   }
   while ($row2 = mysqli_fetch_assoc($result2)) {
-    $backcolor = "#355bc8";
+    $backcolor = "#18b1b1";
     if($i == 0) $backcolor = "#38ab2c";
     $i++;
 ?>
