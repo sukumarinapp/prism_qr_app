@@ -218,9 +218,10 @@ while($row = mysqli_fetch_array($result)){
     
 
     <!--Main layout-->
+
     <nav style="background-color:#188484" class="navbar fixed-bottom navbar-expand-lg navbar-dark">
-      <a style="background-color: #38ab2c" class="btn btn-xs" href="menu.php?cstcod=<?php echo $cstcod; ?>&rescod=<?php echo $rescod; ?>&tblnub=<?php echo $tblnub; ?>&mobile=<?php echo $mobile; ?>" >Menu</a>
-      <button type="button" id="order_button" style="background-color: #38ab2c" class="btn btn-xs" onclick="print_order()" />Place Order</button>
+      <a style="background-color: #38ab2c" class="btn btn-sm" href="menu.php?cstcod=<?php echo $cstcod; ?>&rescod=<?php echo $rescod; ?>&tblnub=<?php echo $tblnub; ?>&mobile=<?php echo $mobile; ?>" >Menu</a>
+      <button type="button" id="order_button" style="background-color: #38ab2c" class="btn btn-sm" onclick="print_order()" />Place Order</button>
       <?php
       if($cart_quantity>0 && $allow_checkout==0){
         ?>
