@@ -152,7 +152,7 @@ while($row = mysqli_fetch_array($result)){
                 $total = $total + $row['itmval'];
                 $net_total = $net_total + $row['itmval'];
                 $itemstatus = $row['status'];
-                $itemcolor = "whitesmoke";
+                $itemcolor = "black";
                 if($itemstatus == "ordered"){
                   $itemcolor = "red";
                 }
