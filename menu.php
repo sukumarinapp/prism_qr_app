@@ -11,6 +11,7 @@ $sql = "select * from prmlic where cstcod='$cstcod'";
 $result = mysqli_query($conn, $sql);
 $property_id = 0;
 $MENTYP = 1;
+$MENGRP = 0;
 $comnam = "";
 while($row = mysqli_fetch_array($result)){
   $comnam = trim($row['comnam']);
@@ -223,8 +224,12 @@ while($row = mysqli_fetch_array($result)){
                   $result2 = mysqli_query($conn, $sql2);
                   $i=0;
                   while ($row2 = mysqli_fetch_assoc($result2)) {
+                    
                     $backcolor = "#18b1b1";
-                    if($i == 0) $backcolor = "#c55c58";
+                    if($i == 0) {
+                      $backcolor = "#c55c58";
+                      $MENGRP = $row2['GRPCOD'];
+                    }
                     $i++;
                     ?>
                     <a style="background-color:<?php echo $backcolor; ?>;color:whitesmoke;border:2px;" class="changeable" onclick="load_menu2(this,<?php echo $row2['GRPCOD']; ?>)" ><b><?php echo ucwords(strtolower($row2['LNGNAM'])); ?></b></a>
@@ -242,6 +247,66 @@ while($row = mysqli_fetch_array($result)){
         var item_obj = {};
       </script>
       <div id="menu_item" >
+      <?php
+        $sql = "select a.MENGRP,a.ITMNAM,a.ITMCOD,b.PRICE,b.TAXSTR,c.LNGNAM,a.DESCRP from posmas a,posrat b,set100 c where  a.MENGRP=c.GRPCOD and a.property_id=b.property_id and a.property_id=c.property_id and a.property_id='$property_id' and a.ITMCOD=b.ITMCOD and b.RESCOD='$rescod'"; 
+        if($MENTYP!=0) $sql .= " and MENTYP='$MENTYP'"; 
+        if($MENGRP!=0) $sql .= " and MENGRP='$MENGRP'"; 
+        $sql .= " order by GRPCOD,ITMNAM";
+        $result = mysqli_query($conn, $sql);
+        while($row = mysqli_fetch_array($result)){
+      ?>
+      <div class="row clearfix no-gutters">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div style="background-color:whitesmoke;" class="card text-black">
+        <div class="card-body ">
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12 font-weight-bold">
+            <?php echo ucwords(strtolower($row['ITMNAM'])); ?>
+              </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+            <?php echo strtolower($row['DESCRP']); ?>
+              </div>
+          </div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12 font-weight-bold">
+            <span class="align-middle">&#2352; <?php echo number_format($row['PRICE'],2); ?></span>
+            </div>
+          </div>
+        <div class="row" >
+          <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            &nbsp;
+          </div>
+          <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6 quantity_span pull-right">
+            <span class="add_button_span" style="position: absolute;right:0;bottom:0">
+              <button style="background-color:#c55c58;border-radius: 15px;" class="pull-right btn btn-sm font-weight-bold add_qty" >Add</button>
+            </span>
+            <span class="plus_minus_span qty" style="display: none;position: absolute;right:0;bottom:0">
+              <input type="hidden" class="itmcod" value="<?php echo $row['ITMCOD']; ?>" />
+              <input type="hidden" class="itmrat" value="<?php echo $row['PRICE']; ?>" />
+              <input type="hidden" class="taxstr" value="<?php echo $row['TAXSTR']; ?>" />
+              <input type="hidden" class="itmnam" value="<?php echo $row['ITMNAM']; ?>" />
+              <input type="hidden" class="mentyp" value="<?php echo $MENTYP; ?>" />
+              <input type="hidden" class="mengrp" value="<?php echo $row['MENGRP']; ?>" />
+                          <span class="minus bg-danger">-</span>
+                          <input style="color:black;width:25px" readonly="readonly" type="text" maxlength="2" size="2" class="qty_text" name="qty_text" value="0">
+                          <span class="plus bg-success">+</span>
+                      </span>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <br>
+    </div>
+  </div>
+      <?php
+        }
+      ?>
       </div>
 
 
