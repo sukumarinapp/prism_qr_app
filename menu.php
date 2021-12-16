@@ -174,7 +174,9 @@ while($row = mysqli_fetch_array($result)){
             <?php
           }
           ?>
-          
+          <li class="nav-item">
+              <a class="nav-link" href="cart.php?cstcod=<?php echo $cstcod; ?>&rescod=<?php echo $rescod; ?>&tblnub=<?php echo $tblnub; ?>&mobile=<?php echo $mobile; ?>">View Bill</a>
+            </li>
         </ul>
       </div>
     </nav>
@@ -320,7 +322,7 @@ while($row = mysqli_fetch_array($result)){
     <!--Main layout-->
 
     <nav style="background-color:#18b1b1" class="navbar fixed-bottom navbar-expand-lg navbar-dark">
-      <button type="button" id="order_button" style="background-color: #c55c58" class="btn btn-sm font-weight-bold" onclick="place_order()" />Add to Cart</button>
+      <a style="background-color: #c55c58" class="btn btn-sm font-weight-bold" onclick="place_order()" />Add to Cart</a>
       <?php
       if($cart_quantity>0){
         ?>
@@ -411,7 +413,7 @@ while($row = mysqli_fetch_array($result)){
     var menu_group = $("#menu_group").val();
     var property_id = "<?php echo $property_id; ?>";
     var rescod = "<?php echo $rescod; ?>";
-    load_menu(menu_type,menu_group,property_id,rescod);
+    //load_menu(menu_type,menu_group,property_id,rescod);
 
     $("#menu_type").change(function() {
       var menu_type = $("#menu_type").val();
@@ -536,7 +538,7 @@ while($row = mysqli_fetch_array($result)){
         html += "<td style='text-align: left;font-weight:bold;border-color:grey' colspan='2'>"+item_obj[key]['itmnam']+"<br>&#2352;"+rate+"<br>";
         html +='<div class="qty text-center" style="text-align:center !important">';
         html +="<span onclick='minus_item("+i+","+key+",this)' class='minus bg-danger'>-</span>";
-        html +='<input style="color:black;width:25px;" readonly="readonly" type="text" maxlength="2" size="2" class="quantity" value="'+item_obj[key]['qty']+'">';
+        html +='&nbsp;<input style="color:black;width:25px;" readonly="readonly" type="text" maxlength="2" size="2" class="quantity" value="'+item_obj[key]['qty']+'">&nbsp;';
         html +="<span onclick='plus_item("+i+","+key+",this)' class='plus bg-success'>+</span>";
         html +="<span style='font-size:20px;font-weight:bold;color:red;vertical-align:middle' onclick='remove_item("+i+","+key+")' class='fa fa-remove  pull-right'></span>";
         html +='</div>';

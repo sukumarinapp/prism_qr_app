@@ -82,6 +82,7 @@ while($row = mysqli_fetch_array($result)){
  				</div>
  				<?php
  					$readmore = get_readmore($row['ITMCOD']);
+ 					$readmore = "";
  				?>
     			<div class="row">
 					<div class="col-md-12 col-sm-12 col-xs-12">
