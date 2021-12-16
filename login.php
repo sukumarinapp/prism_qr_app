@@ -74,7 +74,7 @@ if(isset($_POST['submit2'])){
   </head>
   <body style="background-color: #6c757d">
     <div class="container my-4">    
-    <nav style="background-color: #355bc8" class="navbar fixed-top navbar-expand-lg navbar-dark">
+    <nav style="background-color: #188484" class="navbar fixed-top navbar-expand-lg navbar-dark">
       <a class="navbar-brand font-weight-bold" href="#"><?php echo " ".$outnam."&nbsp;Table# ".$tblnub; ?></a>
     </nav>
     <hr class="my-4">
