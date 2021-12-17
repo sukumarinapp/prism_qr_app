@@ -374,7 +374,6 @@ while($row = mysqli_fetch_array($result)){
         var firstElementWithClass = document.querySelector('.changeable');
         var menu_group = $(firstElementWithClass).data("id");
         if(menu_group == null) menu_group = 0;
-        console.log(menu_group);
         load_menu(menu_type,menu_group,property_id,rescod);
       },
       error : function(error){
