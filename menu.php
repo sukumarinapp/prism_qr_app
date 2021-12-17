@@ -327,7 +327,7 @@ while($row = mysqli_fetch_array($result)){
     </div>
 
     <nav style="background-color:#18b1b1;color:white" class="navbar fixed-bottom">
-      <a style="background-color: #c55c58" class="btn btn-sm" onclick="place_order()" >Add to Cart</a>
+      <a style="background-color: #c55c58;color:white" class="btn btn-sm" onclick="place_order()" >Add to Cart</a>
       <?php
       if($cart_quantity > 0){
         ?>
