@@ -223,7 +223,7 @@ while($row = mysqli_fetch_array($result)){
 
     <!--Main layout-->
 
-    <nav style="background-color:#18b1b1" class="navbar fixed-bottom navbar-expand-lg navbar-dark">
+    <nav style="background-color:#18b1b1;color:white" class="navbar fixed-bottom navbar-expand-lg navbar-dark">
       <a style="background-color: #c55c58" class="btn btn-sm" href="menu.php?cstcod=<?php echo $cstcod; ?>&rescod=<?php echo $rescod; ?>&tblnub=<?php echo $tblnub; ?>&mobile=<?php echo $mobile; ?>" >Menu</a>
       <?php
       if($cart_quantity > 0){
