@@ -371,7 +371,10 @@ while($row = mysqli_fetch_array($result)){
       success: function (html) {
         $('#menu_group_div').html(html);
         var menu_type = $("#menu_type").val();
-        var menu_group = $("#menu_group").val();
+        var firstElementWithClass = document.querySelector('.changeable');
+        var menu_group = $(firstElementWithClass).data("id");
+        if(menu_group == null) menu_group = 0;
+        console.log(menu_group);
         load_menu(menu_type,menu_group,property_id,rescod);
       },
       error : function(error){

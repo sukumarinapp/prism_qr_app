@@ -19,7 +19,7 @@ $rescod = isset($_REQUEST['rescod']) ? $_REQUEST['rescod']:0;
     if($i == 0) $backcolor = "#c55c58";
     $i++;
 ?>
-<a style="border:2px;background-color:<?php echo $backcolor; ?>;color:whitesmoke" class="changeable" onclick="load_menu2(this,<?php echo $row2['GRPCOD']; ?>)" ><b><?php echo ucwords(strtolower($row2['LNGNAM'])); ?></b></a>
+<a data-id="<?php echo $row2['GRPCOD']; ?>" style="border:2px;background-color:<?php echo $backcolor; ?>;color:whitesmoke" class="changeable" onclick="load_menu2(this,<?php echo $row2['GRPCOD']; ?>)" ><b><?php echo ucwords(strtolower($row2['LNGNAM'])); ?></b></a>
 <?php
   }
 ?>
