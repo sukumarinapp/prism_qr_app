@@ -287,7 +287,7 @@ while($row = mysqli_fetch_array($result)){
           </div>
           <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6 quantity_span pull-right">
             <span class="add_button_span" style="position: absolute;right:0;bottom:0">
-              <button style="background-color:#c55c58;border-radius: 15px;" class="pull-right btn btn-sm font-weight-bold add_qty" >Add</button>
+              <button style="background-color:#c55c58;border-radius: 15px;color: white;" class="pull-right btn btn-sm font-weight-bold add_qty" >Add</button>
             </span>
             <span class="plus_minus_span qty" style="display: none;position: absolute;right:0;bottom:0">
               <input type="hidden" class="itmcod" value="<?php echo $row['ITMCOD']; ?>" />
