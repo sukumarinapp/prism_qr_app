@@ -230,7 +230,7 @@ while($row = mysqli_fetch_array($result)){
       <?php
       if($cart_quantity > 0){
         ?>
-      <button type="button" id="order_button" style="background-color: #c55c58" class="btn btn-sm" onclick="print_order()" />Place Order</button>
+      
       <?php
       }
       ?>

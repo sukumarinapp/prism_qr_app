@@ -51,8 +51,6 @@ while($row = mysqli_fetch_array($result)){
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- Bootstrap core CSS -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
-  <!-- Material Design Bootstrap -->
-  <link href="css/mdb.min.css" rel="stylesheet">
   <!-- Your custom styles (optional) -->
   <link href="css/style.css" rel="stylesheet">
   <style type="text/css">
@@ -326,28 +324,26 @@ while($row = mysqli_fetch_array($result)){
       </div>
 
     </main>
-    <!--Main layout-->
+    </div>
 
-    <nav style="background-color:#18b1b1" class="navbar fixed-bottom navbar-dark">
-      <a style="background-color: #c55c58" class="btn btn-sm font-weight-bold" onclick="place_order()" />Add to Cart</a>
+    <nav style="background-color:#18b1b1;color:white" class="navbar fixed-bottom">
+      <a style="background-color: #c55c58" class="btn btn-sm" onclick="place_order()" >Add to Cart</a>
       <?php
       if($cart_quantity > 0){
         ?>
-        <a style="background-color: #c55c58" class="btn btn-sm font-weight-bold" href="cart.php?cstcod=<?php echo $cstcod; ?>&rescod=<?php echo $rescod; ?>&tblnub=<?php echo $tblnub; ?>&mobile=<?php echo $mobile; ?>">View Cart</a>
+        <a style="background-color: #c55c58;color:white" class="btn btn-sm" href="cart.php?cstcod=<?php echo $cstcod; ?>&rescod=<?php echo $rescod; ?>&tblnub=<?php echo $tblnub; ?>&mobile=<?php echo $mobile; ?>">View Cart</a>
         <?php
       }
       ?>
       <?php
       if($bill_quantity>0){
         ?>
-        <a style="background-color: #c55c58" class="btn btn-sm font-weight-bold" href="bill.php?cstcod=<?php echo $cstcod; ?>&rescod=<?php echo $rescod; ?>&tblnub=<?php echo $tblnub; ?>&mobile=<?php echo $mobile; ?>">View Bill</a>
+        <a style="background-color: #c55c58;color:white" class="btn btn-sm" href="bill.php?cstcod=<?php echo $cstcod; ?>&rescod=<?php echo $rescod; ?>&tblnub=<?php echo $tblnub; ?>&mobile=<?php echo $mobile; ?>">View Bill</a>
         <?php
       }
       ?>
     </nav>
 
-  </strong>
-</div>
 
 <!-- Start your project here-->
 
