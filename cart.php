@@ -42,7 +42,7 @@ $cart_quantity = 0;
 while($row100 = mysqli_fetch_array($result100)){
   $cart_quantity = $cart_quantity + $row100['itmqty'];
 }
-$sql = "select b.* from posord a,poskot b where a.order_id=b.order_id and a.rescod='$rescod' and  a.property_id='$property_id' and a.tblnub='$tblnub' and a.mobile='$mobile' and ( a.status='pending' or a.status='ordered' ) order by kotnub,kotsrl";
+$sql = "select b.* from posord a,poskot b where a.order_id=b.order_id and a.rescod='$rescod' and  a.property_id='$property_id' and a.tblnub='$tblnub' and a.mobile='$mobile' and a.status='pending' order by kotnub,kotsrl";
 $result = mysqli_query($conn, $sql);
 while($row = mysqli_fetch_array($result)){
   $order_id = $row['order_id'];
@@ -153,9 +153,6 @@ while($row = mysqli_fetch_array($result)){
                 $net_total = $net_total + $row['itmval'];
                 $itemstatus = $row['status'];
                 $itemcolor = "black";
-                if($itemstatus == "ordered"){
-                  $itemcolor = "red";
-                }
                 ?>
                 <tr>
                   <td style="color:<?php echo $itemcolor; ?>">
@@ -282,7 +279,7 @@ while($row = mysqli_fetch_array($result)){
       },
       success: function (response) {
         alert("Your order is confirmed");
-        location.reload();
+        location.href ="bill.php?cstcod=<?php echo $cstcod; ?>&rescod=<?php echo $rescod; ?>&tblnub=<?php echo $tblnub; ?>&mobile=<?php echo $mobile; ?>";
       },
       error : function(error){
         console.log(error);

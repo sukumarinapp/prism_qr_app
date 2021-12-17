@@ -24,11 +24,18 @@ while($row = mysqli_fetch_array($result)){
   $outnam = trim($row['lngnam']);
 }
 
-$sql = "select b.* from posord a,poskot b where a.order_id=b.order_id and a.rescod='$rescod' and  a.property_id='$property_id' and a.tblnub='$tblnub' and a.mobile='$mobile' and  (a.status='pending' or a.status='ordered' )";
+$sql = "select b.* from posord a,poskot b where a.order_id=b.order_id and a.rescod='$rescod' and  a.property_id='$property_id' and a.tblnub='$tblnub' and a.mobile='$mobile' and  a.status='pending'";
 $result = mysqli_query($conn, $sql);
 $cart_quantity = 0;                    
 while($row = mysqli_fetch_array($result)){
   $cart_quantity = $cart_quantity + $row['itmqty'];
+}
+
+$sql = "select b.* from posord a,poskot b where a.order_id=b.order_id and a.rescod='$rescod' and  a.property_id='$property_id' and a.tblnub='$tblnub' and a.mobile='$mobile' and a.status='ordered' ";
+$result = mysqli_query($conn, $sql);
+$bill_quantity = 0;                    
+while($row = mysqli_fetch_array($result)){
+  $bill_quantity = $bill_quantity + $row['itmqty'];
 }
 ?>
 <!DOCTYPE html>
@@ -175,7 +182,7 @@ while($row = mysqli_fetch_array($result)){
           }
           ?>
           <li class="nav-item">
-              <a class="nav-link" href="cart.php?cstcod=<?php echo $cstcod; ?>&rescod=<?php echo $rescod; ?>&tblnub=<?php echo $tblnub; ?>&mobile=<?php echo $mobile; ?>">View Bill</a>
+              <a class="nav-link" href="bill.php?cstcod=<?php echo $cstcod; ?>&rescod=<?php echo $rescod; ?>&tblnub=<?php echo $tblnub; ?>&mobile=<?php echo $mobile; ?>">View Bill</a>
             </li>
         </ul>
       </div>
@@ -324,9 +331,16 @@ while($row = mysqli_fetch_array($result)){
     <nav style="background-color:#18b1b1" class="navbar fixed-bottom navbar-expand-lg navbar-dark">
       <a style="background-color: #c55c58" class="btn btn-sm font-weight-bold" onclick="place_order()" />Add to Cart</a>
       <?php
-      if($cart_quantity>0){
+      if($cart_quantity > 0){
         ?>
         <a style="background-color: #c55c58" class="btn btn-sm font-weight-bold" href="cart.php?cstcod=<?php echo $cstcod; ?>&rescod=<?php echo $rescod; ?>&tblnub=<?php echo $tblnub; ?>&mobile=<?php echo $mobile; ?>">View Cart</a>
+        <?php
+      }
+      ?>
+      <?php
+      if($bill_quantity>0){
+        ?>
+        <a style="background-color: #c55c58" class="btn btn-sm font-weight-bold" href="bill.php?cstcod=<?php echo $cstcod; ?>&rescod=<?php echo $rescod; ?>&tblnub=<?php echo $tblnub; ?>&mobile=<?php echo $mobile; ?>">View Bill</a>
         <?php
       }
       ?>
@@ -352,7 +366,93 @@ while($row = mysqli_fetch_array($result)){
 
 
 <script type="text/javascript">
+$(document).ready(function () {
 
+  $('.morebutton').click(function () {
+    //$('p:eq(0)').slideToggle();
+    var object1 = $(this).parent().parent().parent().parent('.card-body'); 
+    var object2 = $(object1).find(".itemdesc");
+    (object2).slideToggle();
+    if($(this).text()=="Read More")
+      $(this).text("Read Less");
+    else
+      $(this).text("Read More");
+  });
+
+  $('.add_qty').click(function () {
+    var object1 = $(this).parent().parent('.quantity_span'); 
+    var object2 = $(object1).find(".add_button_span");
+    var object3 = $(object1).find(".plus_minus_span");
+    var object4 = $(object1).find(".qty_text");
+    $(object4).val("1");
+    var itmcod = $(object1).find(".itmcod").val();
+    console.log(itmcod);
+    var itmrat = $(object1).find(".itmrat").val();
+    var taxstr = $(object1).find(".taxstr").val();
+    var itmnam = $(object1).find(".itmnam").val();
+    var mentyp = $(object1).find(".mentyp").val();
+    var mengrp = $(object1).find(".mengrp").val();
+    item_obj[itmcod] = {};
+    item_obj[itmcod]['qty'] = 1;
+    item_obj[itmcod]['itmrat'] = itmrat;
+    item_obj[itmcod]['taxstr'] = taxstr;
+    item_obj[itmcod]['itmnam'] = itmnam;
+    item_obj[itmcod]['mentyp'] = mentyp;
+    item_obj[itmcod]['mengrp'] = mengrp;
+    $(object2).slideUp("slow");
+    $(object3).slideDown("slow");
+  });
+
+  $('.plus').click(function () {
+    var object1 = $(this).parent(); 
+    var object2 = $(object1).find(".qty_text");
+    var v = parseInt($(object2).val());
+    v = v + 1;
+    object2.val(v);
+    var itmcod = $(object1).find(".itmcod").val();
+    var itmrat = $(object1).find(".itmrat").val();
+    var taxstr = $(object1).find(".taxstr").val();
+    var itmnam = $(object1).find(".itmnam").val();
+    var mentyp = $(object1).find(".mentyp").val();
+    var mengrp = $(object1).find(".mengrp").val();
+    item_obj[itmcod] = {};
+    item_obj[itmcod]['qty'] = v;
+    item_obj[itmcod]['itmrat'] = itmrat;
+    item_obj[itmcod]['taxstr'] = taxstr;
+    item_obj[itmcod]['itmnam'] = itmnam;
+    item_obj[itmcod]['mentyp'] = mentyp;
+    item_obj[itmcod]['mengrp'] = mengrp;
+  });
+
+  $('.minus').click(function () {
+    var object1 = $(this).parent(); 
+    var object2 = $(object1).find(".qty_text");
+    var v = parseInt($(object2).val());
+    v = v - 1;
+    object2.val(v);
+    var object3 = $(this).parent().parent('.quantity_span'); 
+    var object4 = $(object3).find(".add_button_span");
+    var object5 = $(object3).find(".plus_minus_span");
+    if(v == 0){
+      $(object5).slideUp("slow");
+      $(object4).slideDown("slow");
+    }
+    var itmcod = $(object1).find(".itmcod").val();
+    var itmrat = $(object1).find(".itmrat").val();
+    var taxstr = $(object1).find(".taxstr").val();
+    var itmnam = $(object1).find(".itmnam").val();
+    var mentyp = $(object1).find(".mentyp").val();
+    var mengrp = $(object1).find(".mengrp").val();
+    item_obj[itmcod] = {};
+    item_obj[itmcod]['qty'] = v;
+    item_obj[itmcod]['itmrat'] = itmrat;
+    item_obj[itmcod]['taxstr'] = taxstr;
+    item_obj[itmcod]['itmnam'] = itmnam;
+    item_obj[itmcod]['mentyp'] = mentyp;
+    item_obj[itmcod]['mengrp'] = mengrp;
+  });
+
+});
   function load_menu2(ev,menu_group){
     $(".changeable").each(function() {
       $(this).css("background-color","#18b1b1")

@@ -130,6 +130,7 @@ $(document).ready(function () {
 		var object4 = $(object1).find(".qty_text");
 		$(object4).val("1");
 		var itmcod = $(object1).find(".itmcod").val();
+		console.log(itmcod);
 		var itmrat = $(object1).find(".itmrat").val();
 		var taxstr = $(object1).find(".taxstr").val();
 		var itmnam = $(object1).find(".itmnam").val();
