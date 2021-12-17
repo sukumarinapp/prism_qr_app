@@ -24,14 +24,14 @@ while($row = mysqli_fetch_array($result)){
   $outnam = trim($row['lngnam']);
 }
 
-$sql = "select b.* from posord a,poskot b where a.order_id=b.order_id and a.rescod='$rescod' and  a.property_id='$property_id' and a.tblnub='$tblnub' and a.mobile='$mobile' and  a.status='pending'";
+$sql = "select b.* from posord a,poskot b where a.order_id=b.order_id and a.rescod='$rescod' and  a.property_id='$property_id' and a.tblnub='$tblnub' and a.mobile='$mobile' and  b.status='pending'";
 $result = mysqli_query($conn, $sql);
 $cart_quantity = 0;                    
 while($row = mysqli_fetch_array($result)){
   $cart_quantity = $cart_quantity + $row['itmqty'];
 }
 
-$sql = "select b.* from posord a,poskot b where a.order_id=b.order_id and a.rescod='$rescod' and  a.property_id='$property_id' and a.tblnub='$tblnub' and a.mobile='$mobile' and a.status='ordered' ";
+$sql = "select b.* from posord a,poskot b where a.order_id=b.order_id and a.rescod='$rescod' and  a.property_id='$property_id' and a.tblnub='$tblnub' and a.mobile='$mobile' and b.status='ordered' ";
 $result = mysqli_query($conn, $sql);
 $bill_quantity = 0;                    
 while($row = mysqli_fetch_array($result)){
@@ -328,7 +328,7 @@ while($row = mysqli_fetch_array($result)){
     </main>
     <!--Main layout-->
 
-    <nav style="background-color:#18b1b1" class="navbar fixed-bottom navbar-expand-lg navbar-dark">
+    <nav style="background-color:#18b1b1" class="navbar fixed-bottom navbar-dark">
       <a style="background-color: #c55c58" class="btn btn-sm font-weight-bold" onclick="place_order()" />Add to Cart</a>
       <?php
       if($cart_quantity > 0){
@@ -386,7 +386,6 @@ $(document).ready(function () {
     var object4 = $(object1).find(".qty_text");
     $(object4).val("1");
     var itmcod = $(object1).find(".itmcod").val();
-    console.log(itmcod);
     var itmrat = $(object1).find(".itmrat").val();
     var taxstr = $(object1).find(".taxstr").val();
     var itmnam = $(object1).find(".itmnam").val();
@@ -464,6 +463,9 @@ $(document).ready(function () {
   };
 
   function load_menu_group(menu_type,property_id,rescod){
+    $(".plus_minus_span").each(function() {
+      $(this).slideUp("slow");
+    });
     $.ajax({
       url: "load_menu_group.php",
       type: "get",

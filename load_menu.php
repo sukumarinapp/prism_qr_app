@@ -124,6 +124,7 @@ $(document).ready(function () {
 	});
 
 	$('.add_qty').click(function () {
+		
 		var object1 = $(this).parent().parent('.quantity_span'); 
 		var object2 = $(object1).find(".add_button_span");
 		var object3 = $(object1).find(".plus_minus_span");
