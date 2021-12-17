@@ -459,9 +459,6 @@ $(document).ready(function () {
   };
 
   function load_menu_group(menu_type,property_id,rescod){
-    $(".plus_minus_span").each(function() {
-      $(this).slideUp("slow");
-    });
     $.ajax({
       url: "load_menu_group.php",
       type: "get",
