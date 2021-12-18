@@ -168,7 +168,7 @@ while($row = mysqli_fetch_array($result)){
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="menu.php?cstcod=<?php echo $cstcod; ?>&rescod=<?php echo $rescod; ?>&tblnub=<?php echo $tblnub; ?>&mobile=$mobile">Menu</a>
+            <a class="nav-link" onclick="place_order()">Add to Cart</a>
           </li>
           <?php
           if($cart_quantity>0){
