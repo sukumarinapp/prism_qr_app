@@ -490,6 +490,8 @@ $(document).ready(function () {
             var object2 = $(object1).find(".qty");
             var object3 = $(this).parent().find(".qty_text");
             if(item_obj[itmcod2]["qty"] != 0){
+              var object6 = object1.find(".add_button_span");
+              object6.slideUp("fast");
               var object4 = $(this).parent();
               object4.slideDown("fast");
               var object5 = object1.find(".add_qty_div");
@@ -583,7 +585,6 @@ $(document).ready(function () {
         mobile: mobile
       },
       success: function (response) {
-        console.log(response);
         if(response.includes("Success")){
           window.location.href = "cart.php?cstcod=<?php echo $cstcod; ?>&rescod=<?php echo $rescod; ?>&tblnub=<?php echo $tblnub; ?>&mobile=<?php echo $mobile; ?>";
         }else{
