@@ -15,7 +15,7 @@ if (isset($_POST['submit'])) {
       $_SESSION['USERID'] = $row['USERID'];
       $_SESSION['LNGNAM'] = $row['LNGNAM'];
       $_SESSION['CATGRY'] = $row['CATGRY'];
-      if($row['CATGRY '] == "0" || $row['CATGRY '] == "1" || $row['CATGRY '] == "3")
+      if($row['CATGRY'] == "0" || $row['CATGRY'] == "1" || $row['CATGRY'] == "3")
         header("location: dashboard.php");
       }else{
         $error = "Your User Name or Password is invalid";
@@ -54,7 +54,7 @@ if (isset($_POST['submit'])) {
       </p>
       <p class="login-box-msg">Sign in to start your session</p>
 
-      <form action="#" method="post">
+      <form action="" method="post">
         <div class="input-group mb-3">
           <input type="text" name="USERID" class="form-control" placeholder="USERID">
           <div class="input-group-append">
