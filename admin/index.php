@@ -56,7 +56,7 @@ if (isset($_POST['submit'])) {
 
       <form action="" method="post">
         <div class="input-group mb-3">
-          <input type="text" name="USERID" class="form-control" placeholder="USERID">
+          <input type="text" name="USERID" required="required" class="form-control" placeholder="USERID">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
@@ -64,7 +64,7 @@ if (isset($_POST['submit'])) {
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" name="PASSWD" class="form-control" placeholder="Password">
+          <input type="password" name="PASSWD" required="required" class="form-control" placeholder="Password">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
