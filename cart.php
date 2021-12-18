@@ -42,6 +42,12 @@ $cart_quantity = 0;
 while($row100 = mysqli_fetch_array($result100)){
   $cart_quantity = $cart_quantity + $row100['itmqty'];
 }
+$sql100 = "select b.* from posord a,poskot b where a.order_id=b.order_id and a.rescod='$rescod' and  a.property_id='$property_id' and a.tblnub='$tblnub' and a.mobile='$mobile' and b.status='ordered' order by kotnub,kotsrl";
+$result100 = mysqli_query($conn, $sql100);
+$bill_quantity = 0;             
+while($row100 = mysqli_fetch_array($result100)){
+  $bill_quantity = $bill_quantity + $row100['itmqty'];
+}
 $sql = "select b.* from posord a,poskot b where a.order_id=b.order_id and a.rescod='$rescod' and  a.property_id='$property_id' and a.tblnub='$tblnub' and a.mobile='$mobile' and b.status='pending' order by kotnub,kotsrl";
 $result = mysqli_query($conn, $sql);
 while($row = mysqli_fetch_array($result)){
@@ -115,9 +121,24 @@ while($row = mysqli_fetch_array($result)){
           <li class="nav-item">
             <a class="nav-link" href="menu.php?cstcod=<?php echo $cstcod; ?>&rescod=<?php echo $rescod; ?>&tblnub=<?php echo $tblnub; ?>&mobile=$mobile">Menu</a>
           </li>
+          <?php
+      if($cart_quantity > 0){
+        ?>
           <li class="nav-item active">
             <a class="nav-link" href="cart.php?cstcod=<?php echo $cstcod; ?>&rescod=<?php echo $rescod; ?>&tblnub=<?php echo $tblnub; ?>&mobile=$mobile">Place Order</a>
           </li>
+          <?php
+      }
+      ?>
+      <?php
+      if($bill_quantity>0){
+        ?>
+          <li class="nav-item">
+              <a class="nav-link" href="bill.php?cstcod=<?php echo $cstcod; ?>&rescod=<?php echo $rescod; ?>&tblnub=<?php echo $tblnub; ?>&mobile=<?php echo $mobile; ?>">View Bill</a>
+            </li>
+             <?php
+          }
+          ?>
         </ul>
       </div>
     </nav>
@@ -228,6 +249,13 @@ while($row = mysqli_fetch_array($result)){
         ?>
       <button type="button" id="order_button" style="background-color: #c55c58;color:white" class="btn btn-sm" onclick="print_order()" >Place Order</button>
       <?php
+      }
+      ?>
+      <?php
+      if($bill_quantity>0){
+        ?>
+        <a style="background-color: #c55c58;color:white" class="btn btn-sm" href="bill.php?cstcod=<?php echo $cstcod; ?>&rescod=<?php echo $rescod; ?>&tblnub=<?php echo $tblnub; ?>&mobile=<?php echo $mobile; ?>">View Bill</a>
+        <?php
       }
       ?>
       <?php

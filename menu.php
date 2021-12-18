@@ -179,9 +179,15 @@ while($row = mysqli_fetch_array($result)){
             <?php
           }
           ?>
+          <?php
+      if($bill_quantity>0){
+        ?>
           <li class="nav-item">
               <a class="nav-link" href="bill.php?cstcod=<?php echo $cstcod; ?>&rescod=<?php echo $rescod; ?>&tblnub=<?php echo $tblnub; ?>&mobile=<?php echo $mobile; ?>">View Bill</a>
             </li>
+             <?php
+          }
+          ?>
         </ul>
       </div>
     </nav>

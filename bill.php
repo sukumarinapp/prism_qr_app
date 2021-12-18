@@ -115,9 +115,6 @@ while($row = mysqli_fetch_array($result)){
           <li class="nav-item">
             <a class="nav-link" href="menu.php?cstcod=<?php echo $cstcod; ?>&rescod=<?php echo $rescod; ?>&tblnub=<?php echo $tblnub; ?>&mobile=$mobile">Menu</a>
           </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="cart.php?cstcod=<?php echo $cstcod; ?>&rescod=<?php echo $rescod; ?>&tblnub=<?php echo $tblnub; ?>&mobile=$mobile">Place Order</a>
-          </li>
         </ul>
       </div>
     </nav>
@@ -225,13 +222,6 @@ while($row = mysqli_fetch_array($result)){
 
     <nav style="background-color:#18b1b1" class="navbar fixed-bottom navbar-expand-lg navbar-dark">
       <a style="background-color: #c55c58;color:white" class="btn btn-sm" href="menu.php?cstcod=<?php echo $cstcod; ?>&rescod=<?php echo $rescod; ?>&tblnub=<?php echo $tblnub; ?>&mobile=<?php echo $mobile; ?>" >Menu</a>
-      <?php
-      if($cart_quantity > 0){
-        ?>
-      
-      <?php
-      }
-      ?>
       <?php
       if($cart_quantity>0 && $allow_checkout==0){
         ?>
