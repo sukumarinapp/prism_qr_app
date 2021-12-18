@@ -12,10 +12,10 @@ if (isset($_POST['submit'])) {
     if($result->num_rows > 0){
       $row = $result->fetch_assoc();
       $_SESSION['timestamp'] = time();
-      $_SESSION['USERID '] = $row['USERID '];
-      $_SESSION['LNGNAM '] = $row['LNGNAM '];
-      $_SESSION['CATGRY '] = $row['CATGRY '];
-      if($row['CATGRY ']=="0" || $row['CATGRY ']=="1" || $row['CATGRY ']=="3")
+      $_SESSION['USERID'] = $row['USERID'];
+      $_SESSION['LNGNAM'] = $row['LNGNAM'];
+      $_SESSION['CATGRY'] = $row['CATGRY'];
+      if($row['CATGRY '] == "0" || $row['CATGRY '] == "1" || $row['CATGRY '] == "3")
         header("location: dashboard.php");
       }else{
         $error = "Your User Name or Password is invalid";
@@ -47,6 +47,11 @@ if (isset($_POST['submit'])) {
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
+      <p style="color:red">
+        <?php
+          echo $error;
+        ?>
+      </p>
       <p class="login-box-msg">Sign in to start your session</p>
 
       <form action="#" method="post">
