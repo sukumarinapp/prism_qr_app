@@ -14,7 +14,7 @@
           
           <li class="nav-item">
             <a href="dashboard.php" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="nav-icon fa fa-shopping-basket"></i>
               <p>
                 Orders
               </p>
@@ -22,7 +22,7 @@
           </li>
           <li class="nav-item">
             <a href="link_steward.php" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+              <i class="nav-icon fa fa-table"></i>
               <p>
                 Link Steward
               </p>

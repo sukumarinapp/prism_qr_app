@@ -1,7 +1,7 @@
 <?php
 session_start();
-session_unset();
+$property_id = $_SESSION['property_id'];
+$url = "index.php?id=$property_id";
 session_destroy();
-$id = $_GET['id'];
-$url = "index.php?id='$id'";
 header("location: $url");
+?>
