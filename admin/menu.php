@@ -2,7 +2,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a class="brand-link">
-      <span class="brand-text font-weight-light">RESTAURANT</span>
+      <span class="brand-text font-weight-light"><?php echo $_SESSION['comnam']; ?></span>
     </a>
 
     <!-- Sidebar -->

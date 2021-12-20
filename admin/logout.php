@@ -2,5 +2,6 @@
 session_start();
 session_unset();
 session_destroy();
-$property_id = $_GET['id'];
-header("location: index.php?id='$id'");
+$id = $_GET['id'];
+$url = "index.php?id='$id'";
+header("location: $url");
