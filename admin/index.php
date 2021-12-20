@@ -2,16 +2,25 @@
 session_start();
 include "../config.php";
 $error = "";
+$property_id = 0;
+if(isset($_GET['id'])){
+  $property_id = $_GET['id'];
+}else{
+  echo "Property not found";
+  die;
+}
 if (isset($_POST['submit'])) {
     $USERID = trim($_POST['USERID']);
     $PASSWD = trim($_POST['PASSWD']);
-    $stmt = $conn->prepare("SELECT * FROM prmusr WHERE USERID = ? AND PASSWD = ?");
-    $stmt->bind_param("ss", $USERID, $PASSWD);
+    $stmt = $conn->prepare("SELECT a.*,b.comnam FROM prmusr a,prmlic b WHERE a.property_id=b.id and a.property_id = ? AND USERID = ? AND PASSWD = ?");
+    $stmt->bind_param("sss", $property_id,$USERID, $PASSWD);
     $stmt->execute();
     $result = $stmt->get_result();
     if($result->num_rows > 0){
       $row = $result->fetch_assoc();
       $_SESSION['timestamp'] = time();
+      $_SESSION['comnam'] = $row['comnam'];
+      $_SESSION['property_id'] = $row['property_id'];
       $_SESSION['USERID'] = $row['USERID'];
       $_SESSION['LNGNAM'] = $row['LNGNAM'];
       $_SESSION['CATGRY'] = $row['CATGRY'];
@@ -29,7 +38,7 @@ if (isset($_POST['submit'])) {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Log in</title>
+  <title>Login</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -73,7 +82,7 @@ if (isset($_POST['submit'])) {
         </div>
         <div class="row">
           <div class="col-4">
-            <button type="submit" name="submit" class="btn btn-primary btn-block">Sign In</button>
+            <button type="submit" name="submit" class="btn btn-primary btn-block">Login</button>
           </div>
         </div>
       </form>

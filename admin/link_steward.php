@@ -1,9 +1,14 @@
+<?php
+session_start();
+include "../config.php";
+$property_id = $_SESSION['property_id'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | General Form Elements</title>
+  <title><?php echo $_SESSION['comnam']; ?></title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -21,18 +26,7 @@
   <div class="content-wrapper">
     <section class="content-header">
       <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>General Form</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">General Form</li>
-            </ol>
-          </div>
-        </div>
-      </div><!-- /.container-fluid -->
+      </div>
     </section>
 
     <!-- Main content -->
@@ -42,36 +36,62 @@
           <!-- left column -->
           <div class="col-md-12">
             <!-- general form elements -->
-            <div class="card card-primary">
+            <div class="card card-info">
               <div class="card-header">
-                <h3 class="card-title">Quick Example</h3>
+                <h3 class="card-title">Link Steward</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
               <form>
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Applicable Date</label>
-                    <input type="date" class="form-control" id="exampleInputEmail1" placeholder="">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Table No</label>
-                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="">
+                    <label for="appdat">Applicable Date</label>
+                    <input type="date" name="appdat" class="form-control" id="appdat" placeholder="">
                   </div>
                    <div class="form-group">
-                    <label for="exampleInputPassword1">Outlet</label>
-                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="">
+                    <label for="rescod">Outlet</label>
+                    <select name="rescod" class="form-control select2" style="width: 100%;">
+                    <option selected="selected">Select Outlet</option>
+                    <?php
+  $sql = "select * from set090 where property_id=$property_id";
+  $result = mysqli_query($conn, $sql);
+  while ($row = mysqli_fetch_array($result)) {
+    echo '<option value="' . $row['rescod'] . '">' . $row['lngnam'] . '</option>';
+  }
+?>
+                  </select>
                   </div>
+                  <div class="form-group">
+                    <label for="tblnub">Table#</label>
+                    <select name="tblnub" class="form-control select2" style="width: 100%;">
+                    <option selected="selected">Select Table</option>
+                    <?php
+  $sql = "select * from set090 where property_id=$property_id";
+  $result = mysqli_query($conn, $sql);
+  while ($row = mysqli_fetch_array($result)) {
+    echo '<option value="' . $row['rescod'] . '">' . $row['lngnam'] . '</option>';
+  }
+?>
+                  </select>
+                  </div>
+                  
 
                  <div class="form-group">
-                  <label>Minimal</label>
-                  <select class="form-control select2" style="width: 100%;">
-                    <option selected="selected">Alabama</option>
+                  <label>Select Steward</label>
+                  <select name="userid" class="form-control select2" style="width: 100%;">
+                    <option selected="selected">Select Steward</option>
+                    <?php
+  $sql = "select * from prmusr where property_id=$property_id and CATGRY=3";
+  $result = mysqli_query($conn, $sql);
+  while ($row = mysqli_fetch_array($result)) {
+  echo '<option value="' . $row['USERID'] . '">' . $row['LNGNAM'] . '</option>';
+  }
+  ?>
                   </select>
                 </div>
 
                 <div class="card-footer text-center">
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="submit" name="submit" class="btn btn-primary">Save</button>
                 </div>
               </form>
             </div>
