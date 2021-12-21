@@ -38,7 +38,7 @@ $property_id = $_SESSION['property_id'];
                   </div>
                    <div class="form-group">
                     <label for="rescod">Outlet</label>
-                    <select name="rescod" class="form-control select2" style="width: 100%;">
+                    <select id="outlet_name" name="rescod" class="form-control select2" style="width: 100%;">
                     <option selected="selected">Select Outlet</option>
                     <?php
   $sql = "select * from set090 where property_id=$property_id";
@@ -49,18 +49,11 @@ $property_id = $_SESSION['property_id'];
 ?>
                   </select>
                   </div>
-                  <div class="form-group">
+                  <div class="form-group" id="table_div">
                     <label for="tblnub">Table#</label>
-                    <select name="tblnub" class="form-control select2" style="width: 100%;">
-                    <option selected="selected">Select Table</option>
-                    <?php
-  $sql = "select * from set090 where property_id=$property_id";
-  $result = mysqli_query($conn, $sql);
-  while ($row = mysqli_fetch_array($result)) {
-    echo '<option value="' . $row['rescod'] . '">' . $row['lngnam'] . '</option>';
-  }
-?>
-                  </select>
+                    <select required="required" name="tblnub" class="form-control" >
+                    <option selected="selected" >Select Table</option>
+                    </select>
                   </div>
                   
 
@@ -111,6 +104,30 @@ $property_id = $_SESSION['property_id'];
 $(function () {
   bsCustomFileInput.init();
 });
+
+$(document).ready(function () {
+  $("#outlet_name").change(function() {
+    var property_id = "<?php echo $property_id; ?>";
+    var rescod = $("#outlet_name").val();
+    $.ajax({
+      url: "load_table.php",
+      type: "get",
+      data: {property_id: property_id, rescod: rescod},
+      success: function (response) {
+        $("#table_div").html(response);
+      },
+      error : function(error){
+        console.log(error);
+      }
+    });
+  });
+});
+//-------------------
+function load_table(property_id,rescod){
+    
+  }
+  //-----------------
+
 </script>
 </body>
 </html>
