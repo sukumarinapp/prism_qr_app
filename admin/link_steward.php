@@ -90,7 +90,7 @@ if (isset($_POST['submit'])) {
                 </div>
 
                 <div class="card-footer text-center">
-                   <input required="required" class="btn btn-info" type="submit" name="submit" value="Save"/>
+                   <input required="required" class="btn btn-primary" type="submit" name="submit" value="Save"/>
                 </div>
               </form>
             </div>
@@ -100,6 +100,51 @@ if (isset($_POST['submit'])) {
           <!--/.col (right) -->
         </div>
       </div><!-- /.container-fluid -->
+    </section>
+
+     <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header bg-secondary">
+                <h3 class="card-title">View Steward</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <div class="table-responsive">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>Applicable Date</th>
+                    <th>Outlet</th>
+                    <th>Table</th>
+                    <th>Steward Name</th>
+                    <th>Delete</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+               <?php
+                  $sql = "select * from posout where property_id=$property_id";
+                  $result = mysqli_query($conn, $sql);
+                  while ($row = mysqli_fetch_assoc($result)) {
+                ?>
+                 <tr> 
+                  <td> <?php echo date('d-m-Y', strtotime($row['appdat'])); ?> </td>
+                  <td> <?php echo $row['rescod']; ?></td>
+                  <td> <?php echo $row['tblnub']; ?></td>
+                  <td> <?php echo $row['userid']; ?></td>
+                  <td><a href="#" class="btn btn-danger btn-sm"><i class="fa fa-times"></i> Delete</a></td>
+                   </tr>
+                <?php
+                 } 
+                 ?>
+              </tbody>
+                </table>
+            </div>
+           </div>
+        </div>
+      </div>
     </section>
 
     <!-- /.content -->
