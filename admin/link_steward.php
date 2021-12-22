@@ -1,7 +1,25 @@
 <?php
 session_start();
+$page = "link steward";
 include "../config.php";
+if (($_SESSION['CATGRY'] != "0") && ($_SESSION['CATGRY'] != "1")) header("location: index.php");
 $property_id = $_SESSION['property_id'];
+$appdat="";
+$rescod="";
+$tblnub="";
+$userid="";
+if (isset($_POST['submit'])) {
+    $appdat = trim($_POST['appdat']); 
+    $appdat = explode("-",$appdat);
+    $appdat = $appdat[0].$appdat[1].$appdat[2];
+    $rescod= trim($_POST['rescod']);
+    $tblnub= trim($_POST['tblnub']);
+    $userid= trim($_POST['userid']);
+        $stmt = $conn->prepare("INSERT INTO posout (property_id,appdat,rescod,tblnub,userid) VALUES (?,?,?,?,?)");
+        $stmt->bind_param("sssss",$property_id,$appdat,$rescod,$tblnub,$userid);
+        $stmt->execute();
+        header("location: link_steward.php");
+  } 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,15 +48,15 @@ $property_id = $_SESSION['property_id'];
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form>
+              <form method="post" action="" enctype="multipart/form-data">
                 <div class="card-body">
                   <div class="form-group">
                     <label for="appdat">Applicable Date</label>
-                    <input type="date" name="appdat" class="form-control" id="appdat" placeholder="">
+                    <input value="<?php echo $appdat; ?>" required="required" type="date" name="appdat" class="form-control" id="appdat" placeholder="">
                   </div>
                    <div class="form-group">
                     <label for="rescod">Outlet</label>
-                    <select id="outlet_name" name="rescod" class="form-control select2" style="width: 100%;">
+                    <select value="<?php echo $rescod; ?>" required="required" id="outlet_name" name="rescod" class="form-control select2" style="width: 100%;">
                     <option selected="selected">Select Outlet</option>
                     <?php
   $sql = "select * from set090 where property_id=$property_id";
@@ -51,7 +69,7 @@ $property_id = $_SESSION['property_id'];
                   </div>
                   <div class="form-group" id="table_div">
                     <label for="tblnub">Table#</label>
-                    <select required="required" name="tblnub" class="form-control" >
+                    <select value="<?php echo $tblnub; ?>" required="required" name="tblnub" class="form-control" >
                     <option selected="selected" >Select Table</option>
                     </select>
                   </div>
@@ -59,7 +77,7 @@ $property_id = $_SESSION['property_id'];
 
                  <div class="form-group">
                   <label>Select Steward</label>
-                  <select name="userid" class="form-control select2" style="width: 100%;">
+                  <select value="<?php echo $userid; ?>" required="required" name="userid" class="form-control select2" style="width: 100%;">
                     <option selected="selected">Select Steward</option>
                     <?php
   $sql = "select * from prmusr where property_id=$property_id and CATGRY=3";
@@ -72,7 +90,7 @@ $property_id = $_SESSION['property_id'];
                 </div>
 
                 <div class="card-footer text-center">
-                  <button type="submit" name="submit" class="btn btn-primary">Save</button>
+                   <input required="required" class="btn btn-info" type="submit" name="submit" value="Save"/>
                 </div>
               </form>
             </div>
