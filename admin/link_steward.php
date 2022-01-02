@@ -118,13 +118,13 @@ if (isset($_POST['submit'])) {
                     </thead>
                     <tbody>
                      <?php
-                     $sql = "select * from posout where property_id=$property_id";
+                     $sql = "select a.*,b.lngnam from posout a,set090 b where a.rescod=b.rescod and a.property_id=$property_id";
                      $result = mysqli_query($conn, $sql);
                      while ($row = mysqli_fetch_assoc($result)) {
                       ?>
                       <tr> 
                         <td> <?php echo date('d/m/Y', strtotime($row['appdat'])); ?> </td>
-                        <td> <?php echo $row['rescod']; ?></td>
+                        <td> <?php echo $row['lngnam']; ?></td>
                         <td> <?php echo $row['tblnub']; ?></td>
                         <td> <?php echo $row['userid']; ?></td>
                         <td><a href="delete_steward.php?id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm"><i class="fa fa-times"></i> Delete</a></td>
