@@ -111,8 +111,8 @@ if (isset($_POST['submit'])) {
                       <tr>
                         <th>Applicable Date</th>
                         <th>Outlet</th>
-                        <th>Table</th>
-                        <th>Steward Name</th>
+                        <th>Table #</th>
+                        <th>Steward</th>
                         <th>Delete</th>
                       </tr>
                     </thead>
@@ -127,7 +127,7 @@ if (isset($_POST['submit'])) {
                         <td> <?php echo $row['rescod']; ?></td>
                         <td> <?php echo $row['tblnub']; ?></td>
                         <td> <?php echo $row['userid']; ?></td>
-                        <td><a href="#" class="btn btn-danger btn-sm"><i class="fa fa-times"></i> Delete</a></td>
+                        <td><a href="delete_steward.php?id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm"><i class="fa fa-times"></i> Delete</a></td>
                       </tr>
                       <?php
                     } 
