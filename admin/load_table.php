@@ -7,7 +7,7 @@ $result = mysqli_query($conn, $sql);
 ?>
 <label for="tblnub">Table#</label>
 <select required="required" name="tblnub" class="form-control" >
-<option selected="selected" >Select Table</option>
+<option value="" >Select Table</option>
 <?php
 while($row = mysqli_fetch_assoc($result)) {
 echo '<option value="' . $row['tblnub'] . '">' . $row['tblnub'] . '</option>';

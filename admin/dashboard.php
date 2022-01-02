@@ -10,11 +10,6 @@ $property_id = $_SESSION['property_id'];
    <?php include "header.php"; ?>
      <?php include "menu.php"; ?>
   <div class="content-wrapper">
-    <section class="content-header">
-      <div class="container-fluid">
-      </div>
-    </section>
-
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
@@ -40,31 +35,26 @@ $property_id = $_SESSION['property_id'];
                   </thead>
                   <tbody>
                   <tr>
-                    <td>Trident</td>
-                    <td>Internet
-                      Explorer 4.0
+                    <td>Chicken Biriyani</td>
+                    <td>2
                     </td>
-                    <td>Win 95+</td>
+                    <td>400</td>
                     <td class="text-center"><h5><span class="badge badge-info">Pending</span></h5></td>
                     <td class="text-center"><button type="button" class="btn btn-success btn-sm"><i class="fa fa-check"></i> Accept</button></td>
                     <td class="text-center"><button type="button" class="btn btn-danger btn-sm"><i class="fa fa-times"></i> Decline</button></td>
                   </tr>
                   <tr>
-                    <td>Trident</td>
-                    <td>Internet
-                      Explorer 4.0
-                    </td>
-                    <td >Win 95+</td>
+                    <td>Chill Pork</td>
+                    <td>1</td>
+                    <td >280</td>
                     <td class="text-center"><h5><span class="badge badge-success">Accepted</span></h5></td>
                      <td class="text-center"><button type="button" class="btn btn-success btn-sm"><i class="fa fa-check"></i> Accept</button></td>
                     <td class="text-center"><button type="button" class="btn btn-danger btn-sm"><i class="fa fa-times"></i> Decline</button></td>
                   </tr>
                   <tr>
-                    <td>Trident</td>
-                    <td>Internet
-                      Explorer 4.0
-                    </td>
-                    <td>Win 95+</td>
+                    <td>Beef Fry</td>
+                    <td>1</td>
+                    <td>170</td>
                     <td class="text-center"><h5><span class="badge badge-danger">Rejected</span><h5></td>
                      <td class="text-center"><button type="button" class="btn btn-success btn-sm"><i class="fa fa-check"></i> Accept</button></td>
                     <td class="text-center"><button type="button" class="btn btn-danger btn-sm"><i class="fa fa-times"></i> Decline</button></td>

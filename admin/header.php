@@ -45,7 +45,7 @@
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <div class="dropdown-divider"></div>
             <a href="#" class="dropdown-item">
-              <i class="fa fa-undo"></i> Change Password
+              <i class="fas fa-key"></i> Change Password
             </a>
             <div class="dropdown-divider"></div>
             <a href="logout.php" class="dropdown-item">
