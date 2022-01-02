@@ -14,7 +14,7 @@
            <?php if(($_SESSION['CATGRY']=="3") || ($_SESSION['CATGRY']=="1") || ($_SESSION['CATGRY']=="0")) { ?>
           <li class="nav-item">
             <a href="dashboard.php" class="nav-link">
-              <i class="nav-icon fa fa-shopping-basket"></i>
+              <i class="nav-icon fa fa-shopping-cart"></i>
               <p>
                 Orders
               </p>
