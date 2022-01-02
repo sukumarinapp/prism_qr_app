@@ -1,0 +1,40 @@
+public string ORDER_ID 
+public string Rescod 
+public string BILNUB 
+public long BilDat 
+public string TblNub 
+public string STWCOD 
+public int PaxPer 
+public List<Ord_Kot> kot 
+
+
+public int ITMCOD 
+public int ITMSRL 
+public string ITMNAM 
+public decimal QUANTY 
+public decimal RATAMT 
+public decimal ITMVAL 
+public decimal  TAXSTR 
+public decimal TAXAMT 
+public decimal MODAMT 
+public decimal MENGRP 
+public decimal MENCOD 
+public List<Ord_Modifier> Modifier 
+
+
+public int SRLNUB 
+public int MODCOD 
+public decimal QUANTY 
+public decimal CHARGE 
+public string DESCRP 
+
+order cancel
+
+public string ORDER_ID 
+public long KOTNUB 
+public long BilDat 
+public string Rescod 
+public string TblNub 
+public string STWCOD 
+public int PaxPer 
+public List<Del_Kot> kot 
