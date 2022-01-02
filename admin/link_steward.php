@@ -157,10 +157,6 @@ if (isset($_POST['submit'])) {
   <script src="dist/js/demo.js"></script>
   <script src="plugins/select2/js/select2.full.min.js"></script>
   <script>
-    $(function () {
-      bsCustomFileInput.init();
-    });
-
     $(document).ready(function () {
       $("#outlet_name").change(function() {
         var property_id = "<?php echo $property_id; ?>";
@@ -178,12 +174,6 @@ if (isset($_POST['submit'])) {
         });
       });
     });
-//-------------------
-function load_table(property_id,rescod){
-
-}
-  //-----------------
-
 </script>
 </body>
 </html>
