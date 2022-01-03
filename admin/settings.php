@@ -7,10 +7,17 @@ $property_id = $_SESSION['property_id'];
 $LANIPA="";
 if (isset($_POST['submit'])) {
   $LANIPA = trim($_POST['LANIPA']); 
+  $sql = "delete from webser where property_id=$property_id";
+  $result = mysqli_query($conn, $sql);
   $stmt = $conn->prepare("INSERT INTO webser (property_id,LANIPA) VALUES (?,?)");
   $stmt->bind_param("ss",$property_id,$LANIPA);
   $stmt->execute();
-  header("location: settings.php");
+}
+$LANIPA = "";
+$sql = "SELECT * FROM webser WHERE property_id='$property_id'";
+$result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+while($row = mysqli_fetch_array($result)){
+  $LANIPA=$row['LANIPA'];
 } 
 ?>
 <!DOCTYPE html>
@@ -33,7 +40,7 @@ if (isset($_POST['submit'])) {
                 <div class="card-body">
                   <div class="form-group">
                     <label for="LANIPA">Web Service URL</label>
-                    <input required="required" type="text" name="LANIPA" class="form-control" id="LANIPA" placeholder="URL">
+                    <input value="<?php echo $LANIPA; ?>" required="required" type="text" name="LANIPA" class="form-control" id="LANIPA" placeholder="Web Service URL">
                   </div>
 
                   <div class="card-footer text-center">
@@ -46,42 +53,7 @@ if (isset($_POST['submit'])) {
        </div>
      </section>
 
-      <section class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-12">
-            <div class="card">
-              <div class="card-header bg-secondary">
-                <h3 class="card-title">View URL</h3>
-              </div>
-              <div class="card-body">
-                <div class="table-responsive">
-                  <table id="example1" class="table table-bordered table-striped">
-                    <thead>
-                      <tr>
-                        <th>URL</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-
-                     <?php
-                     $sql = "select * from webser where property_id=$property_id";
-                     $result = mysqli_query($conn, $sql);
-                     while ($row = mysqli_fetch_assoc($result)) {
-                      ?>
-                      <tr> 
-                        <td> <?php echo $row['LANIPA']; ?></td>
-                      </tr>
-                      <?php
-                    } 
-                    ?>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      
     </div>
     <?php include "footer.php"; ?>
   </div>
