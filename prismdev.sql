@@ -1,8 +1,8 @@
--- MariaDB dump 10.17  Distrib 10.4.11-MariaDB, for Win64 (AMD64)
+-- MariaDB dump 10.19  Distrib 10.4.21-MariaDB, for Win64 (AMD64)
 --
 -- Host: localhost    Database: prismdev
 -- ------------------------------------------------------
--- Server version	10.4.11-MariaDB
+-- Server version	10.4.21-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -187,13 +187,14 @@ DROP TABLE IF EXISTS `posout`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `posout` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `property_id` int(11) NOT NULL,
   `rescod` varchar(20) NOT NULL,
   `appdat` decimal(8,0) NOT NULL,
   `tblnub` varchar(20) NOT NULL,
   `userid` varchar(20) NOT NULL,
-  PRIMARY KEY (`property_id`,`rescod`,`appdat`,`tblnub`,`userid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -202,7 +203,7 @@ CREATE TABLE `posout` (
 
 LOCK TABLES `posout` WRITE;
 /*!40000 ALTER TABLE `posout` DISABLE KEYS */;
-INSERT INTO `posout` VALUES (1,'AKO',20211223,'26','AHAMED'),(1,'BAN',20211225,'B2','SURESH');
+INSERT INTO `posout` VALUES (1,1,'BAN',20220104,'B2','RAFEEK');
 /*!40000 ALTER TABLE `posout` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -480,40 +481,6 @@ INSERT INTO `set102` VALUES (4,452,1,'',NULL,0.000,0.000,NULL),(4,452,2,'',NULL,
 UNLOCK TABLES;
 
 --
--- Table structure for table `set190`
---
-
-DROP TABLE IF EXISTS `set190`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `set190` (
-  `RESCOD` varchar(3) NOT NULL,
-  `SESSON` decimal(1,0) NOT NULL,
-  `FRMTIM` decimal(4,2) NOT NULL,
-  `LNGNAM` varchar(30) DEFAULT ' ',
-  `SHTNAM` varchar(10) DEFAULT ' ',
-  `TOOTIM` decimal(4,2) DEFAULT 0.00,
-  `STATUS` decimal(1,0) DEFAULT 0,
-  `FUTER1` varchar(10) DEFAULT ' ',
-  `FUTER2` decimal(15,3) DEFAULT 0.000,
-  `USERID` varchar(10) DEFAULT ' ',
-  `LSTDAT` decimal(8,0) DEFAULT 0,
-  `property_id` int(11) NOT NULL,
-  PRIMARY KEY (`property_id`,`RESCOD`,`SESSON`,`FRMTIM`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `set190`
---
-
-LOCK TABLES `set190` WRITE;
-/*!40000 ALTER TABLE `set190` DISABLE KEYS */;
-INSERT INTO `set190` VALUES ('AKO',6,0.00,'General','1',23.59,0,' ',0.000,'PRISM',20110930,1),('BAN',6,0.00,'General','1',23.59,0,' ',0.000,'PRISM',20111007,1),('BQT',6,0.00,'General','1',23.59,0,' ',0.000,'PRISM',20111007,1),('LAU',6,0.00,'General','1',23.59,0,' ',0.000,'PRISM',20111007,1),('MBR',6,0.00,'General','1',23.59,0,' ',0.000,'PRISM',20111007,1),('RMS',6,0.00,'General','1',23.59,0,' ',0.000,'PRISM',20111007,1),('SWI',6,0.00,'General','1',23.59,0,' ',0.000,'PRISM',20111007,1);
-/*!40000 ALTER TABLE `set190` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `set220`
 --
 
@@ -639,4 +606,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-12-22 13:26:43
+-- Dump completed on 2022-01-03  2:56:40
