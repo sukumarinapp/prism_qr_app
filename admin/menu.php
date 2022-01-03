@@ -31,6 +31,17 @@
               </p>
             </a>
           </li>
+          <?php } ?>
+
+          <?php if(($_SESSION['CATGRY']=="0") || ($_SESSION['CATGRY']=="1")) { ?>
+          <li class="nav-item <?php if($page=="settings") echo "active"; ?>">
+            <a href="settings.php" class="nav-link">
+              <i class="nav-icon fa fa-cog"></i>
+              <p>
+                Settings
+              </p>
+            </a>
+          </li>
           <?php } ?>  
         </ul>
       </nav>
