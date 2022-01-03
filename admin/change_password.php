@@ -2,7 +2,7 @@
 session_start();
 include "../config.php";
 $property_id = $_SESSION['property_id'];
-$USERID = "";
+$USERID = $_SESSION['USERID'];
 $msg="";
 $color="green"; 
 if (isset($_POST['submit'])) {
@@ -10,7 +10,7 @@ if (isset($_POST['submit'])) {
   $new_password = trim($_POST['new_password']);
   $confirm_password = trim($_POST['confirm_password']);
   $flag=false;
-  $sql = "SELECT * FROM prmusr WHERE USERID=$USERID and PASSWD='$old_password'";
+  $sql = "SELECT * FROM prmusr WHERE USERID='$USERID' and PASSWD='$old_password'";
   $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
   while($row = mysqli_fetch_array($result)){
     $flag=true;
@@ -53,6 +53,7 @@ if (isset($_POST['submit'])) {
 <div class="login-box">
   <div class="card card-outline card-primary">
     <div class="card-body">
+      <p style="color:<?php echo $color; ?>"><?php echo $msg; ?></p>
       <form action="" method="post">
         <div class="input-group mb-3">
           <input type="password" name="old_password" required="required" class="form-control" placeholder="Old Password">
