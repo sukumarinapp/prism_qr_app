@@ -36,25 +36,4 @@
       </li>
     </ul>
 
-    <ul class="navbar-nav ml-auto">
-      <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
-        <li class="nav-item dropdown">
-          <a class="nav-link" data-toggle="dropdown" href="#">
-            <i class="fa fa-user"></i>
-          </a>
-          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-            <div class="dropdown-divider"></div>
-            
-            <a href="change_password.php" class="dropdown-item">
-              <i class="fas fa-key"></i> Change Password
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="logout.php" class="dropdown-item">
-              <i class='fas fa-sign-out-alt'></i> Logout
-            </a>
-            
-          </div>
-        </li>
-      </ul>
-    </ul>
   </nav>

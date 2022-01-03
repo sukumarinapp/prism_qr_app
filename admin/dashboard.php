@@ -1,6 +1,8 @@
 <?php
 session_start();
 include "../config.php";
+$page = "Dashboard";
+$page1 = "Dashboard";
 $property_id = $_SESSION['property_id'];
 ?>
 <!DOCTYPE html>

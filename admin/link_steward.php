@@ -1,6 +1,7 @@
 <?php
 session_start();
 $page = "link steward";
+$page1 = "link steward";
 include "../config.php";
 if (($_SESSION['CATGRY'] != "0") && ($_SESSION['CATGRY'] != "1")) header("location: index.php");
 $property_id = $_SESSION['property_id'];

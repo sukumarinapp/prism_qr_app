@@ -19,6 +19,7 @@
                 Orders
               </p>
             </a>
+
           </li>
             <?php } ?>
 
@@ -30,6 +31,8 @@
                 Link Steward
               </p>
             </a>
+             <ul class="treeview  <?php if($page1=="link ") echo "active"; ?>">
+            </ul>
           </li>
           <?php } ?>
 
@@ -43,6 +46,32 @@
             </a>
           </li>
           <?php } ?>  
+
+         <?php if(($_SESSION['CATGRY']=="3") || ($_SESSION['CATGRY']=="1") || ($_SESSION['CATGRY']=="0")) { ?>
+          <li class="nav-item">
+            <a href="change_password.php" class="nav-link">
+              <i class="nav-icon fas fa-key"></i>
+              <p>
+                Change Password
+              </p>
+            </a>
+
+          </li>
+            <?php } ?>
+
+         <?php if(($_SESSION['CATGRY']=="3") || ($_SESSION['CATGRY']=="1") || ($_SESSION['CATGRY']=="0")) { ?>
+          <li class="nav-item">
+            <a href="logout.php" class="nav-link">
+              <i class="nav-icon fas fa-sign-out-alt"></i>
+              <p>
+                Logout
+              </p>
+            </a>
+
+          </li>
+            <?php } ?>
+
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
