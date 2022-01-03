@@ -27,6 +27,7 @@ $property_id = $_SESSION['property_id'];
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
+                    <th>Items</th>
                     <th>Order Id</th>
                     <th>Mobile No</th>
                     <th>Outlet</th>
@@ -41,12 +42,13 @@ $property_id = $_SESSION['property_id'];
                      while ($row = mysqli_fetch_assoc($result)) {
                       ?>
                   <tr>
+                    <td> <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal-xl">View</button></td>
                     <td> <?php echo $row['order_id']; ?> </td>
                     <td> <?php echo $row['mobile']; ?> </td>
                     <td> <?php echo $row['rescod']; ?> </td>
                     <td> <?php echo $row['tblnub']; ?> </td>
-                    <td><button type="button" class="btn btn-success btn-sm"><i class="fa fa-check"></i> Accept</button>
-                    <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-times"></i> Decline</button></td>
+                    <td><button type="button" class="btn btn-success btn-sm"><i class="fa fa-check"></i></button>
+                    <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-times"></i></button></td>
                    
                   </tr>
                    <?php
@@ -56,6 +58,69 @@ $property_id = $_SESSION['property_id'];
                 </table>
             </div>
               </div>
+
+     <div class="modal fade" id="modal-xl">
+        <div class="modal-dialog modal-xl">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Large Modal</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body"  style="width:100%">
+              <div class="card-body">
+                <div class="table-responsive">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>Action</th>
+                    <th>Items</th>
+                    <th>Quantity</th>
+                    <th>Amount</th>
+                    <th>Total</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                    <td> <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-times"></i></button> </td>
+                    <td> Chilly Chicken </td>
+                    <td> 2 </td>
+                    <td> 250 </td>
+                    <td> 250 </td>
+                   
+                  </tr>
+                  <tr>
+                    <td> <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-times"></i></button> </td>
+                    <td> Garlic Chicken </td>
+                    <td> 4 </td>
+                    <td> 800 </td>
+                    <td> 800 </td>
+                   
+                  </tr>
+                  <tr>
+                    <td> <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-times"></i></button> </td>
+                    <td> Chicken Briyani </td>
+                    <td> 4 </td>
+                    <td> 600 </td>
+                    <td> 600 </td>
+                   
+                  </tr>
+              </tbody>
+                </table>
+            </div>
+              </div>
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+
             </div>
           </div>
         </div>
