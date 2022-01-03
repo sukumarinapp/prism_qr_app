@@ -630,6 +630,29 @@ LOCK TABLES `urban_payload` WRITE;
 /*!40000 ALTER TABLE `urban_payload` DISABLE KEYS */;
 /*!40000 ALTER TABLE `urban_payload` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `webser`
+--
+
+DROP TABLE IF EXISTS `webser`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `webser` (
+  `property_id` int(11) NOT NULL,
+  `LANIPA` varchar(500) DEFAULT NULL,
+  PRIMARY KEY (`property_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `webser`
+--
+
+LOCK TABLES `webser` WRITE;
+/*!40000 ALTER TABLE `webser` DISABLE KEYS */;
+/*!40000 ALTER TABLE `webser` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -640,4 +663,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-01-03 10:59:10
+-- Dump completed on 2022-01-03 11:55:20

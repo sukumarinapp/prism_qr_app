@@ -1,4 +1,3 @@
-create session table
 handle menu item out of stock
 check restyp for restaurants dropdown ...avoid laundry
 confirm reject order
