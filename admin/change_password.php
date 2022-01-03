@@ -53,31 +53,15 @@ if (isset($_POST['submit'])) {
 <div class="login-box">
   <div class="card card-outline card-primary">
     <div class="card-body">
-      <p class="login-box-msg">You are only one step a way from your new password, recover your password now.</p>
       <form action="" method="post">
         <div class="input-group mb-3">
           <input type="password" name="old_password" required="required" class="form-control" placeholder="Old Password">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-lock"></span>
-            </div>
-          </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" name="new_password" required="required" class="form-control" placeholder="new Password">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-lock"></span>
-            </div>
-          </div>
+          <input type="password" name="new_password" required="required" class="form-control" placeholder="New Password">
         </div>
         <div class="input-group mb-3">
           <input type="password" name="confirm_password" required="required" class="form-control" placeholder="Confirm Password">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-lock"></span>
-            </div>
-          </div>
         </div>
         <div class="row">
           <div class="col-12">
