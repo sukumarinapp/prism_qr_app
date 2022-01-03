@@ -4,8 +4,10 @@ include "../config.php";
 $page = "Dashboard";
 $property_id = $_SESSION['property_id'];
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
    <?php include "header.php"; ?>
@@ -20,61 +22,45 @@ $property_id = $_SESSION['property_id'];
               <div class="card-header bg-info">
                 <h3 class="card-title">Orders</h3>
               </div>
-              <!-- /.card-header -->
               <div class="card-body">
                 <div class="table-responsive">
                 <table id="example1" class="table table-bordered table-striped">
-                  <thead class="text-center">
+                  <thead>
                   <tr>
-                    <th>Food</th>
-                    <th>Quantity</th>
-                    <th>Price</th>
-                    <th>Status</th>
-                    <th>Accept</th>
-                    <th>Decline</th>
+                    <th>Order Id</th>
+                    <th>Mobile No</th>
+                    <th>Outlet</th>
+                    <th>Table No</th>
+                    <th>Action</th>
                   </tr>
                   </thead>
                   <tbody>
+                   <?php
+                     $sql = "select * from posord where property_id=$property_id and status ='ordered' ";
+                     $result = mysqli_query($conn, $sql);
+                     while ($row = mysqli_fetch_assoc($result)) {
+                      ?>
                   <tr>
-                    <td>Chicken Biriyani</td>
-                    <td>2
-                    </td>
-                    <td>400</td>
-                    <td class="text-center"><h5><span class="badge badge-info">Pending</span></h5></td>
-                    <td class="text-center"><button type="button" class="btn btn-success btn-sm"><i class="fa fa-check"></i> Accept</button></td>
-                    <td class="text-center"><button type="button" class="btn btn-danger btn-sm"><i class="fa fa-times"></i> Decline</button></td>
+                    <td> <?php echo $row['order_id']; ?> </td>
+                    <td> <?php echo $row['mobile']; ?> </td>
+                    <td> <?php echo $row['rescod']; ?> </td>
+                    <td> <?php echo $row['tblnub']; ?> </td>
+                    <td><button type="button" class="btn btn-success btn-sm"><i class="fa fa-check"></i> Accept</button>
+                    <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-times"></i> Decline</button></td>
+                   
                   </tr>
-                  <tr>
-                    <td>Chill Pork</td>
-                    <td>1</td>
-                    <td >280</td>
-                    <td class="text-center"><h5><span class="badge badge-success">Accepted</span></h5></td>
-                     <td class="text-center"><button type="button" class="btn btn-success btn-sm"><i class="fa fa-check"></i> Accept</button></td>
-                    <td class="text-center"><button type="button" class="btn btn-danger btn-sm"><i class="fa fa-times"></i> Decline</button></td>
-                  </tr>
-                  <tr>
-                    <td>Beef Fry</td>
-                    <td>1</td>
-                    <td>170</td>
-                    <td class="text-center"><h5><span class="badge badge-danger">Rejected</span><h5></td>
-                     <td class="text-center"><button type="button" class="btn btn-success btn-sm"><i class="fa fa-check"></i> Accept</button></td>
-                    <td class="text-center"><button type="button" class="btn btn-danger btn-sm"><i class="fa fa-times"></i> Decline</button></td>
-                  </tr>
+                   <?php
+                    } 
+                    ?>
               </tbody>
                 </table>
             </div>
               </div>
-              <!-- /.card-body -->
             </div>
-            <!-- /.card -->
           </div>
-          <!-- /.col -->
         </div>
-        <!-- /.row -->
       </div>
-      <!-- /.container-fluid -->
     </section>
-    <!-- /.content -->
   </div>
      <?php include "footer.php"; ?>
 </div>
