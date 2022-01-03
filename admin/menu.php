@@ -13,7 +13,7 @@
                with font-awesome or any other icon font library -->
            <?php if(($_SESSION['CATGRY']=="3") || ($_SESSION['CATGRY']=="1") || ($_SESSION['CATGRY']=="0")) { ?>
           <li class="nav-item">
-            <a href="dashboard.php" class="nav-link">
+            <a href="dashboard.php" class="nav-link <?php if($page=="Dashboard") echo "active"; ?>">
               <i class="nav-icon fa fa-shopping-cart"></i>
               <p>
                 Orders
@@ -24,21 +24,19 @@
             <?php } ?>
 
           <?php if(($_SESSION['CATGRY']=="0") || ($_SESSION['CATGRY']=="1")) { ?>
-          <li class="nav-item <?php if($page=="link steward") echo "active"; ?>">
-            <a href="link_steward.php" class="nav-link">
+          <li class="nav-item">
+            <a href="link_steward.php" class="nav-link <?php if($page=="link steward") echo "active"; ?>">
               <i class="nav-icon fa fa-table"></i>
               <p>
                 Link Steward
               </p>
             </a>
-             <ul class="treeview  <?php if($page1=="link ") echo "active"; ?>">
-            </ul>
           </li>
           <?php } ?>
 
           <?php if(($_SESSION['CATGRY']=="0") || ($_SESSION['CATGRY']=="1")) { ?>
-          <li class="nav-item <?php if($page=="settings") echo "active"; ?>">
-            <a href="settings.php" class="nav-link">
+          <li class="nav-item ">
+            <a href="settings.php" class="nav-link <?php if($page=="settings") echo "active"; ?>">
               <i class="nav-icon fa fa-cog"></i>
               <p>
                 Settings
@@ -49,7 +47,7 @@
 
          <?php if(($_SESSION['CATGRY']=="3") || ($_SESSION['CATGRY']=="1") || ($_SESSION['CATGRY']=="0")) { ?>
           <li class="nav-item">
-            <a href="change_password.php" class="nav-link">
+            <a href="change_password.php" class="nav-link <?php if($page=="Password") echo "active"; ?>">
               <i class="nav-icon fas fa-key"></i>
               <p>
                 Change Password

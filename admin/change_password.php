@@ -1,5 +1,6 @@
 <?php
 session_start();
+$page = "Password";
 include "../config.php";
 $property_id = $_SESSION['property_id'];
 $USERID = $_SESSION['USERID'];
