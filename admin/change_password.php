@@ -35,26 +35,23 @@ if (isset($_POST['submit'])) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Change Password</title>
-
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
-  <!-- icheck bootstrap -->
-  <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
-</head>
-<body class="hold-transition login-page">
-<div class="login-box">
-  <div class="card card-outline card-primary">
-    <div class="card-body">
-      <p style="color:<?php echo $color; ?>"><?php echo $msg; ?></p>
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+   <?php include "header.php"; ?>
+   <?php include "menu.php"; ?>
+   <div class="content-wrapper">
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+             <div class="card card-info">
+              <div class="card-header">
+                <h3 class="card-title">Change Password</h3>
+              </div>
+           
       <form action="" method="post">
+          <div class="card-body">
+      <p style="color:<?php echo $color; ?>"><?php echo $msg; ?></p>
         <div class="input-group mb-3">
           <input type="password" name="old_password" required="required" class="form-control" placeholder="Old Password">
         </div>
@@ -73,8 +70,13 @@ if (isset($_POST['submit'])) {
         </div>
       </form>
     </div>
+    </div>
+         </div>
+       </div><!-- /.container-fluid -->
+     </section>
+    </div>
+    <?php include "footer.php"; ?>
   </div>
-</div>
 
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
