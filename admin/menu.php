@@ -1,7 +1,7 @@
  <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a class="brand-link">
+    <a class="brand-link text-center">
       <span class="brand-text font-weight-bold"><?php echo $_SESSION['comnam']; ?></span>
     </a>
 
