@@ -1,5 +1,4 @@
 handle menu item out of stock
 check restyp for restaurants dropdown ...avoid laundry
 confirm reject order
-postorderdata webservice configuration page
 call kumba postorderdata via static ip
