@@ -15,10 +15,10 @@ if (isset($_POST['submit'])) {
   $rescod= trim($_POST['rescod']);
   $tblnub= trim($_POST['tblnub']);
   $userid= trim($_POST['userid']);
-  $stmt = $conn->prepare("INSERT INTO posout (property_id,appdat,rescod,tblnub,userid) VALUES (?,?,?,?,?)");
-  $stmt->bind_param("sssss",$property_id,$appdat,$rescod,$tblnub,$userid);
+  $sesson= trim($_POST['sesson']);
+  $stmt = $conn->prepare("INSERT INTO posout (property_id,appdat,rescod,tblnub,userid,sesson) VALUES (?,?,?,?,?,?)");
+  $stmt->bind_param("ssssss",$property_id,$appdat,$rescod,$tblnub,$userid,$sesson);
   $stmt->execute();
-  header("location: link_steward.php");
 } 
 ?>
 <!DOCTYPE html>
@@ -62,6 +62,12 @@ if (isset($_POST['submit'])) {
                     <label for="tblnub">Table#</label>
                     <select required="required" name="tblnub" class="form-control" >
                       <option value="" >Select Table</option>
+                    </select>
+                  </div>
+                  <div class="form-group" id="session_div">
+                    <label for="SESSON">Session</label>
+                    <select required="required" name="sesson" class="form-control" >
+                      <option value="" >Select Session</option>
                     </select>
                   </div>
                   <div class="form-group">
@@ -145,13 +151,9 @@ if (isset($_POST['submit'])) {
   <script src="plugins/jquery/jquery.min.js"></script>
   <!-- Bootstrap 4 -->
   <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- bs-custom-file-input -->
-  <script src="plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
-  <!-- AdminLTE App -->
   <script src="dist/js/adminlte.min.js"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="dist/js/demo.js"></script>
-  <script src="plugins/select2/js/select2.full.min.js"></script>
   <script>
     $(document).ready(function () {
       $("#outlet_name").change(function() {
@@ -163,6 +165,7 @@ if (isset($_POST['submit'])) {
           data: {property_id: property_id, rescod: rescod},
           success: function (response) {
             $("#table_div").html(response);
+            load_session(property_id,rescod);
           },
           error : function(error){
             console.log(error);
@@ -170,6 +173,21 @@ if (isset($_POST['submit'])) {
         });
       });
     });
+
+
+    function load_session(property_id,rescod){
+      $.ajax({
+        url: "load_session.php",
+        type: "get",
+        data: {property_id: property_id, rescod: rescod},
+        success: function (response) {
+          $("#session_div").html(response);
+        },
+        error : function(error){
+          console.log(error);
+        }
+      });
+    }
 </script>
 </body>
 </html>

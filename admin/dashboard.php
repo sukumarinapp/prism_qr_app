@@ -28,10 +28,9 @@ $property_id = $_SESSION['property_id'];
                   <thead>
                   <tr>
                     <th>Items</th>
-                    <th>Order Id</th>
-                    <th>Mobile No</th>
                     <th>Outlet</th>
                     <th>Table No</th>
+                    <th>Mobile No</th>
                     <th>Action</th>
                   </tr>
                   </thead>
@@ -43,10 +42,9 @@ $property_id = $_SESSION['property_id'];
                       ?>
                   <tr>
                     <td> <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal-xl">View</button></td>
-                    <td> <?php echo $row['order_id']; ?> </td>
-                    <td> <?php echo $row['mobile']; ?> </td>
                     <td> <?php echo $row['rescod']; ?> </td>
                     <td> <?php echo $row['tblnub']; ?> </td>
+                    <td> <?php echo $row['mobile']; ?> </td>
                     <td><button type="button" class="btn btn-success btn-sm"><i class="fa fa-check"></i></button>
                     <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-times"></i></button></td>
                    
@@ -82,7 +80,7 @@ $property_id = $_SESSION['property_id'];
                   <tr>
                     <td> <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-times"></i></button> </td>
                     <td> Chilly Chicken </td>
-                    <td> 2 </td>
+                    <td> 1</td>
                     <td> 250 </td>
                     <td> 250 </td>
                    
@@ -90,17 +88,17 @@ $property_id = $_SESSION['property_id'];
                   <tr>
                     <td> <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-times"></i></button> </td>
                     <td> Garlic Chicken </td>
-                    <td> 4 </td>
-                    <td> 800 </td>
-                    <td> 800 </td>
+                    <td> 1 </td>
+                    <td> 200 </td>
+                    <td> 200 </td>
                    
                   </tr>
                   <tr>
                     <td> <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-times"></i></button> </td>
                     <td> Chicken Briyani </td>
                     <td> 4 </td>
-                    <td> 600 </td>
-                    <td> 600 </td>
+                    <td> 200 </td>
+                    <td> 800 </td>
                    
                   </tr>
               </tbody>
@@ -108,8 +106,8 @@ $property_id = $_SESSION['property_id'];
             </div>
               </div>
             </div>
-            <div class="modal-footer justify-content-right">
-              <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            <div class="modal-footer text-center">
+              <button type="button" class="btn btn-primary text-center" data-dismiss="modal">Close</button>
             </div>
           </div>
           <!-- /.modal-content -->

@@ -1,0 +1,1 @@
+alter table posout add sesson int(1) default 0;
