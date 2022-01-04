@@ -40,8 +40,8 @@ $property_id = $_SESSION['property_id'];
                      while ($row = mysqli_fetch_assoc($result)) {
                       ?>
                   <tr>
-                    <td> <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal-xl"><i class="fa fa-eye"></i>&nbsp;View</button>
-<button type="button" class="btn btn-success btn-sm"><i class="fa fa-check"></i>&nbsp;Accept</button>
+                    <td> <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal-xl"><i class="fa fa-eye"></i>&nbsp;View</button>&nbsp;
+<button type="button" class="btn btn-success btn-sm"><i class="fa fa-check"></i>&nbsp;Accept</button>&nbsp;
                     <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-times"></i>&nbsp;Decline</button>
                     </td>
                     <td> <?php echo $row['rescod']; ?> </td>
