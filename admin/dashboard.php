@@ -58,7 +58,9 @@ $property_id = $_SESSION['property_id'];
         <div class="modal-dialog modal-xl">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Items List</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
             </div>
             <div class="modal-body"  style="width:100%">
               <div class="card-body">
