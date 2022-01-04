@@ -1,10 +1,8 @@
 accept decline order
 
 add set190(session) in exe and upload.php
-from arc get PostOrderData JSON
 call kumba postorderdata via static ip
-http://localhost:4445/PosIntegration.svc/PostOrderData
-122.166.197.63 --lalith static ip
+http://122.166.197.63:98/PosIntegration.svc/PostOrderData
 
 jino
 view close x missing
