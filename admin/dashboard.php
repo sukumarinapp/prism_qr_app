@@ -27,11 +27,10 @@ $property_id = $_SESSION['property_id'];
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>Items</th>
+                    <th>Action</th>
                     <th>Outlet</th>
                     <th>Table No</th>
                     <th>Mobile No</th>
-                    <th>Action</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -41,13 +40,13 @@ $property_id = $_SESSION['property_id'];
                      while ($row = mysqli_fetch_assoc($result)) {
                       ?>
                   <tr>
-                    <td> <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal-xl">View</button></td>
+                    <td> <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal-xl"><i class="fa fa-eye"></i>&nbsp;View</button>
+<button type="button" class="btn btn-success btn-sm"><i class="fa fa-check"></i>&nbsp;Accept</button>
+                    <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-times"></i>&nbsp;Decline</button>
+                    </td>
                     <td> <?php echo $row['rescod']; ?> </td>
                     <td> <?php echo $row['tblnub']; ?> </td>
                     <td> <?php echo $row['mobile']; ?> </td>
-                    <td><button type="button" class="btn btn-success btn-sm"><i class="fa fa-check"></i></button>
-                    <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-times"></i></button></td>
-                   
                   </tr>
                    <?php
                     } 
@@ -69,8 +68,8 @@ $property_id = $_SESSION['property_id'];
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>Action</th>
-                    <th>Items</th>
+                    <!-- <th>Action</th> -->
+                    <th>Item</th>
                     <th>Quantity</th>
                     <th>Amount</th>
                     <th>Total</th>
@@ -78,7 +77,7 @@ $property_id = $_SESSION['property_id'];
                   </thead>
                   <tbody>
                   <tr>
-                    <td> <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-times"></i></button> </td>
+                    <!-- <td> <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-times"></i></button> </td> -->
                     <td> Chilly Chicken </td>
                     <td> 1</td>
                     <td> 250 </td>
@@ -86,7 +85,7 @@ $property_id = $_SESSION['property_id'];
                    
                   </tr>
                   <tr>
-                    <td> <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-times"></i></button> </td>
+                    <!-- <td> <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-times"></i></button> </td> -->
                     <td> Garlic Chicken </td>
                     <td> 1 </td>
                     <td> 200 </td>
@@ -94,7 +93,7 @@ $property_id = $_SESSION['property_id'];
                    
                   </tr>
                   <tr>
-                    <td> <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-times"></i></button> </td>
+                    <!-- <td> <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-times"></i></button> </td> -->
                     <td> Chicken Briyani </td>
                     <td> 4 </td>
                     <td> 200 </td>

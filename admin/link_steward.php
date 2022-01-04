@@ -121,7 +121,8 @@ if (isset($_POST['submit'])) {
                     <tbody>
 
                      <?php
-                     $sql = "select a.*,b.lngnam,c.SESSON,c.LNGNAM as SESNAM from posout a,set090 b,set190 c where a.rescod=b.rescod and a.rescod=c.RESCOD and a.property_id=$property_id";
+                     $today = date("Ymd");
+                     $sql = "select a.*,b.lngnam,c.SESSON,c.LNGNAM as SESNAM from posout a,set090 b,set190 c where a.appdat >= $today and a.rescod=b.rescod and a.rescod=c.RESCOD and a.property_id=$property_id";
                      $result = mysqli_query($conn, $sql);
                      while ($row = mysqli_fetch_assoc($result)) {
                       ?>
