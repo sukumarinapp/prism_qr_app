@@ -4,3 +4,8 @@ call kumba postorderdata via static ip
 
 add set190(session) in exe and upload.php
 from arc get PostOrderData JSON
+
+view close x missing
+align center close button
+OUTSTK ribbon
+menumaster Istock NoStock
