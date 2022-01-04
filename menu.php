@@ -261,7 +261,7 @@ while($row = mysqli_fetch_array($result)){
       </script>
       <div id="menu_item" >
       <?php
-        $sql = "select a.MENGRP,a.ITMNAM,a.ITMCOD,b.PRICE,b.TAXSTR,c.LNGNAM,a.DESCRP from posmas a,posrat b,set100 c where  a.MENGRP=c.GRPCOD and a.property_id=b.property_id and a.property_id=c.property_id and a.property_id='$property_id' and a.ITMCOD=b.ITMCOD and b.RESCOD='$rescod'"; 
+        $sql = "select a.MENGRP,a.ITMNAM,a.ITMCOD,b.PRICE,b.TAXSTR,c.LNGNAM,a.DESCRP,a.STKOUT from posmas a,posrat b,set100 c where  a.MENGRP=c.GRPCOD and a.property_id=b.property_id and a.property_id=c.property_id and a.property_id='$property_id' and a.ITMCOD=b.ITMCOD and b.RESCOD='$rescod'"; 
         if($MENTYP!=0) $sql .= " and MENTYP='$MENTYP'"; 
         if($MENGRP!=0) $sql .= " and MENGRP='$MENGRP'"; 
         $sql .= " order by GRPCOD,ITMNAM";
