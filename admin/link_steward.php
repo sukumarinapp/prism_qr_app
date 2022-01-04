@@ -102,9 +102,9 @@ if (isset($_POST['submit'])) {
         <div class="row">
           <div class="col-12">
             <div class="card">
-              <div class="card-header bg-secondary">
+              <!-- <div class="card-header bg-secondary">
                 <h3 class="card-title">View Steward</h3>
-              </div>
+              </div> -->
               <div class="card-body">
                 <div class="table-responsive">
                   <table id="example1" class="table table-bordered table-striped">
@@ -153,11 +153,18 @@ if (isset($_POST['submit'])) {
   <script src="plugins/jquery/jquery.min.js"></script>
   <!-- Bootstrap 4 -->
   <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
   <script src="dist/js/adminlte.min.js"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="dist/js/demo.js"></script>
   <script>
     $(document).ready(function () {
+      
+      $("#example1").DataTable();
+
       $("#outlet_name").change(function() {
         var property_id = "<?php echo $property_id; ?>";
         var rescod = $("#outlet_name").val();
@@ -190,6 +197,7 @@ if (isset($_POST['submit'])) {
         }
       });
     }
+</script>
 </script>
 </body>
 </html>
