@@ -29,8 +29,7 @@ $property_id = $_SESSION['property_id'];
                   <tr>
                     <th>Action</th>
                     <th>Outlet</th>
-                    <th>Table No</th>
-                    <th>Mobile No</th>
+                    <th>Table#</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -46,7 +45,6 @@ $property_id = $_SESSION['property_id'];
                     </td>
                     <td> <?php echo $row['rescod']; ?> </td>
                     <td> <?php echo $row['tblnub']; ?> </td>
-                    <td> <?php echo $row['mobile']; ?> </td>
                   </tr>
                    <?php
                     } 
