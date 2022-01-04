@@ -27,10 +27,9 @@ $property_id = $_SESSION['property_id'];
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>Item Code</th>
-                    <th>Items</th>
-                    <th>Price</th>
-                    <th>Stock</th>
+                    <th>Code</th>
+                    <th style="width:200px">Name</th>
+                    <th style="width:300px">Stock</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -42,11 +41,11 @@ $property_id = $_SESSION['property_id'];
                   <tr>
                     <td> <?php echo $row['ITMCOD']; ?> </td>
                     <td> <?php echo $row['ITMNAM']; ?> </td>
-                    <td>  </td>
                     <td> <input type="radio" id="radio0" name="r1">
                         Available&nbsp;
                         <input type="radio" id="radio1" name="r1">
-                        Out of Stock
+                        Out of Stock&nbsp;
+                        <button type="button" class="btn btn-primary btn-sm"> update</button>
                          </td>
                   </tr>
                    <?php
