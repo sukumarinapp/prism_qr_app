@@ -36,6 +36,17 @@
 
           <?php if(($_SESSION['CATGRY']=="0") || ($_SESSION['CATGRY']=="1")) { ?>
           <li class="nav-item ">
+            <a href="items.php" class="nav-link <?php if($page=="menu") echo "active"; ?>">
+              <i class="nav-icon fa fa-list-alt"></i>
+              <p>
+                Menu
+              </p>
+            </a>
+          </li>
+          <?php } ?>
+
+         <?php if(($_SESSION['CATGRY']=="0") || ($_SESSION['CATGRY']=="1")) { ?>
+          <li class="nav-item ">
             <a href="settings.php" class="nav-link <?php if($page=="settings") echo "active"; ?>">
               <i class="nav-icon fa fa-cog"></i>
               <p>
