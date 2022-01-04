@@ -8,4 +8,5 @@ jino
 view close x missing
 align center close button
 OUTSTK ribbon
-menumaster Istock NoStock
+menumaster Instock NoStock
+login button center align
