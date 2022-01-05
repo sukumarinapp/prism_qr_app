@@ -19,6 +19,7 @@ if (isset($_POST['submit'])) {
   $stmt = $conn->prepare("INSERT INTO posout (property_id,appdat,rescod,tblnub,userid,sesson) VALUES (?,?,?,?,?,?)");
   $stmt->bind_param("ssssss",$property_id,$appdat,$rescod,$tblnub,$userid,$sesson);
   $stmt->execute();
+  header("location: link_steward.php");
 } 
 ?>
 <!DOCTYPE html>
@@ -40,11 +41,34 @@ if (isset($_POST['submit'])) {
               </div>
               <form method="post" action="" >
                 <div class="card-body">
-                  <div class="form-group">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
                     <label for="appdat">Applicable Date</label>
                     <input min="<?php echo date("Y-m-d"); ?>" value="<?php echo $appdat; ?>" required="required" type="date" name="appdat" class="form-control" id="appdat" placeholder="">
                   </div>
-                  <div class="form-group">
+                  <div class="row">
+                  <div class="col-md-6">
+                <div class="form-group" id="table_div">
+                    <label for="tblnub">Table#</label>
+                    <select required="required" name="tblnub" class="form-control" >
+                      <option value="" >Select Table</option>
+                    </select>
+                  </div>
+                </div>
+                  <div class="col-md-6">
+                   <div class="form-group" id="session_div">
+                    <label for="SESSON">Session</label>
+                    <select required="required" name="sesson" class="form-control" >
+                      <option value="" >Select Session</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+              <!-- /.col -->
+              <div class="col-md-6">
+                 <div class="form-group">
                     <label for="rescod">Outlet</label>
                     <select value="<?php echo $rescod; ?>" required="required" id="outlet_name" name="rescod" class="form-control select2" style="width: 100%;">
 
@@ -58,19 +82,7 @@ if (isset($_POST['submit'])) {
                       ?>
                     </select>
                   </div>
-                  <div class="form-group" id="table_div">
-                    <label for="tblnub">Table#</label>
-                    <select required="required" name="tblnub" class="form-control" >
-                      <option value="" >Select Table</option>
-                    </select>
-                  </div>
-                  <div class="form-group" id="session_div">
-                    <label for="SESSON">Session</label>
-                    <select required="required" name="sesson" class="form-control" >
-                      <option value="" >Select Session</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
+                <div class="form-group">
                     <label>Select Steward</label>
                     <select value="<?php echo $userid; ?>" required="required" name="userid" class="form-control" style="width: 100%;">
                       <option value="">Select Steward</option>
@@ -83,18 +95,16 @@ if (isset($_POST['submit'])) {
                       ?>
                     </select>
                   </div>
-
-                  <div class="card-footer text-center">
+              </div>
+            </div>
+          <div class="card-footer text-center">
                    <input class="btn btn-primary" type="submit" name="submit" value="Save"/>
                  </div>
-               </form>
-             </div>
-
-
+                 </form>
+               </div>
            </div>
-           <!--/.col (right) -->
          </div>
-       </div><!-- /.container-fluid -->
+       </div>
      </section>
 
      <section class="content">

@@ -41,9 +41,9 @@ $property_id = $_SESSION['property_id'];
                   <tr>
                     <td> <?php echo $row['ITMCOD']; ?> </td>
                     <td> <?php echo $row['ITMNAM']; ?> </td>
-                    <td> <input type="radio" id="radio0" name="r1">
+                    <td> <input <?php if($row['STKOUT'] == "0") echo " checked='checked' "; ?> type="radio"  name="stkradio<?php echo $row['ITMCOD']; ?>">
                         Available&nbsp;
-                        <input type="radio" id="radio1" name="r1">
+                        <input <?php if($row['STKOUT'] == 1) echo " checked='checked' "; ?> type="radio"  name="stkradio<?php echo $row['ITMCOD']; ?>">
                         Out of Stock&nbsp;
                         <button type="button" class="btn btn-primary btn-sm"> update</button>
                          </td>
