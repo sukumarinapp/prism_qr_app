@@ -11,4 +11,9 @@ OUTSTK ribbon
 menumaster Instock NoStock
 login button center align
 
+8301852174 - renjith lal
+9486609654 - john mathew
+
+git clone https://github.com/sukumarinapp/fleetopsanand.git
+
 

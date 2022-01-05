@@ -45,7 +45,7 @@ $property_id = $_SESSION['property_id'];
                         Available&nbsp;
                         <input <?php if($row['STKOUT'] == 1) echo " checked='checked' "; ?> type="radio" value="1" name="stkradio<?php echo $row['ITMCOD']; ?>">
                         Out of Stock&nbsp;
-                        <button type="button" onclick="updatestock()" class="btn btn-primary btn-sm"> update</button>
+                        <button type="button" onclick="updatestock(<?php echo $row['ITMCOD']; ?>,'stkradio<?php echo $row['ITMCOD']; ?>')" class="btn btn-primary btn-sm"> update</button>
                          </td>
                   </tr>
                    <?php
@@ -97,9 +97,26 @@ $property_id = $_SESSION['property_id'];
       $(this).bootstrapSwitch('state', $(this).prop('checked'));
     })
     })
-function updatestock(<?php echo $row['ITMCOD']; ?>) {
-  alert("");
-}
+  
+  function updatestock(itmcod,radioname) {
+    var STKOUT = $("input[name='"+radioname+"']:checked").val();
+    var property_id = "<?php echo $property_id; ?>";
+    $.ajax({
+      url: "update_stock.php",
+      type: "post",
+      data: {itmcod: itmcod, STKOUT: STKOUT,property_id: property_id},
+      success: function (html) {
+        if(STKOUT == 0){
+          alert("Item status updated as available");
+        }else{
+          alert("Item status updated as out of stock");
+        }
+      },
+      error : function(error){
+        console.log(error);
+      }
+    });
+  }
 
 
 </script>
