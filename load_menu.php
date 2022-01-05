@@ -47,6 +47,13 @@ while($row = mysqli_fetch_array($result)){
 			 			<?php echo strtolower($row['DESCRP']); ?>
 		        	</div>
     			</div>
+    			 <?php if($row['STKOUT'] == 1) { ?>
+               <div class="row">
+                  <div class="col-md-12 col-sm-12 col-xs-12 text-danger font-weight-bold">
+              Out Of Stock
+                </div>
+              </div>
+          <?php } ?>
  				<div class="row">
 			  		<div class="col-md-12 col-sm-12 col-xs-12 font-weight-bold">
  						<span class="align-middle">&#2352; <?php echo number_format($row['PRICE'],2); ?></span>
@@ -65,7 +72,9 @@ while($row = mysqli_fetch_array($result)){
  					</div>
  					<div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6 quantity_span pull-right">
  						<span class="add_button_span" style="position: absolute;right:0;bottom:0">
+ 							 <?php if($row['STKOUT'] == 0) { ?>
  							<button style="background-color:#c55c58;border-radius: 15px;color: white;" class="pull-right btn btn-sm font-weight-bold add_qty" >Add</button>
+ 							<?php } ?>
  						</span>
  						<span class="plus_minus_span qty" style="display: none;position: absolute;right:0;bottom:0">
 	 						<input type="hidden" class="itmcod" value="<?php echo $row['ITMCOD']; ?>" />

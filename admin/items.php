@@ -76,9 +76,6 @@ $property_id = $_SESSION['property_id'];
 <script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 <script src="plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
 <script src="plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-<script src="plugins/jszip/jszip.min.js"></script>
-<script src="plugins/pdfmake/pdfmake.min.js"></script>
-<script src="plugins/pdfmake/vfs_fonts.js"></script>
 <script src="plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
@@ -92,12 +89,7 @@ $property_id = $_SESSION['property_id'];
   $(document).ready(function () {
       $("#example1").DataTable();
   });
- $(function () {
-    $("input[data-bootstrap-switch]").each(function(){
-      $(this).bootstrapSwitch('state', $(this).prop('checked'));
-    })
-    })
-  
+
   function updatestock(itmcod,radioname) {
     var STKOUT = $("input[name='"+radioname+"']:checked").val();
     var property_id = "<?php echo $property_id; ?>";
