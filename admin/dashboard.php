@@ -34,7 +34,7 @@ $property_id = $_SESSION['property_id'];
 											</thead>
 											<tbody>
 												<?php
-												$sql = "select * from posord where property_id=$property_id and status ='ordered'";
+												$sql = "select * from posord where property_id=$property_id and order_id in (select distinct order_id from posord where status ='ordered')";
 												$result = mysqli_query($conn, $sql);
 												while ($row = mysqli_fetch_assoc($result)) {
 													$order_id = $row['order_id'];
@@ -55,7 +55,7 @@ $property_id = $_SESSION['property_id'];
 									</div>
 								</div>
 								<?php
-								$sql = "select * from posord where property_id=$property_id and status ='ordered'";
+								$sql = "select * from posord where property_id=$property_id and order_id in (select distinct order_id from posord where status ='ordered')";
 								$result = mysqli_query($conn, $sql);
 								while ($row = mysqli_fetch_assoc($result)) {
 									$order_id = $row['order_id'];
@@ -88,7 +88,7 @@ $property_id = $_SESSION['property_id'];
 																	while ($row2 = mysqli_fetch_assoc($result2)) {
 																		?>
 																		<tr>
-																			<td> <button type="button" class="btn btn-sm btn-danger click_item_cancel"><i class="fa fa-times"></i></button> </td>
+																			<td> <button type="button" class="btn btn-sm btn-danger click_item_cancel"><i class="fa fa-times">&nbsp;Remove</i></button> </td>
 																			<td><?php echo $row2['itmnam']; ?></td>
 																			<td><?php echo $row2['itmqty']; ?></td>
 																			<td><?php echo $row2['itmrat']; ?></td>
@@ -148,11 +148,13 @@ $property_id = $_SESSION['property_id'];
 				$("button", this).toggleClass("btn btn-success btn-sm click_item_cancel");
 				if ($(this).find('i').hasClass("fa-times")){
 					$(this).find('i').removeClass('fa-times');
+					$(this).find('i').html('&nbsp;Accept');
 					$(this).removeClass('btn-danger');
 					$(this).find('i').addClass('fa-check');
 					$(this).addClass('btn-success');
 				} else {
 					$(this).find('i').removeClass('fa-check');
+					$(this).find('i').html('&nbsp;Remove');
 					$(this).removeClass('btn-success');
 					$(this).find('i').addClass('fa-times');
 					$(this).addClass('btn-danger');
