@@ -151,6 +151,29 @@ while($row = mysqli_fetch_array($result)){
     background-color: ;
   } 
 
+  .red_ribbon {
+   position: absolute;
+   right: -6px; top: -6px;
+   z-index: 1;
+   overflow: hidden;
+   width: 80px; height: 80px; 
+   text-align: right;
+}
+.red_ribbon span {
+   font-size: 15px;
+   color: #fff; 
+   text-align: center;
+   font-weight: bold; line-height: 22px;
+   transform: rotate(45deg);
+   -webkit-transform: rotate(45deg); 
+   width: 110px; display: block;
+   background: #c55c58;
+   background: linear-gradient(#c55c58 0%, #c55c58 100%);
+   box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
+   position: absolute;
+   top: 20px; right: -22px;
+}
+
 </style>
 </head>
 
@@ -271,7 +294,10 @@ while($row = mysqli_fetch_array($result)){
       <div class="row clearfix no-gutters">
     <div class="col-md-12 col-sm-12 col-xs-12">
         <div style="background-color:whitesmoke;" class="card text-black">
-        <div class="card-body ">
+        <div class="card-body ">  
+<?php if($row['STKOUT'] == 1) { ?>
+          <div class="red_ribbon"><span>out of stock</span></div>
+          <?php } ?>
           <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12 font-weight-bold">
             <?php echo ucwords(strtolower($row['ITMNAM'])); ?>
@@ -282,13 +308,7 @@ while($row = mysqli_fetch_array($result)){
             <?php echo strtolower($row['DESCRP']); ?>
               </div>
           </div>
-          <?php if($row['STKOUT'] == 1) { ?>
-          <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12 text-danger font-weight-bold">
-              Out Of Stock
-              </div>
-          </div>
-          <?php } ?>
+         
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12 font-weight-bold">
             <span class="align-middle">&#2352; <?php echo number_format($row['PRICE'],2); ?></span>

@@ -37,6 +37,9 @@ while($row = mysqli_fetch_array($result)){
 		<div class="col-md-12 col-sm-12 col-xs-12">
 		    <div style="background-color:whitesmoke;" class="card text-black">
 			  <div class="card-body ">
+			  	 <?php if($row['STKOUT'] == 1) { ?>
+          <div class="red_ribbon"><span>out of stock</span></div>
+          <?php } ?>
 			  	<div class="row">
 			  		<div class="col-md-12 col-sm-12 col-xs-12 font-weight-bold">
 			 			<?php echo ucwords(strtolower($row['ITMNAM'])); ?>
@@ -47,13 +50,6 @@ while($row = mysqli_fetch_array($result)){
 			 			<?php echo strtolower($row['DESCRP']); ?>
 		        	</div>
     			</div>
-    			 <?php if($row['STKOUT'] == 1) { ?>
-               <div class="row">
-                  <div class="col-md-12 col-sm-12 col-xs-12 text-danger font-weight-bold">
-              Out Of Stock
-                </div>
-              </div>
-          <?php } ?>
  				<div class="row">
 			  		<div class="col-md-12 col-sm-12 col-xs-12 font-weight-bold">
  						<span class="align-middle">&#2352; <?php echo number_format($row['PRICE'],2); ?></span>
