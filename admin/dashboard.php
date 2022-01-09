@@ -6,6 +6,29 @@ $USERID = $_SESSION['USERID'];
 include "../config.php";
 $page = "Dashboard";
 $today = date("Ymd");
+$item_count = 0;
+
+if($CATGRY == 3){
+  $sql = "select count(*) as item_count from posord a,poskot b where a.order_id=b.order_id and property_id=$property_id and b.status ='ordered' and tblnub in (select tblnub from posout c where a.rescod=c.rescod and userid='$USERID' and property_id=$property_id and appdat = (select max(appdat) from posout d where c.userid=d.userid and appdat <= $today )) ";
+}else{
+  $sql = "select count(*) as item_count from posord  a,poskot b where a.order_id=b.order_id and  property_id=$property_id and b.status ='ordered'";
+}
+$result = mysqli_query($conn, $sql);
+while ($row = mysqli_fetch_assoc($result)) {
+  $item_count = $row['item_count'];
+}
+
+$order_count=0;
+if($CATGRY == 3){
+$sql = "select count(*) as ordcnt from posord a where property_id=$property_id and tblnub in (select tblnub from posout b where a.rescod=b.rescod and userid='$USERID' and property_id=$property_id and appdat = (select max(appdat) from posout c where b.userid=c.userid and appdat <= $today )) and order_id in (select distinct order_id from posord where status ='ordered')";
+}else{
+$sql = "select count(*) as ordcnt from posord where property_id=$property_id and order_id in (select distinct order_id from posord where property_id=$property_id and  status ='ordered')";
+}
+$result = mysqli_query($conn, $sql);
+while ($row = mysqli_fetch_assoc($result)) {
+$order_count = $row['ordcnt'];
+}
+
 if($CATGRY == 3){
 $sql = "select * from posord a where property_id=$property_id and tblnub in (select tblnub from posout b where a.rescod=b.rescod and userid='$USERID' and property_id=$property_id and appdat = (select max(appdat) from posout c where b.userid=c.userid and appdat <= $today )) and order_id in (select distinct order_id from posord where status ='ordered')";
 }else{
@@ -31,7 +54,7 @@ $sql = "select * from posord where property_id=$property_id and order_id in (sel
 					<h3 class="card-title">Orders</h3>
 				</div>
 				<form>
-					<input value="<?php echo $order_count; ?>" type="hidden" name="order_count" id="order_count" />
+					<input value="<?php echo $item_count; ?>" type="hidden" name="item_count" id="item_count" />
 				</form>
 				<div class="card-body">
 					<div class="table-responsive">
@@ -171,6 +194,7 @@ if ($(this).find('i').hasClass("fa-times")){
 });
 });
 
+var item_count = "<?php echo $item_count; ?>";
 var order_count = "<?php echo $order_count; ?>";
 var property_id = "<?php echo $property_id; ?>";
 var userid = "<?php echo $USERID; ?>";
@@ -183,9 +207,9 @@ function check_order(){
       data: {catgry: catgry, order_count: order_count, property_id: property_id, userid: userid},
       success: function (response) {
       	response = JSON.parse(response);
-      	var new_order_count = response.order_count;
-      	if(order_count != new_order_count){
-      		alert("order update");
+      	var new_item_count = response.item_count;
+      	if(item_count != new_item_count){
+      		alert("Order Update");
       		window.location.href = "dashboard.php";
       	}
       },

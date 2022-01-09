@@ -6,15 +6,15 @@ $userid = $_REQUEST['userid'];
 $catgry = $_REQUEST['catgry'];
 $today = date("Ymd");
 $order = array();
-$order_count = 0;
+$item_count = 0;
 if($catgry == 3){
-  $notification_sql = "select count(*) as ordcnt from posord a where property_id=$property_id and tblnub in (select tblnub from posout b where a.rescod=b.rescod and userid='$userid' and property_id=$property_id and appdat = (select max(appdat) from posout c where b.userid=c.userid and appdat <= $today )) and order_id in (select distinct order_id from posord where status ='ordered')";
+  $sql = "select count(*) as item_count from posord a,poskot b where a.order_id=b.order_id and property_id=$property_id and b.status ='ordered' and tblnub in (select tblnub from posout c where a.rescod=c.rescod and userid='$userid' and property_id=$property_id and appdat = (select max(appdat) from posout d where c.userid=d.userid and appdat <= $today )) ";
 }else{
-  $notification_sql = "select count(*) as ordcnt from posord where property_id=$property_id and order_id in (select distinct order_id from posord where property_id=$property_id and  status ='ordered')";
+  $sql = "select count(*) as item_count from posord  a,poskot b where a.order_id=b.order_id and  property_id=$property_id and b.status ='ordered'";
 }
-$notification_result = mysqli_query($conn, $notification_sql);
-while ($notification_row = mysqli_fetch_assoc($notification_result)) {
-  $order_count = $notification_row['ordcnt'];
+$result = mysqli_query($conn, $sql);
+while ($row = mysqli_fetch_assoc($result)) {
+  $item_count = $row['item_count'];
 }
-$order['order_count'] = $order_count;
+$order['item_count'] = $item_count;
 echo json_encode($order,true);
