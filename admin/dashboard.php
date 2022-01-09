@@ -73,8 +73,8 @@ $sql = "select * from posord where property_id=$property_id and order_id in (sel
 									$order_id = $row['order_id'];
 									?>
 									<tr>
-										<td> <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal-xl<?php echo $order_id; ?>"><i class="fa fa-eye"></i>&nbsp;View</button>&nbsp;
-											<button type="button" class="btn btn-success btn-sm"><i class="fa fa-check"></i>&nbsp;Accept</button>&nbsp;
+										<td> <button  type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal-xl<?php echo $order_id; ?>"><i class="fa fa-eye"></i>&nbsp;View</button>&nbsp;
+											<button onclick="accept_order('modal-xl<?php echo $order_id; ?>',<?php echo $row['order_id']; ?>)" type="button" class="btn btn-success btn-sm"><i class="fa fa-check"></i>&nbsp;Accept</button>&nbsp;
 											<button type="button" class="btn btn-danger btn-sm"><i class="fa fa-times"></i>&nbsp;Decline</button>
 										</td>
 										<td> <?php echo $row['rescod']; ?> </td>
@@ -92,56 +92,62 @@ $sql = "select * from posord where property_id=$property_id and order_id in (sel
 				while ($row = mysqli_fetch_assoc($result)) {
 					$order_id = $row['order_id'];
 					?>
-					<div class="modal fade" id="modal-xl<?php echo $order_id; ?>">
-						<div class="modal-dialog modal-xl">
-							<div class="modal-content">
-								<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-									</button>
-								</div>
-								<div class="modal-body"  style="width:100%">
-									<div class="card-body">
-										<div class="table-responsive">
-											<table id="example1" class="table table-bordered table-striped">
-												<thead>
-													<tr>
-														<th>Action</th>
-														<th>Item</th>
-														<th>Qty</th>
-														<th>Rate</th>
-														<th>Total</th>
-													</tr>
-												</thead>
-												<tbody>
-		`											<?php
-													$sql2 = "select * from poskot where status ='ordered' and order_id = $order_id";
-													$result2 = mysqli_query($conn, $sql2);
-													while ($row2 = mysqli_fetch_assoc($result2)) {
-														?>
-														<tr>
-															<td> <button type="button" class="btn btn-sm btn-danger click_item_cancel"><i class="fa fa-times">&nbsp;Remove</i></button> </td>
-															<td><?php echo $row2['itmnam']; ?></td>
-															<td><?php echo $row2['itmqty']; ?></td>
-															<td><?php echo $row2['itmrat']; ?></td>
-															<td><?php echo $row2['itmval']; ?></td>
-														</tr>
-														<?php
-													} 
-													?>
-												</tbody>
-											</table>
-										</div>
-									</div>
-								</div>
-								<div class="modal-footer text-center">
-									<button type="button" class="btn btn-primary text-center" data-dismiss="modal">Close</button>
-								</div>
-							</div>
-							<!-- /.modal-content -->
-						</div>
-						<!-- /.modal-dialog -->
-					</div>
+<div class="modal fade" id="modal-xl<?php echo $order_id; ?>">
+<div class="modal-dialog modal-xl">
+<div class="modal-content">
+<div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		<span aria-hidden="true">&times;</span>
+	</button>
+</div>
+<div class="modal-body"  style="width:100%">
+	<div class="card-body">
+		<div class="table-responsive">
+			<table id="example1" class="table table-bordered table-striped">
+				<thead>
+					<tr>
+						<th>Action</th>
+						<th>Item</th>
+						<th>Qty</th>
+						<th>Rate</th>
+						<th>Total</th>
+					</tr>
+				</thead>
+				<tbody>
+`											<?php
+					$sql2 = "select * from poskot where status ='ordered' and order_id = $order_id";
+					$result2 = mysqli_query($conn, $sql2);
+					while ($row2 = mysqli_fetch_assoc($result2)) {
+						?>
+						<tr>
+							<td> <button type="button" class="btn btn-sm btn-danger click_item_cancel"><i class="fa fa-times">&nbsp;Remove</i></button> </td>
+							<td>
+							<input value="<?php echo $row2['itmcod']; ?>" type="hidden" name="itmcod[]" />
+							<input value="<?php echo $row2['itmnam']; ?>" type="hidden" name="itmnam[]" />
+							<input value="<?php echo $row2['itmqty']; ?>" type="hidden" name="itmqty[]" />
+							<input value="<?php echo $row2['itmrat']; ?>" type="hidden" name="itmrat[]" />
+							<input value="<?php echo $row2['itmval']; ?>" type="hidden" name="itmval[]" />
+								<?php echo $row2['itmnam']; ?></td>
+							<td><?php echo $row2['itmqty']; ?></td>
+							<td><?php echo $row2['itmrat']; ?></td>
+							<td><?php echo $row2['itmval']; ?></td>
+						</tr>
+						<?php
+					} 
+					?>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<div class="modal-footer text-center">
+	<button type="button" class="btn btn-primary text-center" data-dismiss="modal">Close</button>
+</div>
+</div>
+<!-- /.modal-content -->
+</div>
+<!-- /.modal-dialog -->
+</div>
 					<?php
 				} 
 				?>
@@ -219,6 +225,11 @@ function check_order(){
     });
 }
 setInterval(check_order, 10000);
+
+function accept_order(modal_id,order_id){
+	console.log(order_id);
+	console.log($("#"+modal_id).find("#example1 > tbody").html());
+}
 
 </script>
 </body>
