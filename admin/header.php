@@ -36,28 +36,19 @@
     <ul class="navbar-nav">
 
  <?php
-    $notification_count=0;
-    if($_SESSION['CATGRY']=="1"){ 
-    $notification_sql = "select * from posord where status='ordered'";
-  
-  
-    }else 
-    {
-      $USERID=$_SESSION['USERID'];
-      $notification_sql = "select * from posord where status='ordered'";
-  
-    }
-      $notification_result = mysqli_query($conn, $notification_sql);
-        while ($notification_row = mysqli_fetch_assoc($notification_result)) {
-      
-            $notification_count++;
-        }
-    
-  ?>
-             
-
+  $order_count=0;
+  if($CATGRY == 3){
+    $notification_sql = "select count(*) as ordcnt from posord a where property_id=$property_id and tblnub in (select tblnub from posout b where a.rescod=b.rescod and userid='$USERID' and property_id=$property_id and appdat = (select max(appdat) from posout c where b.userid=c.userid and appdat <= $today )) and order_id in (select distinct order_id from posord where status ='ordered')";
+  }else{
+    $notification_sql = "select count(*) as ordcnt from posord where property_id=$property_id and order_id in (select distinct order_id from posord where property_id=$property_id and  status ='ordered')";
+  }
+  $notification_result = mysqli_query($conn, $notification_sql);
+  while ($notification_row = mysqli_fetch_assoc($notification_result)) {
+    $order_count = $notification_row['ordcnt'];
+  }
+?>
         <li class="nav-item" style="padding-left: 20px;">
-          <div class="badge badge-success"><?php echo $notification_count; ?></div>
+          <div id="order_count_badge" class="badge badge-success"><?php echo $order_count; ?></div>
         </li>
       </ul>
   </nav>

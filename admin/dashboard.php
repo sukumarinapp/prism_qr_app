@@ -1,8 +1,16 @@
 <?php
 session_start();
+$property_id = $_SESSION['property_id'];
+$CATGRY = $_SESSION['CATGRY'];
+$USERID = $_SESSION['USERID'];
 include "../config.php";
 $page = "Dashboard";
-$property_id = $_SESSION['property_id'];
+$today = date("Ymd");
+if($CATGRY == 3){
+$sql = "select * from posord a where property_id=$property_id and tblnub in (select tblnub from posout b where a.rescod=b.rescod and userid='$USERID' and property_id=$property_id and appdat = (select max(appdat) from posout c where b.userid=c.userid and appdat <= $today )) and order_id in (select distinct order_id from posord where status ='ordered')";
+}else{
+$sql = "select * from posord where property_id=$property_id and order_id in (select distinct order_id from posord where property_id=$property_id and  status ='ordered')";
+}
 ?>
 
 <!DOCTYPE html>
@@ -22,6 +30,9 @@ $property_id = $_SESSION['property_id'];
 				<div class="card-header bg-info">
 					<h3 class="card-title">Orders</h3>
 				</div>
+				<form>
+					<input value="<?php echo $order_count; ?>" type="hidden" name="order_count" id="order_count" />
+				</form>
 				<div class="card-body">
 					<div class="table-responsive">
 						<table id="example1" class="table table-bordered table-striped">
@@ -34,7 +45,6 @@ $property_id = $_SESSION['property_id'];
 							</thead>
 							<tbody>
 								<?php
-								$sql = "select * from posord where property_id=$property_id and order_id in (select distinct order_id from posord where status ='ordered')";
 								$result = mysqli_query($conn, $sql);
 								while ($row = mysqli_fetch_assoc($result)) {
 									$order_id = $row['order_id'];
@@ -55,7 +65,6 @@ $property_id = $_SESSION['property_id'];
 					</div>
 				</div>
 				<?php
-				$sql = "select * from posord where property_id=$property_id and order_id in (select distinct order_id from posord where status ='ordered')";
 				$result = mysqli_query($conn, $sql);
 				while ($row = mysqli_fetch_assoc($result)) {
 					$order_id = $row['order_id'];
@@ -161,6 +170,32 @@ if ($(this).find('i').hasClass("fa-times")){
 }
 });
 });
+
+var order_count = "<?php echo $order_count; ?>";
+var property_id = "<?php echo $property_id; ?>";
+var userid = "<?php echo $USERID; ?>";
+var catgry = "<?php echo $CATGRY; ?>";
+
+function check_order(){
+	$.ajax({
+      url: "check_order.php",
+      type: "get",
+      data: {catgry: catgry, order_count: order_count, property_id: property_id, userid: userid},
+      success: function (response) {
+      	response = JSON.parse(response);
+      	var new_order_count = response.order_count;
+      	if(order_count != new_order_count){
+      		alert("order update");
+      		window.location.href = "dashboard.php";
+      	}
+      },
+      error : function(error){
+        console.log(error);
+      }
+    });
+}
+setInterval(check_order, 10000);
+
 </script>
 </body>
 </html>
