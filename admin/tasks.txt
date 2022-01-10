@@ -1,19 +1,5 @@
-accept decline order
-
-add set190(session) in exe and upload.php
-call kumba postorderdata via static ip
-http://122.166.197.63:98/PosIntegration.svc/PostOrderData
-
-jino
-view close x missing
-align center close button
-OUTSTK ribbon
-menumaster Instock NoStock
-login button center align
-
-8301852174 - renjith lal
-9486609654 - john mathew
-
-git clone https://github.com/sukumarinapp/fleetopsanand.git
-
+add set190,prmusr in DigitalMenu C# exe and upload.php
+call http://122.166.197.63:98/PosIntegration.svc/PostOrderData
+settlement api
+add item modifiers
 

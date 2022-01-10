@@ -17,14 +17,14 @@ $conn->autocommit(FALSE);
 
 $table_suffix = "";
 
-$sql = "select * from posord where property_id='$property_id' and rescod='$rescod' and tblnub='$tblnub' and status='ordered' and mobile='$mobile'"; 
+$sql = "select * from posord where property_id='$property_id' and rescod='$rescod' and tblnub='$tblnub' and status in ('pending','ordered') and mobile='$mobile'"; 
 $result = mysqli_query($conn, $sql);
 if(mysqli_num_rows($result) > 0){
 	$row = mysqli_fetch_array($result);
 	$order_id = $row['order_id'];
 }else{
     
-    $sql2 = "select * from posord where property_id='$property_id' and rescod='$rescod' and tblnub='$tblnub' and status='ordered' and mobile<>'$mobile' order by order_id desc limit 1"; 
+    $sql2 = "select * from posord where property_id='$property_id' and rescod='$rescod' and tblnub='$tblnub' and status  in ('pending','ordered')  and mobile<>'$mobile' order by order_id desc limit 1"; 
     $result2 = mysqli_query($conn, $sql2);
     if(mysqli_num_rows($result2) > 0){
         $row2 = mysqli_fetch_array($result2);
