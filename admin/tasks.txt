@@ -1,11 +1,13 @@
 add set190,prmusr in DigitalMenu C# exe and upload.php
 call http://122.166.197.63:98/PosIntegration.svc/PostOrderData
-session check for steward
-add item modifiers
 
 QR Code Settlement API
-POST
+HTTP POST
 http://prismblr.com/kot/postsettlement.php
-parameters
+POST Parameters
 ordrid
 cstcod
+
+Later
+session check for steward
+add item modifiers
