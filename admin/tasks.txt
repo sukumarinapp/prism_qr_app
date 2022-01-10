@@ -10,4 +10,4 @@ cstcod
 
 Later
 session check for steward
-add item modifiers
+modifiers

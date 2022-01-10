@@ -42,7 +42,7 @@ $cart_quantity = 0;
 while($row100 = mysqli_fetch_array($result100)){
   $cart_quantity = $cart_quantity + $row100['itmqty'];
 }
-$sql = "select b.* from posord a,poskot b where a.order_id=b.order_id and a.rescod='$rescod' and  a.property_id='$property_id' and a.tblnub='$tblnub' and a.mobile='$mobile' and b.status='ordered'  order by kotnub,kotsrl";
+$sql = "select b.* from posord a,poskot b where a.order_id=b.order_id and a.rescod='$rescod' and  a.property_id='$property_id' and a.tblnub='$tblnub' and a.mobile='$mobile' and b.status in ('ordered','accepted')  order by kotnub,kotsrl";
 $result = mysqli_query($conn, $sql);
 while($row = mysqli_fetch_array($result)){
   $order_id = $row['order_id'];

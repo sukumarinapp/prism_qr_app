@@ -238,6 +238,7 @@ foreach ($menuRate as $key => $value) {
 	}
 
 }
-
+//set190
+//prmusr
 $response['message'] = "Uploded successfully";
 echo json_encode($response);
