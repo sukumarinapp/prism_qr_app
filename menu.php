@@ -31,7 +31,7 @@ while($row = mysqli_fetch_array($result)){
   $cart_quantity = $cart_quantity + $row['itmqty'];
 }
 
-$sql = "select b.* from posord a,poskot b where a.order_id=b.order_id and a.rescod='$rescod' and  a.property_id='$property_id' and a.tblnub='$tblnub' and a.mobile='$mobile' and b.status='ordered' ";
+$sql = "select b.* from posord a,poskot b where a.order_id=b.order_id and a.rescod='$rescod' and  a.property_id='$property_id' and a.tblnub='$tblnub' and a.mobile='$mobile' and b.status in ('ordered','accepted')  ";
 $result = mysqli_query($conn, $sql);
 $bill_quantity = 0;                    
 while($row = mysqli_fetch_array($result)){
