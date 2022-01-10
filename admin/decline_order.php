@@ -17,5 +17,5 @@ $result = mysqli_query($conn, $sql);
 if(mysqli_num_rows($result) > 0){
 }else{
 	$sql = "delete from posord where order_id = $order_id";
-    mysqli_query($conn, $sql) or die(mysqli_error($conn));
+    //mysqli_query($conn, $sql) or die(mysqli_error($conn));
 }
