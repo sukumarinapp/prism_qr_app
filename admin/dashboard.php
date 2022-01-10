@@ -30,9 +30,9 @@ $order_count = $row['ordcnt'];
 }
 
 if($CATGRY == 3){
-$sql = "select * from posord a where property_id=$property_id and tblnub in (select tblnub from posout b where a.rescod=b.rescod and userid='$USERID' and property_id=$property_id and appdat = (select max(appdat) from posout c where b.userid=c.userid and appdat <= $today )) and order_id in (select distinct order_id from posord where status ='ordered')";
+$sql = "select * from posord a where property_id=$property_id and tblnub in (select tblnub from posout b where a.rescod=b.rescod and userid='$USERID' and property_id=$property_id and appdat = (select max(appdat) from posout c where b.userid=c.userid and appdat <= $today )) and order_id in (select distinct order_id from posord d where a.order_id=d.order_id and status ='ordered')";
 }else{
-$sql = "select * from posord where property_id=$property_id and order_id in (select distinct order_id from posord where property_id=$property_id and  status ='ordered')";
+$sql = "select * from posord a where property_id=$property_id and order_id in (select distinct order_id from poskot b where a.order_id=b.order_id and  property_id=$property_id and  status ='ordered')";
 }
 ?>
 
@@ -75,7 +75,7 @@ $sql = "select * from posord where property_id=$property_id and order_id in (sel
 									<tr>
 										<td> <button  type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal-xl<?php echo $order_id; ?>"><i class="fa fa-eye"></i>&nbsp;View</button>&nbsp;
 											<button onclick="accept_order('modal-xl<?php echo $order_id; ?>',<?php echo $row['order_id']; ?>)" type="button" class="btn btn-success btn-sm"><i class="fa fa-check"></i>&nbsp;Accept</button>&nbsp;
-											<button type="button" class="btn btn-danger btn-sm"><i class="fa fa-times"></i>&nbsp;Decline</button>
+											<button onclick="decline_order('modal-xl<?php echo $order_id; ?>',<?php echo $row['order_id']; ?>)" type="button" class="btn btn-danger btn-sm"><i class="fa fa-times"></i>&nbsp;Decline</button>
 										</td>
 										<td> <?php echo $row['rescod']; ?> </td>
 										<td> <?php echo $row['tblnub']; ?> </td>
@@ -122,11 +122,7 @@ $sql = "select * from posord where property_id=$property_id and order_id in (sel
 						<tr>
 							<td> <button type="button" class="btn btn-sm btn-danger click_item_cancel"><i class="fa fa-times">&nbsp;Remove</i></button> </td>
 							<td>
-							<input value="<?php echo $row2['itmcod']; ?>" type="hidden" name="itmcod[]" />
-							<input value="<?php echo $row2['itmnam']; ?>" type="hidden" name="itmnam[]" />
-							<input value="<?php echo $row2['itmqty']; ?>" type="hidden" name="itmqty[]" />
-							<input value="<?php echo $row2['itmrat']; ?>" type="hidden" name="itmrat[]" />
-							<input value="<?php echo $row2['itmval']; ?>" type="hidden" name="itmval[]" />
+							<input class="itmsrl" value="<?php echo $row2['id']; ?>" type="hidden" name="itmsrl[]" />
 								<?php echo $row2['itmnam']; ?></td>
 							<td><?php echo $row2['itmqty']; ?></td>
 							<td><?php echo $row2['itmrat']; ?></td>
@@ -224,11 +220,76 @@ function check_order(){
       }
     });
 }
+
 setInterval(check_order, 10000);
 
 function accept_order(modal_id,order_id){
-	console.log(order_id);
-	console.log($("#"+modal_id).find("#example1 > tbody").html());
+	var status = "";
+	var item_selected = false;
+    var sales = new Array();
+	$("#"+modal_id).find("#example1 > tbody > tr").each(function(index, tr) { 
+		var table_col = $(this).find('td');
+		if($(table_col).find('.click_item_cancel').hasClass('btn-danger')){
+			status = "accepted";
+			item_selected = true;
+		}else{
+			status = "declined";
+		}
+		itmsrl = $(table_col).find('.itmsrl').val();
+		var record = {
+          'itmsrl': itmsrl,
+          'status': status
+        };
+        sales.push(record);
+	});
+	if(item_selected == false){
+		alert("Atleat on item should be accepted");
+		return;
+	}
+	var sales_data = JSON.stringify(sales);
+    $.ajax({
+      type: 'POST',
+      url: 'accept_order.php',
+      data: {
+        order_id: order_id,
+        property_id: property_id,
+        sales: sales_data
+      },
+      success: function (response) {
+        window.location.href = "dashboard.php";
+      },
+      error : function(error){
+        console.log(error);
+      }
+    });
+}
+
+function decline_order(modal_id,order_id){
+    var sales = new Array();
+	$("#"+modal_id).find("#example1 > tbody > tr").each(function(index, tr) { 
+		var table_col = $(this).find('td');
+		itmsrl = $(table_col).find('.itmsrl').val();
+		var record = {
+          'itmsrl': itmsrl
+        };
+        sales.push(record);
+	});
+	var sales_data = JSON.stringify(sales);
+    $.ajax({
+      type: 'POST',
+      url: 'decline_order.php',
+      data: {
+        order_id: order_id,
+        property_id: property_id,
+        sales: sales_data
+      },
+      success: function (response) {
+        window.location.href = "dashboard.php";
+      },
+      error : function(error){
+        console.log(error);
+      }
+    });
 }
 
 </script>

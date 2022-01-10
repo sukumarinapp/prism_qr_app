@@ -1,4 +1,4 @@
-'<?php
+<?php
 session_start();
 $order_id = 0;
 include "config.php";
