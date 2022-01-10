@@ -156,6 +156,7 @@ while($row = mysqli_fetch_array($result)){
                 <th>Item</th>
                 <th style="text-align: right">Rate</th>
                 <th style="text-align: right">Qty</th>
+               <!--  <th style="text-align: right">Action</th> -->
                 <th style="text-align: right">Total</th>
               </tr>
             </thead>
@@ -178,6 +179,7 @@ while($row = mysqli_fetch_array($result)){
                     <?php echo ucwords(strtolower($row['itmnam'])); ?></td>
                   <td style="text-align: right">&#2352;<?php echo $row['itmrat']; ?></td>
                   <td style="text-align: right"><?php echo $row['itmqty']; ?></td>
+                  <!-- <td style="text-align: right">  <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-times"></i></button></td> -->
                   <td style="text-align: right">&#2352;<?php echo number_format($row['itmval'],2); ?></td>
                 </tr>
                 <?php
