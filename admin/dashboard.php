@@ -21,9 +21,9 @@ while ($row = mysqli_fetch_assoc($result)) {
 
 
 if($CATGRY == 3){
-$sql = "select a.* from posord a,poskot d where a.order_id=d.order_id and property_id=$property_id  and d.status='ordered' and tblnub in (select tblnub from posout b where a.rescod=b.rescod and userid='$USERID' and property_id=$property_id and appdat = (select max(appdat) from posout c where b.userid=c.userid and appdat <= $today ))";
+$sql = "select a.* from posord a where property_id=$property_id  and tblnub in (select tblnub from posout b where a.rescod=b.rescod and userid='$USERID' and property_id=$property_id and appdat = (select max(appdat) from posout c where b.userid=c.userid and appdat <= $today )) and order_id in (select distinct order_id from poskot b where a.order_id=b.order_id  and  status ='ordered')";
 }else{
-$sql = "select * from posord a where property_id=$property_id and order_id in (select distinct order_id from poskot b where a.order_id=b.order_id and  property_id=$property_id and  status ='ordered')";
+$sql = "select * from posord a where property_id=$property_id and order_id in (select distinct order_id from poskot b where a.order_id=b.order_id  and  status ='ordered')";
 }
 ?>
 
