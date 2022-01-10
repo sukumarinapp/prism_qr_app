@@ -27,7 +27,7 @@ $property_id = $_SESSION['property_id'];
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>Code</th>
+                    <th style="width:100px">Code</th>
                     <th style="width:200px">Name</th>
                     <th style="width:300px">Stock</th>
                   </tr>
