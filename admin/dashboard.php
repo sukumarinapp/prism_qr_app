@@ -221,7 +221,7 @@ function check_order(){
     });
 }
 
-setInterval(check_order, 10000);
+setInterval(check_order, 5000);
 
 function accept_order(modal_id,order_id){
 	var status = "";

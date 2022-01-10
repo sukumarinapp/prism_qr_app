@@ -1,0 +1,39 @@
+{
+  "ORDER_ID": "HN5ECY",
+  "BilDat": 20220106,
+  "PaxPer": 4,
+  "STWCOD": "PRISM",
+  "BILNUB": "374UKH-HN5ECY",
+  "Rescod": "001",
+  "TblNub": "L10",
+  "kot": [
+    {
+      "ITMCOD": 200,
+      "ITMSRL": 123456,
+      "ITMVAL": 760,
+      "ITMNAM": "3 MINUTES IN THYME",
+      "Modifier": [],
+      "QUANTY": 1,
+      "RATAMT": 380,
+      "TAXSTR": 1,
+      "TAXAMT": 97.86,
+      "MODAMT": 0,
+      "MENGRP": 15,
+      "MENCOD": 2
+    },
+    {
+      "ITMCOD": 201,
+      "ITMSRL": 654321,
+      "ITMVAL": 950,
+      "ITMNAM": "LUSCIOUS MARTINI",
+      "Modifier": [],
+      "QUANTY": 2,
+      "RATAMT": 475,
+      "TAXSTR": 2,
+      "TAXAMT": 74.81,
+      "MODAMT": 0,
+      "MENGRP": 8,
+      "MENCOD": 2
+    }
+  ]
+}
