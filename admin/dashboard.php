@@ -7,7 +7,7 @@ include "../config.php";
 $page = "Dashboard";
 $today = date("Ymd");
 $item_count = 0;
-
+$order_count = 0;
 if($CATGRY == 3){
   $sql = "select count(*) as item_count from posord a,poskot b where a.order_id=b.order_id and property_id=$property_id and b.status ='ordered' and tblnub in (select tblnub from posout c where a.rescod=c.rescod and userid='$USERID' and property_id=$property_id and appdat = (select max(appdat) from posout d where c.userid=d.userid and appdat <= $today )) ";
 }else{
@@ -18,16 +18,7 @@ while ($row = mysqli_fetch_assoc($result)) {
   $item_count = $row['item_count'];
 }
 
-$order_count=0;
-if($CATGRY == 3){
-$sql = "select count(*) as ordcnt from posord a where property_id=$property_id and tblnub in (select tblnub from posout b where a.rescod=b.rescod and userid='$USERID' and property_id=$property_id and appdat = (select max(appdat) from posout c where b.userid=c.userid and appdat <= $today )) and order_id in (select distinct order_id from poskot d where a.order_id=d.order_id amd status ='ordered')";
-}else{
-$sql = "select count(*) as ordcnt from posord a where property_id=$property_id and order_id in (select distinct order_id from poskot d where a.order_id=d.order_id and property_id=$property_id and  status ='ordered')";
-}
-$result = mysqli_query($conn, $sql);
-while ($row = mysqli_fetch_assoc($result)) {
-$order_count = $row['ordcnt'];
-}
+
 
 if($CATGRY == 3){
 $sql = "select a.* from posord a,poskot d where a.order_id=d.order_id and property_id=$property_id  and d.status='ordered' and tblnub in (select tblnub from posout b where a.rescod=b.rescod and userid='$USERID' and property_id=$property_id and appdat = (select max(appdat) from posout c where b.userid=c.userid and appdat <= $today ))";
