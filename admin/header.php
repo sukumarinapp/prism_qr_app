@@ -36,6 +36,7 @@
     <?php
     $CATGRY = $_SESSION['CATGRY'];
     $USERID = $_SESSION['USERID'];
+    $today = date("Ymd");
     $order_count=0;
     if($CATGRY == 3){
     $sql5 = "select count(*) as ordcnt from posord a where property_id=$property_id and tblnub in (select tblnub from posout b where userid='$USERID' and property_id=$property_id and appdat = (select max(appdat) from posout c where b.userid=c.userid and appdat <= $today )) and order_id in (select distinct order_id from poskot where status = 'ordered' )";
