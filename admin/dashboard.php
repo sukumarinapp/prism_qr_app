@@ -247,6 +247,7 @@ function accept_order(modal_id,order_id){
         sales: sales_data
       },
       success: function (response) {
+      	console.log(response);
         window.location.href = "dashboard.php";
       },
       error : function(error){
