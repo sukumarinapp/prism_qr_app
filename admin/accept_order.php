@@ -18,3 +18,11 @@ for ($i = 0; $i < count($sales_array); $i++) {
     }
     mysqli_query($conn, $sql) or die(mysqli_error($conn));
 }
+
+$response =array();
+$sql = "select * from  posord where property_id=$property_id and order_id=$order_id";
+$result = mysqli_query($conn, $sql);
+$i=0;
+while ($row = mysqli_fetch_assoc($result)) {
+    
+}
