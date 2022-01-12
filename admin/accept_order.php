@@ -77,6 +77,17 @@ while ($row = mysqli_fetch_assoc($result)) {
 }
 
 $post_url = "http://122.166.197.63:98/PosIntegration.svc/PostOrderData";
+$LANIPA = "122.166.197.63:98";
+$sql = "select * from  webser  where property_id=$property_id";
+$result = mysqli_query($conn, $sql);
+while ($row = mysqli_fetch_assoc($result)) {
+   $LANIPA = $row['LANIPA']; 
+}
+$post_url = "http://".$LANIPA."/PosIntegration.svc/PostOrderData";
+
+echo $post_url;
+echo json_encode($payload);
+die;
 $curl = curl_init($post_url);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($curl, CURLOPT_POST, true);
