@@ -238,7 +238,34 @@ foreach ($menuRate as $key => $value) {
 	}
 
 }
-//set190
+
+$set190 = $data['set190'];
+$sql = "delete from set190 where property_id='$property_id'";
+mysqli_query($conn, $sql);
+foreach ($set190 as $key => $value) {
+	$APPDAT =  $value['APPDAT'];
+	$MODCOD =  $value['MODCOD'];
+	$TAXSTR =  $value['TAXSTR'];
+	$SRLNUB =  $value['SRLNUB'];
+	$DESCRP =  $value['DESCRP'];
+	$SCRTAX =  $value['SCRTAX'];
+	$CALTYP =  $value['CALTYP'];
+	$AMOUNT =  $value['AMOUNT'];
+	$TRGTAX =  $value['TRGTAX'];
+	$TRGSLB =  $value['TRGSLB'];
+	$FUTER1 =  $value['FUTER1'];
+	$FUTER2 =  $value['FUTER2'];
+	$DELFLG =  $value['DELFLG'];
+
+	$stmt = $conn->prepare("insert into set190 (property_id,APPDAT,MODCOD,TAXSTR,SRLNUB,DESCRP,SCRTAX,CALTYP,AMOUNT,TRGTAX,TRGSLB,FUTER1,FUTER2,DELFLG) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+	$stmt->bind_param("ssssssssssssss",$property_id,$APPDAT,$MODCOD,$TAXSTR,$SRLNUB,$DESCRP,$SCRTAX,$CALTYP,$AMOUNT,$TRGTAX,$TRGSLB,$FUTER1,$FUTER2,$DELFLG);
+	if(!$stmt->execute()){
+		$response['message'] = $stmt->error;
+		echo json_encode($response);
+		die;
+	}
+}
+
 //prmusr
 $response['message'] = "Uploded successfully";
 echo json_encode($response);

@@ -212,7 +212,7 @@ function check_order(){
     });
 }
 
-setInterval(check_order, 5000);
+//setInterval(check_order, 5000);
 
 function accept_order(modal_id,order_id){
 	var status = "";
@@ -248,7 +248,7 @@ function accept_order(modal_id,order_id){
       },
       success: function (response) {
       	console.log(response);
-        window.location.href = "dashboard.php";
+        //window.location.href = "dashboard.php";
       },
       error : function(error){
         console.log(error);
