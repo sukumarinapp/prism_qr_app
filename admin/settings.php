@@ -40,7 +40,7 @@ while($row = mysqli_fetch_array($result)){
                 <div class="card-body">
                   <div class="form-group">
                     <label for="LANIPA">Web Service IP:port</label>
-                    <input value="<?php echo $LANIPA; ?>" required="required" type="text" name="LANIPA" class="form-control" id="LANIPA" placeholder="eg : 192.168.1.98 : 98">
+                    <input value="<?php echo $LANIPA; ?>" required="required" type="text" name="LANIPA" class="form-control" id="LANIPA" placeholder="eg : 192.168.1.98:98">
                   </div>
 
                   <div class="card-footer text-center">
