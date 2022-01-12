@@ -1,6 +1,7 @@
 <?php 
-include "config.php";
+include "../config.php";
 $response =array();
+$property_id = 0;
 $sql = "select * from  posord where property_id=$property_id";
 $result = mysqli_query($conn, $sql);
 $i=0;

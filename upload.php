@@ -243,22 +243,20 @@ $set190 = $data['set190'];
 $sql = "delete from set190 where property_id='$property_id'";
 mysqli_query($conn, $sql);
 foreach ($set190 as $key => $value) {
-	$APPDAT =  $value['APPDAT'];
-	$MODCOD =  $value['MODCOD'];
-	$TAXSTR =  $value['TAXSTR'];
-	$SRLNUB =  $value['SRLNUB'];
-	$DESCRP =  $value['DESCRP'];
-	$SCRTAX =  $value['SCRTAX'];
-	$CALTYP =  $value['CALTYP'];
-	$AMOUNT =  $value['AMOUNT'];
-	$TRGTAX =  $value['TRGTAX'];
-	$TRGSLB =  $value['TRGSLB'];
+	$RESCOD =  $value['RESCOD'];
+	$SESSON =  $value['SESSON'];
+	$FRMTIM =  $value['FRMTIM'];
+	$LNGNAM =  $value['LNGNAM'];
+	$SHTNAM =  $value['SHTNAM'];
+	$TOOTIM =  $value['TOOTIM'];
+	$STATUS =  $value['STATUS'];
 	$FUTER1 =  $value['FUTER1'];
 	$FUTER2 =  $value['FUTER2'];
-	$DELFLG =  $value['DELFLG'];
+	$USERID =  $value['USERID'];
+	$LSTDAT =  $value['LSTDAT'];
 
-	$stmt = $conn->prepare("insert into set190 (property_id,APPDAT,MODCOD,TAXSTR,SRLNUB,DESCRP,SCRTAX,CALTYP,AMOUNT,TRGTAX,TRGSLB,FUTER1,FUTER2,DELFLG) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-	$stmt->bind_param("ssssssssssssss",$property_id,$APPDAT,$MODCOD,$TAXSTR,$SRLNUB,$DESCRP,$SCRTAX,$CALTYP,$AMOUNT,$TRGTAX,$TRGSLB,$FUTER1,$FUTER2,$DELFLG);
+	$stmt = $conn->prepare("insert into set190 (property_id,RESCOD,SESSON,FRMTIM,LNGNAM,SHTNAM,TOOTIM,STATUS,FUTER1,FUTER2,USERID,LSTDAT) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
+	$stmt->bind_param("ssssssssssss",$property_id,$RESCOD,$SESSON,$FRMTIM,$LNGNAM,$SHTNAM,$TOOTIM,$STATUS,$FUTER1,$FUTER2,$USERID,$LSTDAT);
 	if(!$stmt->execute()){
 		$response['message'] = $stmt->error;
 		echo json_encode($response);
@@ -266,6 +264,45 @@ foreach ($set190 as $key => $value) {
 	}
 }
 
-//prmusr
+$prmusr = $data['prmusr'];
+$sql = "delete from prmusr where property_id='$property_id'";
+mysqli_query($conn, $sql);
+foreach ($prmusr as $key => $value) {
+	$USERID =  $value['USERID'];
+	$LNGNAM =  $value['LNGNAM'];
+	$SHTNAM =  $value['SHTNAM'];
+	$ISUPER =  $value['ISUPER'];
+	$CATGRY =  $value['CATGRY'];
+	$PASSWD =  $value['PASSWD'];
+	$REQSCH =  $value['REQSCH'];
+	$SUNDAY =  $value['SUNDAY'];
+	$MONDAY =  $value['MONDAY'];
+	$TUEDAY =  $value['TUEDAY'];
+	$WEDDAY =  $value['WEDDAY'];
+	$THUDAY =  $value['THUDAY'];
+	$FRIDAY =  $value['FRIDAY'];
+	$SATDAY =  $value['SATDAY'];
+	$USRADR =  $value['USRADR'];
+	$USRCTY =  $value['USRCTY'];
+	$USRSTA =  $value['USRSTA'];
+	$USRZIP =  $value['USRZIP'];
+	$USRTEL =  $value['USRTEL'];
+	$USREML =  $value['USREML'];
+	$USRDOJ =  $value['USRDOJ'];
+	$USRSAL =  $value['USRSAL'];
+	$DELFLG =  $value['DELFLG'];
+	$BYWHOM =  $value['BYWHOM'];
+	$LSTDAT =  $value['LSTDAT'];
+	$RECTYP =  $value['RECTYP'];
+
+	$stmt = $conn->prepare("insert into prmusr (USERID,LNGNAM,SHTNAM,ISUPER,CATGRY,PASSWD,REQSCH,SUNDAY,MONDAY,TUEDAY,WEDDAY,THUDAY,FRIDAY,SATDAY,USRADR,USRCTY,USRSTA,USRZIP,USRTEL,USREML,USRDOJ,USRSAL,DELFLG,BYWHOM,LSTDAT,RECTYP,property_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+	$stmt->bind_param("sssssssssssssssssssssssssss",$USERID,$LNGNAM,$SHTNAM,$ISUPER,$CATGRY,$PASSWD,$REQSCH,$SUNDAY,$MONDAY,$TUEDAY,$WEDDAY,$THUDAY,$FRIDAY,$SATDAY,$USRADR,$USRCTY,$USRSTA,$USRZIP,$USRTEL,$USREML,$USRDOJ,$USRSAL,$DELFLG,$BYWHOM,$LSTDAT,$RECTYP,$property_id);
+	if(!$stmt->execute()){
+		$response['message'] = $stmt->error;
+		echo json_encode($response);
+		die;
+	}
+}
+
 $response['message'] = "Uploded successfully";
 echo json_encode($response);
