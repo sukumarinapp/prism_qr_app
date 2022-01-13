@@ -132,14 +132,14 @@ if (isset($_POST['submit'])) {
 
                      <?php
                      $today = date("Ymd");
-                     $sql = "select a.*,b.lngnam,c.SESSON,c.LNGNAM as SESNAM from posout a,set090 b,set190 c where  a.rescod=b.rescod and a.rescod=c.RESCOD and a.property_id=$property_id";
+                     $sql = "select a.*,b.lngnam,c.FRMTIM,c.TOOTIM,c.SESSON,c.LNGNAM as SESNAM from posout a,set090 b,set190 c where  a.rescod=b.rescod and a.rescod=c.RESCOD and a.property_id=$property_id and b.property_id=$property_id and c.property_id=$property_id order by c.RESCOD,c.FRMTIM";
                      $result = mysqli_query($conn, $sql);
                      while ($row = mysqli_fetch_assoc($result)) {
                       ?>
                       <tr> 
                         <td> <?php echo date('d/m/Y', strtotime($row['appdat'])); ?> </td>
                         <td> <?php echo $row['lngnam']; ?></td>
-                        <td> <?php echo $row['SESNAM']; ?></td>
+                        <td> <?php echo $row['SESNAM']; ?> (<?php echo $row['FRMTIM']; ?>-<?php echo $row['TOOTIM']; ?>)</td>
                         <td> <?php echo $row['tblnub']; ?></td>
                         <td> <?php echo $row['userid']; ?></td>
                         <td><a href="delete_steward.php?id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm"><i class="fa fa-times"></i> Delete</a></td>
