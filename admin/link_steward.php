@@ -132,7 +132,7 @@ if (isset($_POST['submit'])) {
 
                      <?php
                      $today = date("Ymd");
-                     $sql = "select a.*,b.lngnam,c.FRMTIM,c.TOOTIM,c.SESSON,c.LNGNAM as SESNAM from posout a,set090 b,set190 c where  a.rescod=b.rescod and a.rescod=c.RESCOD and a.property_id=$property_id and b.property_id=$property_id and c.property_id=$property_id order by c.RESCOD,c.FRMTIM";
+                     $sql = "select a.*,b.lngnam,c.FRMTIM,c.TOOTIM,c.SESSON,c.LNGNAM as SESNAM from posout a,set090 b,set190 c where  a.rescod=b.rescod and b.rescod=c.RESCOD and a.rescod=c.RESCOD and a.SESSON=c.SESSON  and a.property_id=$property_id and b.property_id=$property_id and c.property_id=$property_id order by c.RESCOD,c.FRMTIM";
                      $result = mysqli_query($conn, $sql);
                      while ($row = mysqli_fetch_assoc($result)) {
                       ?>
