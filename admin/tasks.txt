@@ -1,4 +1,3 @@
-add set190,prmusr in DigitalMenu C# exe and upload.php
 call http://122.166.197.63:98/PosIntegration.svc/PostOrderData
 http://122.166.197.63:98/PosIntegration.svc/GetOutletList
 
