@@ -52,10 +52,10 @@ while ($row = mysqli_fetch_assoc($result)) {
    $result2 = mysqli_query($conn, $sql2);
    while ($row2 = mysqli_fetch_assoc($result2)) {
       $itmcod = $row2['itmcod']; 
-      $payload['kot'][$i]['itmcod'] = $itmcod; 
+      $payload['kot'][$i]['ITMCOD'] = $itmcod; 
       $payload['kot'][$i]['ITMSRL'] = $row2['kotsrl']; 
       $payload['kot'][$i]['ITMVAL'] = $row2['itmval']; 
-      $payload['kot'][$i]['itmnam'] = $row2['itmnam']; 
+      $payload['kot'][$i]['ITMNAM'] = $row2['itmnam']; 
       $payload['kot'][$i]['Modifier'] = array();
       $payload['kot'][$i]['QUANTY'] = $row2['itmqty']; 
       $payload['kot'][$i]['RATAMT'] = $row2['itmrat']; 
@@ -85,9 +85,9 @@ while ($row = mysqli_fetch_assoc($result)) {
 }
 $post_url = "http://".$LANIPA."/PosIntegration.svc/PostOrderData";
 
-echo $post_url;
+/*echo $post_url;
 echo json_encode($payload);
-die;
+die;*/
 $curl = curl_init($post_url);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($curl, CURLOPT_POST, true);
