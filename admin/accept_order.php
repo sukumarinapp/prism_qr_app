@@ -19,7 +19,7 @@ for ($i = 0; $i < count($sales_array); $i++) {
     }else{
         $sql = "delete from poskot where order_id = $order_id and id = $itmsrl";
     }
-    //mysqli_query($conn, $sql) or die(mysqli_error($conn));
+    mysqli_query($conn, $sql) or die(mysqli_error($conn));
 }
 $today = date("Ymd");
 $payload =array();
@@ -85,9 +85,8 @@ while ($row = mysqli_fetch_assoc($result)) {
 }
 $post_url = "http://".$LANIPA."/PosIntegration.svc/PostOrderData";
 
-/*echo $post_url;
 echo json_encode($payload);
-die;*/
+#die;
 $curl = curl_init($post_url);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($curl, CURLOPT_POST, true);
@@ -98,12 +97,15 @@ $response = curl_exec($curl);
 print_r($response);
 if (curl_errno($curl)) {
     $error_msg = curl_error($curl);
+    echo $error_msg;
 }
 curl_close($curl);
 $response = json_decode($response);
-$status = $response->Status;
+/*$status = $response->Status;
+echo "testing";
+echo $status;
 $kotnub = $response->KotNub;
 $response = array();
 $response['status'] = $Status;
-$response['kotnub'] = $kotnub;
+$response['kotnub'] = $kotnub;*/
 echo json_encode($response);

@@ -173,9 +173,9 @@ $('.click_item_cancel').click(function() {
 $("button", this).toggleClass("btn btn-success btn-sm click_item_cancel");
 if ($(this).find('i').hasClass("fa-times")){
 	$(this).find('i').removeClass('fa-times');
-	$(this).find('i').html('&nbsp;Accept');
+	$(this).find('i').html('&nbsp;Add');
 	$(this).removeClass('btn-danger');
-	$(this).find('i').addClass('fa-check');
+	$(this).find('i').addClass('fa-plus');
 	$(this).addClass('btn-success');
 } else {
 	$(this).find('i').removeClass('fa-check');
@@ -248,7 +248,7 @@ function accept_order(modal_id,order_id){
       },
       success: function (response) {
       	console.log(response);
-        //window.location.href = "dashboard.php";
+        window.location.href = "dashboard.php";
       },
       error : function(error){
         console.log(error);
