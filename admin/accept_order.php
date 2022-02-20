@@ -9,18 +9,14 @@ $sales_array = array();
 $sales_array = json_decode($sales);
 $status = "accepted";
 $kotid = "";
+
 for ($i = 0; $i < count($sales_array); $i++) {
     $status = $sales_array[$i]->status;
     $itmsrl = $sales_array[$i]->itmsrl;
     $kotid = $kotid . $itmsrl;
     if($i != count($sales_array) - 1) $kotid = $kotid . ",";
-    if($status == "accepted"){
-        $sql = "update poskot set status='$status' where order_id=$order_id and id = $itmsrl";
-    }else{
-        $sql = "delete from poskot where order_id = $order_id and id = $itmsrl";
-    }
-    mysqli_query($conn, $sql) or die(mysqli_error($conn));
 }
+   
 $today = date("Ymd");
 $payload =array();
 $sql = "select * from  posord where property_id=$property_id and order_id=$order_id";
@@ -30,9 +26,9 @@ while ($row = mysqli_fetch_assoc($result)) {
    $tblnub = $row['tblnub'];
    $rescod = $row['rescod'];
    $order_id = $row['order_id'];
-   $payload['ORDER_ID'] = "ORDPRISMAPP-".$row['order_id'];
+   $payload['ORDER_ID'] = $row['ORDNUB'];
    $payload['PaxPer'] = 1;
-   $payload['BILNUB'] = "BILLPRISMAPP-".$row['order_id'];
+   $payload['BILNUB'] = $row['ORDNUB'];
    $payload['Rescod'] = $rescod;
    $payload['TblNub'] = $tblnub;
 
@@ -76,8 +72,8 @@ while ($row = mysqli_fetch_assoc($result)) {
    }
 }
 
-$post_url = "http://122.166.197.63:98/PosIntegration.svc/PostOrderData";
-$LANIPA = "122.166.197.63:98";
+$post_url = "http://122.166.197.63:96/PosIntegration.svc/PostOrderData";
+$LANIPA = "122.166.197.63:96";
 $sql = "select * from  webser  where property_id=$property_id";
 $result = mysqli_query($conn, $sql);
 while ($row = mysqli_fetch_assoc($result)) {
@@ -85,7 +81,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 }
 $post_url = "http://".$LANIPA."/PosIntegration.svc/PostOrderData";
 
-echo json_encode($payload);
+//echo json_encode($payload);
 #die;
 $curl = curl_init($post_url);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -94,18 +90,30 @@ curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($payload));
 curl_setopt($curl, CURLOPT_HTTPHEADER, array(
             'content-type: application/json'));
 $response = curl_exec($curl);
-print_r($response);
+$message = "success";
 if (curl_errno($curl)) {
     $error_msg = curl_error($curl);
-    echo $error_msg;
+    if(strpos($error_msg,"Failed") !== false ){
+      $message = $error_msg;
+    }
 }
 curl_close($curl);
-$response = json_decode($response);
-/*$status = $response->Status;
-echo "testing";
-echo $status;
-$kotnub = $response->KotNub;
 $response = array();
-$response['status'] = $Status;
-$response['kotnub'] = $kotnub;*/
+$response["message"] = $message;
+
+if($message == "success"){
+   for ($i = 0; $i < count($sales_array); $i++) {
+    $status = $sales_array[$i]->status;
+    $itmsrl = $sales_array[$i]->itmsrl;
+    $kotid = $kotid . $itmsrl;
+    if($i != count($sales_array) - 1) $kotid = $kotid . ",";
+    if($status == "accepted"){
+        $sql = "update poskot set status='$status' where order_id=$order_id and id = $itmsrl";
+    }else{
+        $sql = "delete from poskot where order_id = $order_id and id = $itmsrl";
+    }
+    mysqli_query($conn, $sql) or die(mysqli_error($conn));
+   }
+
+}
 echo json_encode($response);
