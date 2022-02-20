@@ -4,22 +4,36 @@ $page = "link steward";
 include "../config.php";
 if (($_SESSION['CATGRY'] != "0") && ($_SESSION['CATGRY'] != "1")) header("location: index.php");
 $property_id = $_SESSION['property_id'];
-$appdat="";
-$rescod="";
-$tblnub="";
-$userid="";
+$appdat = "";
+$appdat2 = "";
+$rescod = "";
+$tblnub = "";
+$userid = "";
+$sesson = "";
+$duplicate = false;
+$msg = "";
 if (isset($_POST['submit'])) {
   $appdat = trim($_POST['appdat']); 
+  $appdat2 = trim($_POST['appdat']); 
   $appdat = explode("-",$appdat);
   $appdat = $appdat[0].$appdat[1].$appdat[2];
-  $rescod= trim($_POST['rescod']);
-  $tblnub= trim($_POST['tblnub']);
-  $userid= trim($_POST['userid']);
-  $sesson= trim($_POST['sesson']);
-  $stmt = $conn->prepare("INSERT INTO posout (property_id,appdat,rescod,tblnub,userid,sesson) VALUES (?,?,?,?,?,?)");
-  $stmt->bind_param("ssssss",$property_id,$appdat,$rescod,$tblnub,$userid,$sesson);
-  $stmt->execute();
-  header("location: link_steward.php");
+  $rescod = trim($_POST['rescod']);
+  $tblnub = trim($_POST['tblnub']);
+  $userid = trim($_POST['userid']);
+  $sesson = trim($_POST['sesson']);
+
+  $sql = "select * from posout where property_id='$property_id' and appdat='$appdat' and rescod='$rescod' and tblnub='$tblnub' and userid='$userid' and sesson='$sesson'";
+  $result = mysqli_query($conn, $sql);
+  while ($row = mysqli_fetch_array($result)) {
+    $duplicate = true;
+    $msg = "A steward is already linked to the table";
+  }
+  if($duplicate == false){
+    $stmt = $conn->prepare("INSERT INTO posout (property_id,appdat,rescod,tblnub,userid,sesson) VALUES (?,?,?,?,?,?)");
+    $stmt->bind_param("ssssss",$property_id,$appdat,$rescod,$tblnub,$userid,$sesson);
+    $stmt->execute();
+    header("location: link_steward.php");
+  }
 } 
 ?>
 <!DOCTYPE html>
@@ -38,80 +52,87 @@ if (isset($_POST['submit'])) {
             <div class="card card-info">
               <div class="card-header">
                 <h3 class="card-title">Link Steward</h3>
+
               </div>
               <form method="post" action="" >
                 <div class="card-body">
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group">
-                    <label for="appdat">Applicable Date</label>
-                    <input min="<?php echo date("Y-m-d"); ?>" value="<?php echo $appdat; ?>" required="required" type="date" name="appdat" class="form-control" id="appdat" placeholder="">
-                  </div>
+                  <?php if($duplicate){ ?>
+                  <h4 class="text-danger"><?php echo $msg; ?></h4>
+                <?php } ?>
                   <div class="row">
-                  <div class="col-md-6">
-                <div class="form-group" id="table_div">
-                    <label for="tblnub">Table#</label>
-                    <select required="required" name="tblnub" class="form-control" >
-                      <option value="" >Select Table</option>
-                    </select>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="appdat">Applicable Date</label>
+                        <input min="<?php echo date("Y-m-d"); ?>" value="<?php echo $appdat2; ?>" required="required" type="date" name="appdat" class="form-control" id="appdat" placeholder="">
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group" id="table_div">
+                            <label for="tblnub">Table#</label>
+                            <select required="required" name="tblnub" class="form-control" >
+                              <option value="" >Select Table</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                         <div class="form-group" id="session_div">
+                          <label for="SESSON">Session</label>
+                          <select required="required" name="sesson" class="form-control" >
+                            <option value="" >Select Session</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
+                  <!-- /.col -->
                   <div class="col-md-6">
-                   <div class="form-group" id="session_div">
-                    <label for="SESSON">Session</label>
-                    <select required="required" name="sesson" class="form-control" >
-                      <option value="" >Select Session</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-            </div>
-              <!-- /.col -->
-              <div class="col-md-6">
-                 <div class="form-group">
+                   <div class="form-group">
                     <label for="rescod">Outlet</label>
-                    <select value="<?php echo $rescod; ?>" required="required" id="outlet_name" name="rescod" class="form-control select2" style="width: 100%;">
+                    <select required="required" id="outlet_name" name="rescod" class="form-control select2" style="width: 100%;">
 
                       <option selected="selected" value="">Select Outlet</option>
                       <?php
                       $sql = "select * from set090 where property_id=$property_id";
                       $result = mysqli_query($conn, $sql);
                       while ($row = mysqli_fetch_array($result)) {
-                        echo '<option value="' . $row['rescod'] . '">' . $row['lngnam'] . '</option>';
+                        echo '<option ';
+                        echo ' value="' . $row['rescod'] . '">' . $row['lngnam'] . '</option>';
                       }
                       ?>
                     </select>
                   </div>
-                <div class="form-group">
+                  <div class="form-group">
                     <label>Select Steward</label>
-                    <select value="<?php echo $userid; ?>" required="required" name="userid" class="form-control" style="width: 100%;">
+                    <select required="required" name="userid" class="form-control" style="width: 100%;">
                       <option value="">Select Steward</option>
                       <?php
                       $sql = "select * from prmusr where property_id=$property_id and CATGRY=3";
                       $result = mysqli_query($conn, $sql);
                       while ($row = mysqli_fetch_array($result)) {
-                        echo '<option value="' . $row['USERID'] . '">' . $row['LNGNAM'] . '</option>';
+                        echo '<option ';
+                        if($row['USERID'] == $userid) echo " selected ";
+                        echo ' value="' . $row['USERID'] . '">' . $row['LNGNAM'] . '</option>';
                       }
                       ?>
                     </select>
                   </div>
+                </div>
               </div>
-            </div>
-          <div class="card-footer text-center">
-                   <input class="btn btn-primary" type="submit" name="submit" value="Save"/>
-                 </div>
-                 </form>
-               </div>
-           </div>
+              <div class="card-footer text-center">
+               <input class="btn btn-primary" type="submit" name="submit" value="Save"/>
+             </div>
+           </form>
          </div>
        </div>
-     </section>
+     </div>
+   </div>
+ </section>
 
-     <section class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-12">
-            <div class="card">
+ <section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
               <!-- <div class="card-header bg-secondary">
                 <h3 class="card-title">View Steward</h3>
               </div> -->
@@ -166,14 +187,14 @@ if (isset($_POST['submit'])) {
   <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="plugins/datatables/jquery.dataTables.min.js"></script>
   <script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-<script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+  <script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+  <script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
   <script src="dist/js/adminlte.min.js"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="dist/js/demo.js"></script>
   <script>
     $(document).ready(function () {
-      
+
       $("#example1").DataTable();
 
       $("#outlet_name").change(function() {
@@ -208,7 +229,7 @@ if (isset($_POST['submit'])) {
         }
       });
     }
-</script>
+  </script>
 </script>
 </body>
 </html>

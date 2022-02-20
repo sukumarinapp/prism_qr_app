@@ -39,7 +39,10 @@ if(mysqli_num_rows($result) > 0){
 	$stmt = $conn->prepare("INSERT INTO posord (property_id,rescod,tblnub,table_suffix,status,mobile) VALUES (?,?,?,?,?,?)");
 	$stmt->bind_param("ssssss",$property_id, $rescod,$tblnub,$table_suffix,$status,$mobile);
 	$stmt->execute() or die($stmt->error);
-	$order_id = $stmt->insert_id;	
+	$order_id = $stmt->insert_id;
+    $ORDNUB = "ORDPRISMAPP-".$order_id;	
+    $sql5 = "UPDATE posord set ORDNUB='$ORDNUB' where order_id=$order_id";
+    mysqli_query($conn, $sql5) or die(mysqli_error($conn));
 }
 $itmval = 0;
 $kotdat = date("Ymd");
