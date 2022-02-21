@@ -58,9 +58,18 @@ if (strpos($response, 'Success') == false) {
 }else{
     $response = json_decode($response);
     $kotnub = $response[0]->KotNub;
-    $kotsrl = 1;
+    
+    $kotsrl = 0;
+
+    $sql6 = "select max(kotsrl) as itmsrl from poskot where order_id=$order_id";
+    $result6 = mysqli_query($conn, $sql6) or die(mysqli_error($conn));
+    while ($row6 = mysqli_fetch_assoc($result6)) {
+      if($row6['itmsrl'] != "" ) $kotsrl = $row6['itmsrl']; 
+    }
+
     $status = "pending";
     for ($i = 0; $i < count($sales_array); $i++) {
+        $kotsrl++;
         $itmcod = $sales_array[$i]->itmcod;
         $itmnam = $sales_array[$i]->itmnam;
         $itmrat = $sales_array[$i]->itmrat;
@@ -70,7 +79,7 @@ if (strpos($response, 'Success') == false) {
         //ALTER TABLE `poskot` ADD `taxamt` DECIMAL(10,0) NOT NULL DEFAULT '0' AFTER `itmval`;
         $sql = "INSERT INTO poskot (order_id,kotdat,kotnub,kotsrl,itmcod,itmnam,itmrat,itmqty,itmval,taxamt,status) VALUES  ($order_id,'$kotdat','$kotnub',$kotsrl,'$itmcod','$itmnam',$itmrat,$quantity,$itmval,$taxamt,'$status')";
         mysqli_query($conn, $sql) or die(mysqli_error($conn));
-        $kotsrl++;
+        //$kotsrl++;
     }
     $conn->commit();    
 }

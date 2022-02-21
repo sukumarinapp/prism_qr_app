@@ -1,1 +1,25 @@
-{"ORDER_ID":"ORDPRISMAPP-6","PaxPer":1,"BILNUB":"BILLPRISMAPP-6","Rescod":"001","TblNub":"L1","BilDat":"20220210","STWCOD":"ASHISH","kot":[{"ITMCOD":"168","ITMSRL":"1","ITMVAL":"525","ITMNAM":"BANGKOK STYLE CHI SATAY","Modifier":[],"QUANTY":"1","RATAMT":"525","TAXSTR":"1","TAXAMT":"79","MODAMT":0,"MENGRP":"1","MENCOD":"1"}]}
+{
+  "ORDER_ID": "PRISMAPP-7-001-105",
+  "PaxPer": 1,
+  "BILNUB": "PRISMAPP-7-001-105",
+  "Rescod": "001",
+  "TblNub": "L1",
+  "BilDat": "20220221",
+  "STWCOD": "AJAY",
+  "kot": [
+    {
+      "ITMCOD": "10",
+      "ITMSRL": "1",
+      "ITMVAL": "645",
+      "ITMNAM": "BUTA KAKU NI",
+      "Modifier": [],
+      "QUANTY": "1",
+      "RATAMT": "645",
+      "TAXSTR": "1",
+      "TAXAMT": "97",
+      "MODAMT": 0,
+      "MENGRP": "1",
+      "MENCOD": "1"
+    }
+  ]
+}

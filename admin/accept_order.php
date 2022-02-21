@@ -82,7 +82,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 $post_url = "http://".$LANIPA."/PosIntegration.svc/PostOrderData";
 
 //echo json_encode($payload);
-#die;
+//die;
 $curl = curl_init($post_url);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($curl, CURLOPT_POST, true);
