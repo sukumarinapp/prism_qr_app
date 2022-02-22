@@ -56,18 +56,7 @@
           </li>
           <?php } ?>  
 
-         <?php if(($_SESSION['CATGRY']=="3") || ($_SESSION['CATGRY']=="1") || ($_SESSION['CATGRY']=="0")) { ?>
-          <li class="nav-item">
-            <a href="change_password.php" class="nav-link <?php if($page=="Password") echo "active"; ?>">
-              <i class="nav-icon fas fa-key"></i>
-              <p>
-                Change Password
-              </p>
-            </a>
-
-          </li>
-            <?php } ?>
-
+         
          <?php if(($_SESSION['CATGRY']=="3") || ($_SESSION['CATGRY']=="1") || ($_SESSION['CATGRY']=="0")) { ?>
           <li class="nav-item">
             <a href="logout.php" class="nav-link">

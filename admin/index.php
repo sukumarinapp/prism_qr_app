@@ -12,24 +12,28 @@ if(isset($_GET['id'])){
 if (isset($_POST['submit'])) {
     $USERID = trim($_POST['USERID']);
     $PASSWD = trim($_POST['PASSWD']);
-    $stmt = $conn->prepare("SELECT a.*,b.comnam FROM prmusr a,prmlic b WHERE a.property_id=b.id and a.property_id = ? AND USERID = ? AND PASSWD = ?");
-    $stmt->bind_param("sss", $property_id,$USERID, $PASSWD);
+    $stmt = $conn->prepare("SELECT a.*,b.comnam FROM prmusr a,prmlic b WHERE a.property_id=b.id and a.property_id = ? AND USERID = ?");
+    $stmt->bind_param("ss", $property_id,$USERID);
     $stmt->execute();
     $result = $stmt->get_result();
     if($result->num_rows > 0){
       $row = $result->fetch_assoc();
-      $_SESSION['timestamp'] = time();
-      $_SESSION['comnam'] = $row['comnam'];
-      $_SESSION['property_id'] = $row['property_id'];
-      $_SESSION['USERID'] = $row['USERID'];
-      $_SESSION['LNGNAM'] = $row['LNGNAM'];
-      $_SESSION['CATGRY'] = $row['CATGRY'];
-      if($row['CATGRY'] == "0" || $row['CATGRY'] == "1" || $row['CATGRY'] == "3")
-        header("location: dashboard.php");
+      if($PASSWD == decrypt_password($row['PASSWD'])){
+        $_SESSION['timestamp'] = time();
+        $_SESSION['comnam'] = $row['comnam'];
+        $_SESSION['property_id'] = $row['property_id'];
+        $_SESSION['USERID'] = $row['USERID'];
+        $_SESSION['LNGNAM'] = $row['LNGNAM'];
+        $_SESSION['CATGRY'] = $row['CATGRY'];
+        if($row['CATGRY'] == "0" || $row['CATGRY'] == "1" || $row['CATGRY'] == "3")
+          header("location: dashboard.php");
       }else{
         $error = "Your User Name or Password is invalid";
       }
-      $stmt->close();
+    }else{
+      $error = "Your User Name or Password is invalid";
+    }
+    $stmt->close();
 }    
                    
 ?>
