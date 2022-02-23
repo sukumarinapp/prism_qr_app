@@ -185,34 +185,6 @@ while($row = mysqli_fetch_array($result)){
 
     <nav style="background-color: #18b1b1" class="navbar fixed-top navbar-expand-lg navbar-dark">
       <a style="color: white;" class="navbar-brand font-weight-bold" href="#"><?php echo " ".$outnam."&nbsp;Table# ".$tblnub; ?></a>
-      <button  class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" onclick="place_order()">Add to Cart</a>
-          </li>
-          <?php
-          if($cart_quantity>0){
-            ?>
-            <li class="nav-item">
-              <a class="nav-link" href="cart.php?cstcod=<?php echo $cstcod; ?>&rescod=<?php echo $rescod; ?>&tblnub=<?php echo $tblnub; ?>&mobile=<?php echo $mobile; ?>">View Cart</a>
-            </li>
-            <?php
-          }
-          ?>
-          <?php
-      if($bill_quantity>0){
-        ?>
-          <li class="nav-item">
-              <a class="nav-link" href="bill.php?cstcod=<?php echo $cstcod; ?>&rescod=<?php echo $rescod; ?>&tblnub=<?php echo $tblnub; ?>&mobile=<?php echo $mobile; ?>">View Bill</a>
-            </li>
-             <?php
-          }
-          ?>
-        </ul>
-      </div>
     </nav>
 
     <!--Main layout-->

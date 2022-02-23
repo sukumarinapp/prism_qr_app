@@ -84,7 +84,7 @@ foreach ($set250 as $key => $value) {
 	}
 }
 
-$set102 = $data['set102'];
+/*$set102 = $data['set102'];
 $sql = "delete from set102 where property_id='$property_id'";
 mysqli_query($conn, $sql);
 foreach ($set102 as $key => $value) {
@@ -103,7 +103,7 @@ foreach ($set102 as $key => $value) {
 		echo json_encode($response);
 		die;
 	}
-}
+}*/
 
 $outlet = $data['outlet'];
 foreach ($outlet as $key => $value) {
@@ -138,13 +138,15 @@ foreach ($table as $key => $value) {
 		$qr_code_url = $base_url."/login.php?cstcod=$CSTCOD&rescod=$RESCOD&tblnub=$TBLNUB";
 		$qr_file_name = $CSTCOD."_".$RESCOD."_".$TBLNUB.".png";
 		QRcode::png($qr_code_url, "qr/$qr_file_name", QR_ECLEVEL_H, 3, 10);
-		$stmt = $conn->prepare("insert into set220 (property_id,rescod,tblnub,qr_code_url,qr_code) VALUES (?,?,?,?,?)");
+		$stmt = $conn->prepare("insert into set220 (
+		property_id,rescod,tblnub,qr_code_url,qr_code) VALUES (?,?,?,?,?)");
 		$stmt->bind_param("sssss",$property_id,$RESCOD,$TBLNUB,$qr_code_url,$qr_file_name);
 		if(!$stmt->execute()){
 			$response['message'] = $stmt->error;
 			echo json_encode($response);
 			die;
 		}
+		die;
 	}
 }
 

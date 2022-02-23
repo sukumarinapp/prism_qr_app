@@ -113,34 +113,6 @@ while($row = mysqli_fetch_array($result)){
 
     <nav style="background-color:#18b1b1" class="navbar fixed-top navbar-expand-lg navbar-dark">
       <a class="navbar-brand font-weight-bold" href="#"><?php echo " ".$outnam."&nbsp;Table# ".$tblnub; ?></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="menu.php?cstcod=<?php echo $cstcod; ?>&rescod=<?php echo $rescod; ?>&tblnub=<?php echo $tblnub; ?>&mobile=$mobile">Menu</a>
-          </li>
-          <?php
-      if($cart_quantity > 0){
-        ?>
-          <li class="nav-item active">
-            <a class="nav-link" href="cart.php?cstcod=<?php echo $cstcod; ?>&rescod=<?php echo $rescod; ?>&tblnub=<?php echo $tblnub; ?>&mobile=$mobile">Place Order</a>
-          </li>
-          <?php
-      }
-      ?>
-      <?php
-      if($bill_quantity>0){
-        ?>
-          <li class="nav-item">
-              <a class="nav-link" href="bill.php?cstcod=<?php echo $cstcod; ?>&rescod=<?php echo $rescod; ?>&tblnub=<?php echo $tblnub; ?>&mobile=<?php echo $mobile; ?>">View Bill</a>
-            </li>
-             <?php
-          }
-          ?>
-        </ul>
-      </div>
     </nav>
 
     <!--Main layout-->
@@ -303,7 +275,7 @@ while($row = mysqli_fetch_array($result)){
       },
       success: function (response) {
         alert("Your order is confirmed");
-        location.href ="bill.php?cstcod=<?php echo $cstcod; ?>&rescod=<?php echo $rescod; ?>&tblnub=<?php echo $tblnub; ?>&mobile=<?php echo $mobile; ?>";
+        location.href ="menu.php?cstcod=<?php echo $cstcod; ?>&rescod=<?php echo $rescod; ?>&tblnub=<?php echo $tblnub; ?>&mobile=<?php echo $mobile; ?>";
       },
       error : function(error){
         console.log(error);

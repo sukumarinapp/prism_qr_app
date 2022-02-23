@@ -37,7 +37,7 @@ while ($row = mysqli_fetch_assoc($result)) {
    while ($row2 = mysqli_fetch_assoc($result2)) {
       $payload['BilDat'] = $row2['kotdat']; 
    }
-
+   $payload['STWCOD'] = $_SESSION['USERID'];
    $sql2 = "select userid from posout where rescod='$rescod' and tblnub='$tblnub' and property_id=$property_id and appdat = (select max(appdat) from posout d where tblnub='$tblnub'  and appdat <= $today )";
    $result2 = mysqli_query($conn, $sql2);
    while ($row2 = mysqli_fetch_assoc($result2)) {

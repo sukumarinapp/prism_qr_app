@@ -212,7 +212,7 @@ function check_order(){
     });
 }
 
-setInterval(check_order, 30000);
+//setInterval(check_order, 30000);
 
 function accept_order(modal_id,order_id){
 	var status = "";
