@@ -53,8 +53,10 @@ $sql = "select * from posord a where property_id=$property_id and order_id in (s
 							<thead>
 								<tr>
 									<th>Action</th>
-									<th>Outlet</th>
+									<th>Mobile</th>
 									<th>Table#</th>
+									<th>Outlet</th>
+									<th>Order#</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -68,8 +70,10 @@ $sql = "select * from posord a where property_id=$property_id and order_id in (s
 											<button onclick="accept_order('modal-xl<?php echo $order_id; ?>',<?php echo $row['order_id']; ?>)" type="button" class="btn btn-success btn-sm"><i class="fa fa-check"></i>&nbsp;Accept</button>&nbsp;
 											<button onclick="decline_order('modal-xl<?php echo $order_id; ?>',<?php echo $row['order_id']; ?>)" type="button" class="btn btn-danger btn-sm"><i class="fa fa-times"></i>&nbsp;Decline</button>
 										</td>
-										<td> <?php echo $row['rescod']; ?> </td>
+										<td> <?php echo $row['mobile']; ?> </td>
 										<td> <?php echo $row['tblnub']; ?> </td>
+										<td> <?php echo $row['rescod']; ?> </td>
+										<td> <?php echo $row['ORDNUB']; ?> </td>
 									</tr>
 									<?php
 								} 
@@ -212,7 +216,7 @@ function check_order(){
     });
 }
 
-//setInterval(check_order, 30000);
+setInterval(check_order, 30000);
 
 function accept_order(modal_id,order_id){
 	var status = "";

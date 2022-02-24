@@ -23,18 +23,18 @@ while($row = mysqli_fetch_array($result)){
 }
 if(isset($_POST['submit2'])){
     $mobile = trim($_POST['mobile']);
-    $otp = rand(1001,9999);
+    /*$otp = rand(1001,9999);
     $url = "https://www.instaalerts.zone/SendSMS/sendmsg.php?uname=SAMRAT&pass=abc321&send=RIGHTC";
     $msg = urlencode("Your dining OTP is ".$otp);
     $url = $url . "&dest=".$mobile."&msg=".$msg;
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_POST, false);
     curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);*/
     //$output = curl_exec($ch);
-    curl_close($ch);
-    $_SESSION['otp'] =  $otp;    
-    $url = "otp.php?cstcod=$cstcod&rescod=$rescod&tblnub=$tblnub&mobile=$mobile";
+    //curl_close($ch);
+    //$_SESSION['otp'] =  $otp;    
+    $url = "menu.php?cstcod=$cstcod&rescod=$rescod&tblnub=$tblnub&mobile=$mobile";
     header("location: $url");
 }
 ?>

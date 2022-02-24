@@ -84,7 +84,7 @@ foreach ($set250 as $key => $value) {
 	}
 }
 
-/*$set102 = $data['set102'];
+$set102 = $data['set102'];
 $sql = "delete from set102 where property_id='$property_id'";
 mysqli_query($conn, $sql);
 foreach ($set102 as $key => $value) {
@@ -103,7 +103,7 @@ foreach ($set102 as $key => $value) {
 		echo json_encode($response);
 		die;
 	}
-}*/
+}
 
 $outlet = $data['outlet'];
 foreach ($outlet as $key => $value) {
