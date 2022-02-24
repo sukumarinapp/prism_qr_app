@@ -67,26 +67,7 @@ if (isset($_POST['submit'])) {
                       </div>
                       <div class="row">
                         <div class="col-md-6">
-                          <div class="form-group" id="table_div">
-                            <label for="tblnub">Table#</label>
-                            <select required="required" name="tblnub" class="form-control" >
-                              <option value="" >Select Table</option>
-                            </select>
-                          </div>
-                        </div>
-                        <div class="col-md-6">
-                         <div class="form-group" id="session_div">
-                          <label for="SESSON">Session</label>
-                          <select required="required" name="sesson" class="form-control" >
-                            <option value="" >Select Session</option>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- /.col -->
-                  <div class="col-md-6">
-                   <div class="form-group">
+                          <div class="form-group">
                     <label for="rescod">Outlet</label>
                     <select required="required" id="outlet_name" name="rescod" class="form-control select2" style="width: 100%;">
 
@@ -101,6 +82,26 @@ if (isset($_POST['submit'])) {
                       ?>
                     </select>
                   </div>
+                          
+                        </div>
+                        <div class="col-md-6">
+                   <div class="form-group" id="table_div">
+                            <label for="tblnub">Table#</label>
+                            <select required="required" name="tblnub" class="form-control" >
+                              <option value="" >Select Table</option>
+                            </select>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-md-6">
+                  <div class="form-group" id="session_div">
+                          <label for="SESSON">Session</label>
+                          <select required="required" name="sesson" class="form-control" >
+                            <option value="" >Select Session</option>
+                          </select>
+                        </div>
                   <div class="form-group">
                     <label>Select Steward</label>
                     <select required="required" name="userid" class="form-control" style="width: 100%;">
