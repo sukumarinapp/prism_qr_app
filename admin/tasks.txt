@@ -1,13 +1,6 @@
-call http://122.166.197.63:98/PosIntegration.svc/PostOrderData
-http://122.166.197.63:98/PosIntegration.svc/GetOutletList
+http://prismblr.com/kot/qr.php?cstcod=1254
 
-PRISM QR App Settlement API
-HTTP POST
-http://prismblr.com/kot/postsettlement.php
-POST Parameters
-ordrid
-cstcod
+http://prismblr.com/kot/admin/index.php?id=9
+username: ARUN
+password: YES
 
-Later
-session check for steward
-modifiers

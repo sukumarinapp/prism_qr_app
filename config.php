@@ -1,6 +1,6 @@
 <?php
 date_default_timezone_set("Asia/Kolkata");
-$base_url = "https://prismblr.com/kot";
+$base_url = "http://prismblr.com/kot";
 $mysql_hostname = "localhost";
 $mysql_user = "prism";
 $mysql_password = "1bit_mysql";

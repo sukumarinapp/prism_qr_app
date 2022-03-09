@@ -8,6 +8,14 @@ $page = "Dashboard";
 $today = date("Ymd");
 $item_count = 0;
 $order_count = 0;
+
+$LANIPA = "";
+$sql = "select * from  webser  where property_id=$property_id";
+$result = mysqli_query($conn, $sql);
+while ($row = mysqli_fetch_assoc($result)) {
+   $LANIPA = $row['LANIPA']; 
+}
+
 if($CATGRY == 3){
   $sql = "select count(*) as item_count from posord a,poskot b where a.order_id=b.order_id and property_id=$property_id and b.status ='ordered' and tblnub in (select tblnub from posout c where a.rescod=c.rescod and userid='$USERID' and property_id=$property_id and appdat = (select max(appdat) from posout d where c.userid=d.userid and appdat <= $today )) ";
 }else{
@@ -29,7 +37,8 @@ $sql = "select * from posord a where property_id=$property_id and order_id in (s
 
 <!DOCTYPE html>
 <html lang="en">
-
+<head>
+</head>	
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
 <?php include "header.php"; ?>
@@ -67,7 +76,7 @@ $sql = "select * from posord a where property_id=$property_id and order_id in (s
 									?>
 									<tr>
 										<td> <button  type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal-xl<?php echo $order_id; ?>"><i class="fa fa-eye"></i>&nbsp;View</button>&nbsp;
-											<button onclick="accept_order('modal-xl<?php echo $order_id; ?>',<?php echo $row['order_id']; ?>)" type="button" class="btn btn-success btn-sm"><i class="fa fa-check"></i>&nbsp;Accept</button>&nbsp;
+											<button onclick="accept_order(this,'modal-xl<?php echo $order_id; ?>',<?php echo $row['order_id']; ?>)" type="button" class="btn btn-success btn-sm"><i class="fa fa-check"></i>&nbsp;Accept</button>&nbsp;
 											<button onclick="decline_order('modal-xl<?php echo $order_id; ?>',<?php echo $row['order_id']; ?>)" type="button" class="btn btn-danger btn-sm"><i class="fa fa-times"></i>&nbsp;Decline</button>
 										</td>
 										<td> <?php echo $row['mobile']; ?> </td>
@@ -218,10 +227,14 @@ function check_order(){
 
 setInterval(check_order, 30000);
 
-function accept_order(modal_id,order_id){
+//https://122.166.197.63:96/PosIntegration.svc/GetOutletList
+var post_url2 = "http://<?php echo $LANIPA ?>/PosIntegration.svc/PostOrderData";
+
+function accept_order(accept_btn,modal_id,order_id){
+	accept_btn.disabled = true;
 	var status = "";
 	var item_selected = false;
-    var sales = new Array();
+  var sales = new Array();
 	$("#"+modal_id).find("#example1 > tbody > tr").each(function(index, tr) { 
 		var table_col = $(this).find('td');
 		if($(table_col).find('.click_item_cancel').hasClass('btn-danger')){
@@ -250,20 +263,47 @@ function accept_order(modal_id,order_id){
         property_id: property_id,
         sales: sales_data
       },
-      success: function (response) {
-      	response = JSON.parse(response);
-      	if(response["message"] != "success"){
-      		alert(response["message"]);
-      	}else{
-	        window.location.href = "dashboard.php";
-      	}
+      success: function (jsondata) {
+      	console.log("url:"+post_url2);
+      	$.ajax({
+				    url: post_url2,
+				    type: 'POST',
+				    contentType: 'application/json; charset=utf-8',
+				    data: jsondata,
+				    success: function (response) {
+				    	post_to_cloud(order_id,property_id,sales_data);
+				    	accept_btn.disabled = false;
+				    },
+				    error: function (error) {  
+				    		accept_btn.disabled = false; 
+				        console.log(error);
+				    }
+				});
       },
       error : function(error){
+      	accept_btn.disabled = false;
         console.log(error);
       }
     });
 }
 
+function post_to_cloud(order_id,property_id,sales_data){
+	$.ajax({
+    type: 'POST',
+    url: 'accept_order2.php',
+    data: {
+      order_id: order_id,
+      property_id: property_id,
+      sales: sales_data
+    },
+    success: function (response) {
+  		window.location.href = "dashboard.php";
+    },
+    error: function (error) {   
+      console.log(error);
+		}
+	});
+}
 function decline_order(modal_id,order_id){
     var sales = new Array();
 	$("#"+modal_id).find("#example1 > tbody > tr").each(function(index, tr) { 
