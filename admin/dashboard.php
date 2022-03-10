@@ -290,6 +290,7 @@ function accept_order(accept_btn,modal_id,order_id){
 function post_to_cloud(order_id,property_id,sales_data){
 	$.ajax({
     type: 'POST',
+    crossDomain: true,
     url: 'accept_order2.php',
     data: {
       order_id: order_id,
