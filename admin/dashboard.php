@@ -268,7 +268,8 @@ function accept_order(accept_btn,modal_id,order_id){
       	$.ajax({
 				    url: post_url2,
 				    type: 'POST',
-				    contentType: 'application/json; charset=utf-8',
+				    crossDomain: true,
+						dataType: 'json',
 				    data: jsondata,
 				    success: function (response) {
 				    	post_to_cloud(order_id,property_id,sales_data);
